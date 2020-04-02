@@ -69,11 +69,11 @@ class _F_CarInsurancePageState extends State<F_CarInsurancePage> {
                 child: Icon(Icons.list,color: subBackgroundColor,),
               ),
               rightAction: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => InsurancePremiumPage() ),
-                );
+//                Navigator.push(
+//                  context,
+//                  MaterialPageRoute(
+//                      builder: (context) => InsurancePremiumPage() ),
+//                );
               },
               primaryText: 'Car Insurance',
               secondaryText: null,
@@ -104,11 +104,11 @@ class _F_CarInsurancePageState extends State<F_CarInsurancePage> {
                           textColor: Colors.white,
                           backgroundColor: backgroundColor,
                           onPressed: () {
-//                          Navigator.push(
-//                            context,
-//                            MaterialPageRoute(
-//                                builder: (context) => ShowMediaPage(database: widget.database,) ),
-//                          );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => InsurancePremiumPage() ),
+                            );
                           }
                       ),
 
