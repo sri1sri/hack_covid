@@ -440,7 +440,7 @@ class _F_DashboardState extends State<F_Dashboard> {
       ),
       child: Container(
           height: 300,
-          width: 340,
+          width: 370,
           padding: EdgeInsets.symmetric(horizontal: -45.0),
           margin: const EdgeInsets.only(left: .2),
           child: Column(children: <Widget>[
@@ -455,7 +455,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                   bottom: 70.0,
                   child: Container(
                       height: 120.0,
-                      width: 200.0,
+                      width: 220.0,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
                           image: DecorationImage(
