@@ -50,7 +50,8 @@ class F_SignUpPasswordPage extends StatefulWidget {
 }
 
 class _F_SignUpPasswordPageState extends State<F_SignUpPasswordPage> {
-
+  final TextEditingController _emailController = TextEditingController();
+  final FocusNode _emailFocusNode = FocusNode();
   final TextEditingController _conPasswordController = TextEditingController();
   final FocusNode _conPasswordFocusNode = FocusNode();
   final TextEditingController _passwordController = TextEditingController();
@@ -59,6 +60,8 @@ class _F_SignUpPasswordPageState extends State<F_SignUpPasswordPage> {
 
   @override
   void dispose() {
+    _emailController.dispose();
+    _emailController.dispose();
     _conPasswordController.dispose();
     _passwordController.dispose();
     _conPasswordFocusNode.dispose();
@@ -133,6 +136,54 @@ class _F_SignUpPasswordPageState extends State<F_SignUpPasswordPage> {
 
               Column(
                 children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Color(0XFFEFF3F6),
+                        borderRadius: BorderRadius.circular(10.0),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Color.fromRGBO(0, 0, 0, 0.1),
+                              offset: Offset(3, 3),
+                              blurRadius: 2.0,
+                              spreadRadius: 2.0
+                          ),
+                          BoxShadow(
+                              color: Color.fromRGBO(255, 255, 255, 0.9),
+                              offset: Offset(-6, -2),
+                              blurRadius: 2.0,
+                              spreadRadius: 3.0
+                          )
+                        ]
+                    ),
+                    child: new TextFormField(
+                      controller: _emailController,
+                      textInputAction: TextInputAction.next,
+                      obscureText: false,
+                      focusNode: _emailFocusNode,
+                      autocorrect: false,
+                      keyboardType: TextInputType.emailAddress,
+                      // onEditingComplete: () => _emailEditingComplete(),
+                      // onChanged: model.updateEmail,
+                      decoration: new InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.mail,
+                          color: subBackgroundColor,
+                        ),
+                        labelText: "Email",
+                        // errorText: model.emailErrorText,
+                        // enabled: model.isLoading == false,
+                        //fillColor: Colors.redAccent,
+                        border: new OutlineInputBorder(
+                          borderRadius: new BorderRadius.circular(5.0),
+                          borderSide: new BorderSide(),
+                        ),
+                      ),
+                      style: new TextStyle(
+                        fontFamily: "Poppins",
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 30.0,),
                   Container(
                     decoration: BoxDecoration(
                         color: Color(0XFFEFF3F6),
