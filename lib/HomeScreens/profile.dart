@@ -162,6 +162,11 @@ class _F_ProfilePageState extends State<F_ProfilePage> {
                             ) ,
 
                           ),
+                          SizedBox(height: 15,),
+                          GestureDetector(
+                              child: Text("Edit Profie",style: titleStyleTheam,),
+                            onTap: (){},
+                          )
                         ],
                       ),
                     ),
