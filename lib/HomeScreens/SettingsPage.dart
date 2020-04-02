@@ -3,36 +3,39 @@ import 'package:hackcovid/HomeScreens/SettingsOptions/privacy_policy.dart';
 import 'package:hackcovid/HomeScreens/SettingsOptions/terms_conditions.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
+import 'package:hackcovid/common_variables/app_functions.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 import 'package:hackcovid/common_widgets/platform_alert/platform_alert_dialog.dart';
 //import 'package:knowitapp/firebase/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hackcovid/firebase/auth.dart';
+import 'package:hackcovid/landing_page.dart';
 //import 'package:hackcovid/firebase/auth.dart';
 import 'package:provider/provider.dart';
 
-//Future<void> _signOut(BuildContext context) async {
-//  try {
-//    final auth = Provider.of<AuthBase>(context, listen: false);
-//    await auth.signOut();
-////    Navigator.of(context).pop();
-//  } catch (e) {
-//    print(e.toString());
-//  }
-//}
+Future<void> _signOut(BuildContext context) async {
+  try {
+    final auth = Provider.of<AuthBase>(context, listen: false);
+    await auth.signOut();
+GoToPage(context, LandingPage());
+  } catch (e) {
+    print(e.toString());
+  }
+}
 
-//Future<void> _confirmSignOut(BuildContext context) async {
-//  final didRequestSignOut = await PlatformAlertDialog(
-//    title: 'Logout',
-//    content: 'Are you sure that you want to logout?',
-//    defaultActionText: 'Logout',
-//    cancelActionText: 'Cancel',
-//  ).show(context);
-//  if (didRequestSignOut == true) {
-//    _signOut(context);
-//  }
-//}
+Future<void> _confirmSignOut(BuildContext context) async {
+  final didRequestSignOut = await PlatformAlertDialog(
+    title: 'Logout',
+    content: 'Are you sure that you want to logout?',
+    defaultActionText: 'Logout',
+    cancelActionText: 'Cancel',
+  ).show(context);
+  if (didRequestSignOut == true) {
+    _signOut(context);
+  }
+}
 
 class SettingsPage extends StatelessWidget {
 
@@ -119,7 +122,7 @@ class _F_SettingsPageState extends State<F_SettingsPage> {
                   children: <Widget>[
 
                     RaisedButton(
-                      //onPressed: () => _confirmSignOut(context),
+                      onPressed: () => _confirmSignOut(context),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular( 80.0 ) ),
                       padding: const EdgeInsets.all( 0.0 ),

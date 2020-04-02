@@ -1,28 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hackcovid/HomeScreens/SettingsPage.dart';
-//import 'package:hackcovid/Database_models/UserDetails.dart';
-//import 'package:paystream/HomeScreens/Settings.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
-import 'package:hackcovid/common_variables/app_functions.dart';
-import 'package:hackcovid/common_widgets/button_widget/to_do_button.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
-import 'package:hackcovid/common_widgets/platform_alert/platform_alert_dialog.dart';
-//import 'package:hackcovid/firebase/auth.dart';
-//import 'package:hackcovid/firebase/database.dart';
-import 'package:popup_menu/popup_menu.dart';
-import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-//void customLaunch(command) async{
-//  if(await canLaunch(command)){
-//    await launch(command);
-//
-//  }else{
-//    print('could not launch $command');
-//  }
-//}
 
 class ProfilePage extends StatelessWidget {
   //ProfilePage({@required this.database});

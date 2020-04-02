@@ -1,21 +1,48 @@
 import 'dart:async';
 
-import 'package:hackcovid/AuthenticationScreens/LoginInPhoneNo.dart';
+import 'package:hackcovid/AuthenticationScreens/email_authentaction_page.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
-import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_widgets/button_widget/to_do_button.dart';
 import 'package:flutter/material.dart';
-
+import 'package:hackcovid/firebase/auth.dart';
+import 'package:provider/provider.dart';
 import '../widgets/slide_item.dart';
 import '../model/slide.dart';
 import '../widgets/slide_dots.dart';
+import 'login_page_manager.dart';
 
-class GettingStartedScreen extends StatefulWidget {
+class LoginPage extends StatefulWidget {
+  const LoginPage(
+      {Key key, @required this.manager, @required this.isLoading})
+      : super(key: key);
+  final LoginPageManager manager;
+  final bool isLoading;
+
+  static Widget create(BuildContext context) {
+    final auth = Provider.of<AuthBase>(context, listen: false);
+    return ChangeNotifierProvider<ValueNotifier<bool>>(
+      create: (_) => ValueNotifier<bool>(false),
+      child: Consumer<ValueNotifier<bool>>(
+        builder: (_, isLoading, __) =>
+            Provider<LoginPageManager>(
+              create: (_) =>
+                  LoginPageManager(auth: auth, isLoading: isLoading),
+              child: Consumer<LoginPageManager>(
+                builder: (context, manager, _) =>
+                    LoginPage(
+                      manager: manager, isLoading: isLoading.value,
+                    ),
+              ),
+            ),
+      ),
+    );
+  }
+
   @override
-  _GettingStartedScreenState createState() => _GettingStartedScreenState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _GettingStartedScreenState extends State<GettingStartedScreen> {
+class _LoginPageState extends State<LoginPage> {
   int _currentPage = 0;
   final PageController _pageController = PageController(initialPage: 0);
 
@@ -105,8 +132,7 @@ class _GettingStartedScreenState extends State<GettingStartedScreen> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => PhoneNumberPage(
-                          ),),
+                          MaterialPageRoute(builder: (context) => EmailAuthenticationPage(),),
                         );
                       }
                   ),
