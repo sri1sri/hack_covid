@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 var subBackgroundColor = Color(0xFF424250);
-var backgroundColor = Color(0xFF4184F3);
+var backgroundColor = Color(0xFF339FFF);
 
 
 var topNavigationBackgroundColor = Color(0xFF1F4B6E);

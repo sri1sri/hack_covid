@@ -2,6 +2,7 @@ library bottom_navy_bar;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hackcovid/common_variables/app_colors.dart';
 
 class BottomNavyBar extends StatelessWidget {
   final int selectedIndex;
@@ -118,7 +119,7 @@ class _ItemWidget extends StatelessWidget {
       duration: animationDuration,
       curve: curve,
       decoration: BoxDecoration(
-        color: isSelected ? item.activeColor.withOpacity(0.2) : backgroundColor,
+        color: isSelected ? subBackgroundColor : backgroundColor,
         borderRadius: BorderRadius.circular(itemCornerRadius),
       ),
       child: SingleChildScrollView(
@@ -136,7 +137,7 @@ class _ItemWidget extends StatelessWidget {
                 data: IconThemeData(
                   size: iconSize,
                   color: isSelected
-                      ? item.activeColor.withOpacity(1)
+                      ? Color(0xFF339FFF)
                       : item.inactiveColor == null
                       ? item.activeColor
                       : item.inactiveColor,
@@ -149,7 +150,7 @@ class _ItemWidget extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: DefaultTextStyle.merge(
                       style: TextStyle(
-                        color: item.activeColor,
+                        color: Color(0xFF339FFF),
                         fontWeight: FontWeight.bold,
                       ),
                       maxLines: 1,

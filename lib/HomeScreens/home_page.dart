@@ -1,6 +1,7 @@
 //import 'package:hackcovid/firebase/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hackcovid/HomeScreens/dashboard.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 import 'package:hackcovid/common_widgets/navigationBar.dart';
@@ -48,17 +49,16 @@ class _F_HomePageState extends State<F_HomePage> {
     Widget child;
     //final database = Provider.of<Database>(context, listen: false);
 
-//    switch (currentIndex) {
-//      case 0:
-//        child = Dashboard(
-//          database: database,
-//        );
-//        break;
-//      case 1:
+    switch (currentIndex) {
+      case 0:
+        child = Dashboard(
+        );
+        break;
+      case 1:
 //        child = ProfilePage(
 //            database: database);
-//        break;
-//    }
+        break;
+    }
     return Scaffold(
       body: SizedBox.expand(
         child: child,
@@ -75,19 +75,19 @@ class _F_HomePageState extends State<F_HomePage> {
           BottomNavyBarItem(
             icon: Icon(Icons.dashboard),
             title: Text('Home'),
-            activeColor: backgroundColor,
+            activeColor: subBackgroundColor,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             icon: Icon(Icons.account_balance_wallet),
             title: Text('Policies'),
-            activeColor: backgroundColor,
+            activeColor: subBackgroundColor,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
             icon: Icon(Icons.touch_app),
             title: Text('Claims'),
-            activeColor: backgroundColor,
+            activeColor: subBackgroundColor,
             textAlign: TextAlign.center,
           ),
         ],
