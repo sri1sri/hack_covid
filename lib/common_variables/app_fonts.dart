@@ -18,12 +18,12 @@ var titleStyle = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 23.0);
 var titleStyleTheam = TextStyle(
-    color: Color(0xFF339FFF),
-    fontFamily: 'Montserrat-Regular',
+    color: Color(0xFF424250),
+    fontFamily: 'Montserrat',
     fontWeight: FontWeight.w500,
     fontSize: 23.0);
 var subTitleStyle = TextStyle(
-    color: Color(0xFF339FFF),
+    color: Color(0xFF424250),
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w600,
     fontSize: 18.0,decoration: TextDecoration.none);
@@ -33,7 +33,7 @@ var subTitleStyleLite = TextStyle(
     fontWeight: FontWeight.w600,
     fontSize: 18.0,decoration: TextDecoration.none);
 var descriptionStyle = TextStyle(
-  color: Color(0xFF339FFF),
+  color: Color(0xFF424250),
   fontFamily: 'Montserrat',
   fontWeight: FontWeight.w500,
   fontSize: 15.0,decoration: TextDecoration.none,
@@ -79,7 +79,7 @@ var activeSubTitleStyle = TextStyle(
     fontSize: 22.0);
 var titleStylelight = TextStyle(
     color: Colors.white,
-    fontFamily: 'Quicksand',
+    fontFamily: 'Montserrat',
     fontWeight: FontWeight.w700,
     fontSize: 28.0);
 var optionStylelight = TextStyle(
@@ -88,10 +88,10 @@ var optionStylelight = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 28.0);
 var descriptionStyleDarkBlur = TextStyle(
-    color: Color(0xFF424250),
+    color: Color(0xFF424250).withOpacity(0.6),
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w800,
-    fontSize: 15.0);
+    fontSize: 16.0);
 var descriptionStyleLiteBlur = TextStyle(
     color: Colors.white,
     fontFamily: 'Montserrat',

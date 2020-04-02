@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:hackcovid/HomeScreens/profile.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_variables/app_functions.dart';
@@ -101,7 +102,7 @@ class _F_DashboardState extends State<F_Dashboard> {
   Widget offlineWidget(BuildContext context) {
     return CustomOfflineWidget(
       onlineChild: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+        padding: const EdgeInsets.fromLTRB(1, 1, 1, 1),
         child: Scaffold(
           body: _buildContent(context),
         ),
@@ -172,13 +173,13 @@ class _F_DashboardState extends State<F_Dashboard> {
                               ],
                             ),
                             onTap: () {
-//                                  Navigator.push(
-//                                    context,
-//                                    MaterialPageRoute(
-//                                      builder: (context) =>
-//                                          ProfilePage( database: database ),
-//                                    ),
-//                                  );
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          ProfilePage(),
+                                    ),
+                                  );
                             } ),
                       ),
                     ],
@@ -342,92 +343,6 @@ class _F_DashboardState extends State<F_Dashboard> {
 
         ),
     ),
-//          body: Container(
-//            color: Colors.white,
-//            child: Column(
-//              children: <Widget>[
-//                Padding(
-//                  padding: const EdgeInsets.all(20),
-//                  child: Container(
-//                    child: Column(
-//                      children: <Widget>[
-//                        Expanded(
-//                          child: Stack(
-//                            alignment: AlignmentDirectional.bottomCenter,
-//                            children: <Widget>[
-//                              PageView.builder(
-//                                scrollDirection: Axis.horizontal,
-//                                controller: _pageController,
-//                                onPageChanged: _onPageChanged,
-//                                itemCount: slideList.length,
-//                                itemBuilder: (ctx, i) => SlideItem(i),
-//                              ),
-//                              Stack(
-//                                alignment: AlignmentDirectional.topStart,
-//                                children: <Widget>[
-//                                  Container(
-//                                    margin: const EdgeInsets.only(bottom: 35),
-//                                    child: Row(
-//                                      mainAxisSize: MainAxisSize.min,
-//                                      mainAxisAlignment: MainAxisAlignment.center,
-//                                      children: <Widget>[
-//                                        for(int i = 0; i<slideList.length; i++)
-//                                          if( i == _currentPage )
-//                                            SlideDots(true)
-//                                          else
-//                                            SlideDots(false)
-//                                      ],
-//                                    ),
-//                                  )
-//                                ],
-//                              )
-//                            ],
-//                          ),
-//                        ),
-//                      ],
-//                    ),
-//                  ),
-//                ),
-//              ],
-//            ),
-//          ),
-//        body:Container(
-//          child: Column(
-//            children: <Widget>[
-//              Container(
-//                  height: 282.0,
-//                  width: 300,
-//                  //padding: EdgeInsets.only(right: 15.0),
-//
-//                  child: ListView(scrollDirection: Axis.horizontal, children: [
-//                    _buildImage1('images/10.jpg', 'Bhavani Aravindham',
-//                        '1400sq.ft - 3BHK', '₹12,333', true),
-//                    //SizedBox(width: 5.0),
-//
-//                    _buildImage1('images/aa.JPG', ' Bhavani Serene',
-//                        '1400sq.ft - 3BHK', '₹12,333', false),
-//                    //SizedBox(width: 5.0),
-//                    _buildImage1('images/12.jpg', 'Bhavani Serene',
-//                        '1400sq.ft - 3BHK', '₹12,333', true),
-//                    // SizedBox(width: 10.0),
-//                    _buildImage1('images/highrise.jpeg', 'BlueRidge Tower',
-//                        '1400sq.ft - 3BHK', '₹12,333', true),
-//                    //SizedBox(width: 10.0),
-//                    _buildImage1('images/villa.jpg', 'BlueRidge Tower',
-//                        '1400sq.ft - 3BHK', '₹12,333', false),
-//                    //SizedBox(width: 10.0),
-//                    _buildImage1('images/townhouse.jpg', 'BlueRidge Tower',
-//                        '1400sq.ft - 3BHK', '₹12,333', true),
-//                    //SizedBox(width: 10.0),
-//                    _buildImage1('images/lowrise.jpg', 'BlueRidge Tower',
-//                        '1400sq.ft - 3BHK', '₹12,333', false),
-//                    //SizedBox(width: 10.0),
-//                    _buildImage1('images/highrise.jpeg', 'BlueRidge Tower',
-//                        '1400sq.ft - 3BHK', '₹12,333', true),
-//                  ])),
-//            ],
-//          ),
-//        ),
         );
   }
   _buildImage1(String imgPath,  String price,String name,) {
@@ -441,7 +356,6 @@ class _F_DashboardState extends State<F_Dashboard> {
       child: Container(
           height: 300,
           width: 370,
-          padding: EdgeInsets.symmetric(horizontal: -45.0),
           margin: const EdgeInsets.only(left: .2),
           child: Column(children: <Widget>[
             Stack(children: [
@@ -449,8 +363,8 @@ class _F_DashboardState extends State<F_Dashboard> {
                 height: 257.0,
               ),
               Positioned(
-                  left: 50.0,
-                  right: 50.0,
+                  left: 10.0,
+                  right: 10.0,
                   top: 5.0,
                   bottom: 70.0,
                   child: Container(
@@ -461,8 +375,8 @@ class _F_DashboardState extends State<F_Dashboard> {
                           image: DecorationImage(
                               image: AssetImage(imgPath), fit: BoxFit.fill)))),
               Positioned(
-                  left: 70.0,
-                  right: 70.0,
+                  left: 30.0,
+                  right: 30.0,
                   top: 155.0,
                   bottom: 20.0,
                   child: Container(
