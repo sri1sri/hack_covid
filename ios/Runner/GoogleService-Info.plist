@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>453593419617-h5715j5aelnmvor9gr8j04ke43l8gr36.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.453593419617-h5715j5aelnmvor9gr8j04ke43l8gr36</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>453593419617-t3r2th8gs7h0n5h6iecrog9dct5alqpr.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBb0-5zBse7eoPNyQLUqsPtk0cJwLSu3EU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>453593419617</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.kondasri.hackcovid</string>
+	<key>PROJECT_ID</key>
+	<string>hackcovid-24b9c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hackcovid-24b9c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:453593419617:ios:ff2851b1f625ab28b1ff20</string>
+	<key>DATABASE_URL</key>
+	<string>https://hackcovid-24b9c.firebaseio.com</string>
+</dict>
+</plist>
