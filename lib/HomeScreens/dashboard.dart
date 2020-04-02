@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:hackcovid/HomeScreens/QuickServices/CarInsurance.dart';
 import 'package:hackcovid/HomeScreens/profile.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
@@ -141,7 +142,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Text("Hello",style: subTitleStyleLight,),
+                                  Text("Hello",style: subTextStyleBlue,),
                                   Text(
                                     "Srivatsav Konda",
                                     style: topNavigationBarTitleStyle,
@@ -167,7 +168,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                                     ),
                                     radius: 20.0,
                                     backgroundColor:
-                                    backgroundColor,
+                                    subBackgroundColor.withOpacity(0.3),
                                   ),
                                 )
                               ],
@@ -252,12 +253,10 @@ class _F_DashboardState extends State<F_Dashboard> {
                                 switch (features[index]) {
                                   case 'Car Insurance':
                                     {
-//                            GoToPage(
-//                                context,
-//                                ManageEmployeesPage(
-//                                  database: widget.database,
-//                                  employee: employee,
-//                                ));
+                            GoToPage(
+                                context,
+                                CarInsurancePage(
+                                ));
                                     }
                                     break;
 

@@ -125,7 +125,7 @@ class _F_SettingsPageState extends State<F_SettingsPage> {
                       padding: const EdgeInsets.all( 0.0 ),
                       child: Ink(
                         decoration: const BoxDecoration(
-                          color: Color(0xFF424250),
+                          color: Color(0xFF253949),
                           borderRadius: BorderRadius.all( Radius.circular(
                               10 ) ),
                         ),
