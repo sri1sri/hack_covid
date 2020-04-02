@@ -34,7 +34,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: backgroundColor,
+        color: Colors.white,
       ),
       width: MediaQuery.of(context).size.width,
       child: Column(
@@ -61,7 +61,7 @@ class CustomAppBar extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top:65.0),
-                  child: Text(primaryText,style: subTitleStyleLight,),
+                  child: Text(primaryText,style: subTitleStyleBlue,),
                 ),
                 Padding(
                   padding: EdgeInsets.only(

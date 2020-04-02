@@ -20,12 +20,12 @@ var titleStyle = TextStyle(
 var titleStyleTheam = TextStyle(
     color: Color(0xFF424250),
     fontFamily: 'Montserrat',
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w700,
     fontSize: 23.0);
 var subTitleStyle = TextStyle(
     color: Color(0xFF424250),
     fontFamily: 'Montserrat',
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w700,
     fontSize: 18.0,decoration: TextDecoration.none);
 var subTitleStyleLite = TextStyle(
     color: Colors.white,
@@ -54,6 +54,11 @@ var subTitleStyleWhite = TextStyle(
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w600,
     fontSize: 15.0);
+var subTitleStyleBlue = TextStyle(
+    color: Color(0xFF339FFF),
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w600,
+    fontSize: 22.0);
 
 
 var statusTracker = TextStyle(
