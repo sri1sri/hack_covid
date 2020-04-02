@@ -2,6 +2,7 @@
 import'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hackcovid/HomeScreens/home_page.dart';
 //import 'package:covidapp/AuthenticationScreens/Verify_Otp.dart';
 //import 'package:covidapp/Models/phone_number_page_model.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
@@ -244,14 +245,14 @@ class _F_PhoneNumberPageState extends State<F_PhoneNumberPage> {
                         ),
                       ),
                       onTap: (){
-//                        Navigator.push(
-//                          context,
-//                          MaterialPageRoute(
-//                            builder: (context) =>
-//                                OTPPage(
-//                                ),
-//                          ),
-//                        );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                HomePage(
+                                ),
+                          ),
+                        );
                       },
                     ),
 
