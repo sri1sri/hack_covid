@@ -2,6 +2,8 @@
 import'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hackcovid/AuthenticationScreens/SignUpDetails.dart';
+import 'package:hackcovid/AuthenticationScreens/email_authentaction_page.dart';
 import 'package:hackcovid/HomeScreens/home_page.dart';
 //import 'package:covidapp/AuthenticationScreens/Verify_Otp.dart';
 //import 'package:covidapp/Models/phone_number_page_model.dart';
@@ -18,72 +20,72 @@ import 'package:hackcovid/model/email_sign_in_change_model.dart';
 
 import 'package:provider/provider.dart';
 
-class EmailAuthenticationPage extends StatelessWidget {
+class SignUpPasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: F_EmailAuthenticationPage.create(context),
+      child: F_SignUpPasswordPage(),
     );
   }
 }
 
-class F_EmailAuthenticationPage extends StatefulWidget {
-  F_EmailAuthenticationPage({@required this.model});
-  final EmailSignInChangeModel model;
+class F_SignUpPasswordPage extends StatefulWidget {
+//  F_EmailAuthenticationPage({@required this.model});
+//  final EmailSignInChangeModel model;
 
-  static Widget create(BuildContext context) {
-    final AuthBase auth = Provider.of<AuthBase>(context, listen: false);
-    return ChangeNotifierProvider<EmailSignInChangeModel>(
-      create: (context) => EmailSignInChangeModel(auth: auth),
-      child: Consumer<EmailSignInChangeModel>(
-        builder: (context, model, _) => F_EmailAuthenticationPage(model: model),
-      ),
-    );
-  }
+//  static Widget create(BuildContext context) {
+//    final AuthBase auth = Provider.of<AuthBase>(context, listen: false);
+//    return ChangeNotifierProvider<EmailSignInChangeModel>(
+//      create: (context) => EmailSignInChangeModel(auth: auth),
+//      child: Consumer<EmailSignInChangeModel>(
+//        builder: (context, model, _) => F_EmailAuthenticationPage(model: model),
+//      ),
+//    );
+//  }
 
 
   @override
-  _F_EmailAuthenticationPageState createState() => _F_EmailAuthenticationPageState();
+  _F_SignUpPasswordPageState createState() => _F_SignUpPasswordPageState();
 }
 
-class _F_EmailAuthenticationPageState extends State<F_EmailAuthenticationPage> {
+class _F_SignUpPasswordPageState extends State<F_SignUpPasswordPage> {
 
-  final TextEditingController _emailController = TextEditingController();
-  final FocusNode _emailFocusNode = FocusNode();
+  final TextEditingController _conPasswordController = TextEditingController();
+  final FocusNode _conPasswordFocusNode = FocusNode();
   final TextEditingController _passwordController = TextEditingController();
   final FocusNode _passwordFocusNode = FocusNode();
-  EmailSignInChangeModel get model => widget.model;
+  //EmailSignInChangeModel get model => widget.model;
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _conPasswordController.dispose();
     _passwordController.dispose();
-    _emailFocusNode.dispose();
+    _conPasswordFocusNode.dispose();
     _passwordFocusNode.dispose();
     super.dispose();
   }
 
-  Future<void> _submit() async {
-    try {
-      await model.submit();
-      Navigator.of(context).pop();
-      //                        GoToPage(context, LandingPage());
-    } on PlatformException catch (e) {
-      PlatformExceptionAlertDialog(
-        title: 'SignIn Failed',
-        exception: e,
-      ).show(context);
-    }
-  }
+//  Future<void> _submit() async {
+//    try {
+//      await model.submit();
+//      Navigator.of(context).pop();
+//      //                        GoToPage(context, LandingPage());
+//    } on PlatformException catch (e) {
+//      PlatformExceptionAlertDialog(
+//        title: 'SignIn Failed',
+//        exception: e,
+//      ).show(context);
+//    }
+//  }
 
-  void _emailEditingComplete() {
-    final newFocus = model.emailValidator.isValid(model.email)
-        ? _passwordFocusNode
-        : _emailFocusNode;
-
-    FocusScope.of(context).requestFocus(newFocus);
-  }
+//  void _emailEditingComplete() {
+//    final newFocus = model.emailValidator.isValid(model.email)
+//        ? _passwordFocusNode
+//        : _emailFocusNode;
+//
+//    FocusScope.of(context).requestFocus(newFocus);
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,9 +105,7 @@ class _F_EmailAuthenticationPageState extends State<F_EmailAuthenticationPage> {
 
   Widget _buildContent(BuildContext context) {
 
-    return TransparentLoading(
-      loading: widget.model.isLoading,
-      child: Scaffold(
+    return Scaffold(
         body:Padding(
           padding: const EdgeInsets.only(top:100.0,bottom: 20,left: 20,right: 20),
           child: Column(
@@ -124,11 +124,11 @@ class _F_EmailAuthenticationPageState extends State<F_EmailAuthenticationPage> {
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text("Login",style: bigTitleStyle,),
-                    SizedBox(height: 15.0,),
-                    Text("Please enter your Email Id and Password to continue.",style: descriptionStyleDarkBlur,),
-                  ],
+                children: <Widget>[
+                  Text("Sign Up",style: bigTitleStyle,),
+                  SizedBox(height: 15.0,),
+                  Text("Please enter your Password to continue.",style: descriptionStyleDarkBlur,),
+                ],
               ),
 
               Column(
@@ -153,22 +153,22 @@ class _F_EmailAuthenticationPageState extends State<F_EmailAuthenticationPage> {
                         ]
                     ),
                     child: new TextFormField(
-                      controller: _emailController,
+                      controller: _passwordController,
                       textInputAction: TextInputAction.next,
-                      obscureText: false,
-                      focusNode: _emailFocusNode,
+                      obscureText: true,
+                      focusNode: _passwordFocusNode,
                       autocorrect: false,
                       keyboardType: TextInputType.emailAddress,
-                      onEditingComplete: () => _emailEditingComplete(),
-                      onChanged: model.updateEmail,
+                     // onEditingComplete: () => _emailEditingComplete(),
+                     // onChanged: model.updateEmail,
                       decoration: new InputDecoration(
                         prefixIcon: Icon(
-                          Icons.mail,
+                          Icons.lock,
                           color: subBackgroundColor,
                         ),
-                        labelText: "Enter your Mail-id",
-                        errorText: model.emailErrorText,
-                        enabled: model.isLoading == false,
+                        labelText: "Password",
+                       // errorText: model.emailErrorText,
+                       // enabled: model.isLoading == false,
                         //fillColor: Colors.redAccent,
                         border: new OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(5.0),
@@ -201,20 +201,20 @@ class _F_EmailAuthenticationPageState extends State<F_EmailAuthenticationPage> {
                         ]
                     ),
                     child: new TextFormField(
-                      controller: _passwordController,
-                      focusNode: _passwordFocusNode,
+                      controller: _conPasswordController,
+                      focusNode: _conPasswordFocusNode,
                       obscureText: true,
                       textInputAction: TextInputAction.done,
-                      onEditingComplete: _submit,
-                      onChanged: model.updatePassword,
+                     // onEditingComplete: _submit,
+                     // onChanged: model.updatePassword,
                       decoration: new InputDecoration(
-                        errorText: model.passwordErrorText,
-                        enabled: model.isLoading == false,
+                       // errorText: model.passwordErrorText,
+                       // enabled: model.isLoading == false,
                         prefixIcon: Icon(
-                          Icons.lock,
+                          Icons.lock_outline,
                           color: subBackgroundColor,
                         ),
-                        labelText: "Enter your Password",
+                        labelText: "Conform Password",
                         border: new OutlineInputBorder(
                           borderRadius: new BorderRadius.circular(5.0),
                           borderSide: new BorderSide(),
@@ -239,7 +239,7 @@ class _F_EmailAuthenticationPageState extends State<F_EmailAuthenticationPage> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     Container(),
-                                    Text("Login",style: activeSubTitleStyle),
+                                    Text("Continue",style: activeSubTitleStyle),
                                     Icon(Icons.arrow_forward,color: Colors.white,),
                                     Container(),
                                   ])),
@@ -258,7 +258,14 @@ class _F_EmailAuthenticationPageState extends State<F_EmailAuthenticationPage> {
                           ),
                         ),
                         onTap: (){
-                          _submit();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  SignupScreen(
+                                  ),
+                            ),
+                          );
                         },
                       ),
 
@@ -268,60 +275,36 @@ class _F_EmailAuthenticationPageState extends State<F_EmailAuthenticationPage> {
               ),
               Column(
                 children: <Widget>[
-
-
                 ],
               ),
-
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom:20.0),
-                  child: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text:
-                          'By continuing, You accept the Terms & Conditions Of the',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 13.0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        TextSpan(
-                          text: ' Terms of use',
-                          style: TextStyle(
-                            color: backgroundColor,
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        TextSpan(
-                          text: ' and',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 13.0,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        TextSpan(
-                          text: ' Privacy Policies',
-                          style: TextStyle(
-                            color: backgroundColor,
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ],
-                    ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                      "Already have an account?",
+                      style: descriptionStyle
                   ),
-                ),
+                  FlatButton(
+                    child: Text(
+                      'Sign In',
+                      style: subTitleStyleBlue,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              EmailAuthenticationPage(
+                              ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
             ],
           ),
         ),
-      ),
     );
   }
 }

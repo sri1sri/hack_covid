@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:hackcovid/AuthenticationScreens/SignUpPassword.dart';
 import 'package:hackcovid/AuthenticationScreens/email_authentaction_page.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
+import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_widgets/button_widget/to_do_button.dart';
 import 'package:flutter/material.dart';
 import 'package:hackcovid/firebase/auth.dart';
@@ -118,31 +120,88 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 20,
+
+              Padding(
+                padding: const EdgeInsets.only(left:20.0,right: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Container(
+                      height: 50.0,
+                      width: 150,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SignUpPasswordPage(),),
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: backgroundColor,
+                              style: BorderStyle.solid,
+                              width: 2.0,
+                            ),
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Center(
+                                child: Text(
+                                  "Sign Up",
+                                  style: subTextStyleBlue,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 50.0,
+                      width: 150,
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => EmailAuthenticationPage(),),
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: backgroundColor,
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Center(
+                                child: Text(
+                                  "Log In",
+                                  style: subTextStylewhite,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+                  ],
+                ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  ToDoButton(
-                      assetName: 'images/google-lodgo.png',
-                      text: 'Get Started',
-                      textColor: activeButtonTextColor,
-                      backgroundColor: backgroundColor,
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => EmailAuthenticationPage(),),
-                        );
-                      }
-                  ),
-                  SizedBox(height: 35,),
-                ],
-              )
+              SizedBox(
+                height: 40,
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
+
 }

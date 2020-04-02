@@ -64,6 +64,11 @@ var subTextStyleBlue = TextStyle(
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w600,
     fontSize: 20.0);
+var subTextStylewhite = TextStyle(
+    color: Colors.white,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w600,
+    fontSize: 20.0);
 
 
 var statusTracker = TextStyle(
