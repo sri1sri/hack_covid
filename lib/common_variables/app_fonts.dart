@@ -27,6 +27,11 @@ var subTitleStyle = TextStyle(
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w700,
     fontSize: 18.0,decoration: TextDecoration.none);
+var contentStyle = TextStyle(
+    color: Color(0xFF253949),
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w600,
+    fontSize: 16.0,decoration: TextDecoration.none);
 var subTitleStyleLite = TextStyle(
     color: Colors.white,
     fontFamily: 'Montserrat',
@@ -49,8 +54,12 @@ var subTitleStyleLight = TextStyle(
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w600,
     fontSize: 20.0);
+var subTitleStyleWhite1 = TextStyle(
+    color: Color(0xFF259ED9),
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w600,
+    fontSize: 15.0);
 var subTitleStyleWhite = TextStyle(
-    color: Colors.white,
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w600,
     fontSize: 15.0);

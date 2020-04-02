@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackcovid/HomeScreens/QuickServices/PremiumPlans.dart';
 import 'package:hackcovid/HomeScreens/SettingsPage.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
@@ -137,11 +138,11 @@ class _F_InsurancePremiumPageState extends State<F_InsurancePremiumPage> {
                           textColor: Colors.white,
                           backgroundColor: backgroundColor,
                           onPressed: () {
-//                          Navigator.push(
-//                            context,
-//                            MaterialPageRoute(
-//                                builder: (context) => ShowMediaPage(database: widget.database,) ),
-//                          );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PremiumPlansPage() ),
+                          );
                           }
                       ),
 
