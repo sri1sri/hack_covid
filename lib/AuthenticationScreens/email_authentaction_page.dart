@@ -70,10 +70,12 @@ class _F_EmailAuthenticationPageState extends State<F_EmailAuthenticationPage> {
       Navigator.of(context).pop();
       //                        GoToPage(context, LandingPage());
     } on PlatformException catch (e) {
-      PlatformExceptionAlertDialog(
-        title: 'SignIn Failed',
-        exception: e,
-      ).show(context);
+      if(_emailController.text != '' && _passwordController.text != ''){
+        PlatformExceptionAlertDialog(
+          title: 'SignIn Failed',
+          exception: e,
+        ).show(context);
+      }
     }
   }
 
@@ -166,7 +168,7 @@ class _F_EmailAuthenticationPageState extends State<F_EmailAuthenticationPage> {
                           Icons.mail,
                           color: subBackgroundColor,
                         ),
-                        labelText: "Enter your Mail-id",
+                        labelText: "Enter your email",
                         errorText: model.emailErrorText,
                         enabled: model.isLoading == false,
                         //fillColor: Colors.redAccent,
@@ -258,6 +260,7 @@ class _F_EmailAuthenticationPageState extends State<F_EmailAuthenticationPage> {
                           ),
                         ),
                         onTap: (){
+
                           _submit();
                         },
                       ),

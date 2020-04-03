@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:hackcovid/AuthenticationScreens/SignUpPassword.dart';
+import 'package:hackcovid/AuthenticationScreens/signup_page.dart';
 import 'package:hackcovid/AuthenticationScreens/email_authentaction_page.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
@@ -133,7 +133,7 @@ class _LoginPageState extends State<LoginPage> {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => SignUpPasswordPage(),),
+                            MaterialPageRoute(builder: (context) => SignupPage(),),
                           );
                         },
                         child: Container(

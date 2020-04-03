@@ -21,3 +21,14 @@ class EmailAndPasswordValidator {
   final String invalidPasswordErrorText = 'Password cant be empty';
 
 }
+
+class RegisterAccountValidator {
+  final StringValidator emailValidator = NonEmptyStringValidator();
+  final String invalidEmailErrorText = 'Email cant be empty';
+
+  final StringValidator passwordValidator = NonEmptyStringValidator();
+  final String invalidPasswordErrorText = 'Password cant be empty';
+
+  final StringValidator rePasswordValidator = NonEmptyStringValidator();
+  final String invalidRePasswordErrorText = 'Re-password cant be empty';
+}

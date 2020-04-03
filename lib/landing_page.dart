@@ -20,7 +20,7 @@ class LandingPage extends StatelessWidget {
 
           User user = snapshot.data;
           if (user == null) {
-            return LoginPage.create(context,);
+            return LoginPage.create(context);
           }
           return Provider<User>.value(
             value: user,
