@@ -142,3 +142,8 @@ var urlTextStyle = TextStyle(
     decoration: TextDecoration.underline,
     fontWeight: FontWeight.w600,
     fontSize: 15.0);
+var subTitleStyleDark = TextStyle(
+    color: Color(0xFF253949),
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w600,
+    fontSize: 15.0);

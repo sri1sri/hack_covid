@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hackcovid/common_variables/app_colors.dart';
+import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 
 class Premiumbreakup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return F_Premiumbreakup();
   }
 }
 
@@ -24,65 +26,21 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
       onlineChild: Padding(
         padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         child: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size(null, 60),
-            child: Container(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal:10.0,vertical: 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    InkWell(
-                      child: Icon(
-                        Icons.arrow_back,
-                        size: 30,
-                        color: Color(0XFF233666),
-                      ),
-                      onTap: (){
-                        Navigator.pop(context, true);
-                      },
-                    ),
-                    Text('View policy details',
-                      style: TextStyle(
-                          color: Color(0XFF233666),
-                          fontSize: 32,
-                          fontFamily: 'Montserrat'
-                      ),
-                    ),
-                    Container(
-
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          backgroundColor: Colors.white,
           body: _buildContent(context),
           bottomNavigationBar: Container(
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
+            height:70,
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 15.0, vertical: 10),
+              padding: const EdgeInsets.only(left:30.0,right:30.0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text('Total Premium',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12
-                    ),
-                  ),
-                  Text('\$ 11000',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16
-                    ),
-                  )
+                  Text("Total Premium",style: subTextStyleBlue,),
+                  Text("₹12,000",style: subTitleStyle,),
                 ],
               ),
             ),
-          ),
+          )
         ),
       ),
     );
@@ -90,19 +48,18 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
 
   Widget _buildContent(BuildContext context) {
     return Scaffold(
-      appBar: null,
-
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
-          child: Padding(
-            padding: EdgeInsets.all(15),
+          color: Colors.white,
             child: Column(
               children: <Widget>[
+                SizedBox(height: 30,),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Divider(
                     thickness: 1,
-                    color: Colors.blue,
+                    color: subBackgroundColor
                   ),
                 ),
                 ExpansionTile(
@@ -121,17 +78,16 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
                     subtext('Bi-fuel Kit Premium', '200/- rs'),
                     subtext('Geographic', '22 Jan, 2020'),
                     subtext('Geographic', '200/- rs'),
+                    SizedBox(height: 10,),
                     totalsubtext('Own damage premium', '200/- rs'),
+                    SizedBox(height: 10,),
                   ],
                 ),
-                SizedBox(
-                  height: 25,
-                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Divider(
                     thickness: 1,
-                    color: Colors.blue,
+                    color: subBackgroundColor,
                   ),
                 ),
                 ExpansionTile(
@@ -142,19 +98,17 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
                     subtext('Co-passenger', '22 Jan, 2020'),
                     subtext('Personal accident', '5th of every month'),
                     subtext('Legal liability to paid driver', '200/- rs'),
-                    subtext(
-                        'Legal liability to paid employeee', '22 Jan, 2020'),
+                    subtext( 'Legal liability to paid employeee', '22 Jan, 2020'),
+                    SizedBox(height: 10,),
                     totalsubtext('Liability premium', '200/- rs'),
+                    SizedBox(height: 10,),
                   ],
                 ),
-                SizedBox(
-                  height: 25,
-                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Divider(
                     thickness: 1,
-                    color: Colors.blue,
+                    color: subBackgroundColor,
                   ),
                 ),
                 ExpansionTile(
@@ -162,17 +116,17 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
                   children: <Widget>[
                     subtext('Break on loading', '\$ 0'),
                     subtext('Other loading', '200/- rs'),
+                    SizedBox(height: 10,),
                     totalsubtext('Loading premium', '200/- rs'),
+                    SizedBox(height: 10,),
                   ],
                 ),
-                SizedBox(
-                  height: 25,
-                ),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Divider(
                     thickness: 1,
-                    color: Colors.blue,
+                    color: subBackgroundColor,
                   ),
                 ),
                 ExpansionTile(
@@ -183,24 +137,22 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
                     subtext('Automobile membership discount', '22 Jan, 2020'),
                     subtext('Handicapped', '5th of every month'),
                     subtext('Deduct 20% for NCB', '200/- rs'),
+                    SizedBox(height: 10,),
                     totalsubtext('Total discount', '200/- rs'),
+                    SizedBox(height: 10,),
                   ],
-                ),
-                SizedBox(
-                  height: 25,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Divider(
                     thickness: 1,
-                    color: Colors.blue,
+                    color: subBackgroundColor,
                   ),
                 ),
                 totalsubtext('Total', '200/- rs'),
                 totalsubtext('Tax', '200/- rs'),
               ],
             ),
-          ),
         ),
       ),
     );
@@ -211,11 +163,7 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
       children: <Widget>[
         Text(
           center,
-          style: TextStyle(
-            fontFamily: 'Montserrat',
-            fontSize: 25,
-            color: Color(0XFF233666),
-          ),
+          style: titleStyleTheam,
         ),
       ],
     );
@@ -229,19 +177,11 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
         children: <Widget>[
           Text(
             '$_left :',
-            style: TextStyle(
-              color: Colors.green,
-              fontFamily: 'Montserrat',
-              fontSize: 16,
-            ),
+            style: subTitleStyleDark
           ),
           Text(
             '$_right',
-            style: TextStyle(
-              color: Color(0XFF233666),
-              fontFamily: 'Montserrat',
-              fontSize: 16,
-            ),
+            style: descriptionStyleDarkBlur
           ),
         ],
       ),
@@ -250,25 +190,17 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
 
   Widget totalsubtext(String _left, String _right) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(15.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(
             '$_left :',
-            style: TextStyle(
-              color: Color(0XFF233666),
-              fontFamily: 'Montserrat',
-              fontSize: 16,
-            ),
+            style: subTextStyleBlue
           ),
           Text(
             '$_right',
-            style: TextStyle(
-              color: Color(0XFF233666),
-              fontFamily: 'Montserrat',
-              fontSize: 18,
-            ),
+            style: subTitleStyle
           ),
         ],
       ),

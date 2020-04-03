@@ -49,74 +49,74 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
 
   Widget _buildContent(BuildContext context) {
     return new MaterialApp(
-//        debugShowCheckedModeBanner: false,
+       debugShowCheckedModeBanner: false,
         home: new Scaffold(
           backgroundColor: Colors.white ,
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/6),
-            child: CustomAppBar(
-              leftActionBar: Container(
-                child: Icon(Icons.arrow_back_ios,color: subBackgroundColor,),
-              ),
-              leftAction: () {
-                Navigator.pop(context, true);
-              },
-              rightActionBar: Container(
-                child: Text("......",style: TextStyle(color: Colors.white,)),
-              ),
-              rightAction: () {
-//                Navigator.push(
-//                  context,
-//                  MaterialPageRoute(
-//                      builder: (context) => SettingsPage() ),
-//                );
-              },
-              primaryText: 'Premium Plans',
-              secondaryText: null,
-            ),
-          ),
           body: DefaultTabController(
             length: 4,
-              child: Padding(
-                padding: const EdgeInsets.only(left:15.0,right: 15.0),
-                child: Scaffold(
-                  appBar: AppBar(
-                    title: Text("Choose your Plans",style: subTitleStyleLight),
-                    backgroundColor: Colors.white,
-                    elevation: 0,
-                    bottom: TabBar(
-                        isScrollable: true,
-                        unselectedLabelColor: backgroundColor,
-                        unselectedLabelStyle: subTitleStyleWhite,
-                        indicatorSize: TabBarIndicatorSize.tab,
-                        indicator: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6),
-                            color: backgroundColor),
-                        tabs: [
-                          Tab(
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Column(
-                                children: <Widget>[
-                                  SizedBox(height: 5,),
-                                  Text("Diamond Plan",style: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 15.0),),
-                                  SizedBox(height: 3,),
-                                  Text("₹12,000"),
-                                ],
-                                 ),
-                            ),
-                          ),
-                          Tab(
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Container(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Scaffold(
+                    appBar: AppBar(
+                      leading: IconButton(
+                        icon: Icon(Icons.arrow_back_ios,color: subBackgroundColor,),
+                        onPressed: () {
+                          Navigator.pop(context, true);
+                        },
+                      ),
+                      title: Text("Premium Plans",style: subTitleStyleBlue),
+                      backgroundColor: Colors.white,
+                      elevation: 0,
+                      bottom: TabBar(
+                          isScrollable: true,
+                          unselectedLabelColor: backgroundColor,
+                          unselectedLabelStyle: subTitleStyleWhite,
+                          indicatorSize: TabBarIndicatorSize.tab,
+                          indicator: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              color: backgroundColor),
+                          tabs: [
+                            Tab(
+                              child: Align(
+                                alignment: Alignment.center,
                                 child: Column(
                                   children: <Widget>[
                                     SizedBox(height: 5,),
-                                    Text("Gold Plan",style: TextStyle(
+                                    Text("Diamond Plan",style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15.0),),
+                                    SizedBox(height: 3,),
+                                    Text("₹12,000"),
+                                  ],
+                                   ),
+                              ),
+                            ),
+                            Tab(
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  child: Column(
+                                    children: <Widget>[
+                                      SizedBox(height: 5,),
+                                      Text("Gold Plan",style: TextStyle(
+                                          fontFamily: 'Montserrat',
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 15.0),),
+                                      SizedBox(height: 3,),
+                                      Text("₹12,000"),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Tab(
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Column(
+                                  children: <Widget>[
+                                    SizedBox(height: 5,),
+                                    Text("Silver Plan",style: TextStyle(
                                         fontFamily: 'Montserrat',
                                         fontWeight: FontWeight.w600,
                                         fontSize: 15.0),),
@@ -126,50 +126,34 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
                                 ),
                               ),
                             ),
-                          ),
-                          Tab(
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Column(
-                                children: <Widget>[
-                                  SizedBox(height: 5,),
-                                  Text("Silver Plan",style: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 15.0),),
-                                  SizedBox(height: 3,),
-                                  Text("₹12,000"),
-                                ],
+                            Tab(
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Column(
+                                  children: <Widget>[
+                                    SizedBox(height: 5,),
+                                    Text("Bronze Plan",style: TextStyle(
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15.0),),
+                                    SizedBox(height: 3,),
+                                    Text("₹12,000"),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          Tab(
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Column(
-                                children: <Widget>[
-                                  SizedBox(height: 5,),
-                                  Text("Bronze Plan",style: TextStyle(
-                                      fontFamily: 'Montserrat',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 15.0),),
-                                  SizedBox(height: 3,),
-                                  Text("₹12,000"),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ]),
+                          ]),
+                    ),
+                    body: TabBarView(
+                        children: [
+                          PremiumPlanDetailsPage(),
+                          PremiumPlanDetailsPage(),
+                          PremiumPlanDetailsPage(),
+                          PremiumPlanDetailsPage(),
+                    ]),
                   ),
-                  body: TabBarView(
-                      children: [
-                        PremiumPlanDetailsPage(),
-                        PremiumPlanDetailsPage(),
-                        PremiumPlanDetailsPage(),
-                        PremiumPlanDetailsPage(),
-                  ]),
                 ),
-              )
+
           ),
           bottomNavigationBar: BottomAppBar(
             child: Container(
