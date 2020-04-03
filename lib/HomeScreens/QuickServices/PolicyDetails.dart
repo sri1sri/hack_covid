@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hackcovid/HomeScreens/QuickServices/PaymentScreen.dart';
 import 'package:hackcovid/HomeScreens/SettingsPage.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
@@ -291,7 +292,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => PolicyRegistrationPage() ),
+                            builder: (context) => PaymentPage() ),
                       );
                     },
                     child: Container(
