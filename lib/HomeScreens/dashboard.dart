@@ -277,8 +277,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                                     {
                                       GoToPage(
                                           context,
-                                          Viewpolicydetails(database: null,
-                                          ));
+                                          Viewpolicydetails());
                                     }
                                     break;
 

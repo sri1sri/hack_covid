@@ -236,6 +236,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           width: 150,
                           child: GestureDetector(
                             onTap: () {
+                              print('current Page ${_currentPage}');
                               _pageController.nextPage(
                                 duration: Duration(milliseconds: 500),
                                 curve: Curves.ease,
@@ -352,12 +353,12 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
 
   Widget statusTrackerWidget(Color levelOne, Color levelTwo, Color levelThree, Color levelFour){
     return Container(
-      width: MediaQuery.of(context).size.width ,
+      width: MediaQuery.of(context).size.width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SizedBox(width: 10,),
-          Icon(Icons.person,color: levelOne ,size: 30,),
+          Icon(Icons.person, color: levelOne, size: 30),
           Padding(
             padding: EdgeInsets.all(0.0),
             child: new LinearPercentIndicator(

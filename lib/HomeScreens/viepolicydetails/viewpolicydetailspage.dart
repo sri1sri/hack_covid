@@ -11,27 +11,23 @@ import 'insureddetails.dart';
 //import 'no_access_screen.dart';
 
 class Viewpolicydetails extends StatelessWidget {
-  Viewpolicydetails({@required this.database,});
-  Database database;
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: F_Viewpolicydetails(database: database,),
+      child: F_Viewpolicydetails(),
     );
   }
 }
 
 class F_Viewpolicydetails extends StatefulWidget {
-  F_Viewpolicydetails({@required this.database,});
-  Database database;
+//  F_Viewpolicydetails({@required this.database,});
+//  Database database;
 
   @override
   _F_ViewpolicydetailsState createState() => _F_ViewpolicydetailsState();
 }
 
 class _F_ViewpolicydetailsState extends State<F_Viewpolicydetails> {
-
   TextStyle selectedLabel = new TextStyle(
       color: Color(0xFF1F4B6E),
       fontFamily: 'Quicksand',
@@ -62,72 +58,175 @@ class _F_ViewpolicydetailsState extends State<F_Viewpolicydetails> {
 
   Widget _buildContent(BuildContext context) {
     return new MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: new DefaultTabController(
-        length: categories.length,
-        child: new Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(180),
-            //preferredSize : Size(double.infinity, 100),
-            child: CustomAppBar(
-              leftActionBar: Container(
-                child: Icon(
-                  Icons.arrow_back,
-                  size: 40,
-                  color: Colors.black38,
-                ),
-              ),
-              leftAction: () {
-                Navigator.pop(context, true);
-              },
-              rightActionBar: Container(
-                child: IconButton(
-                  icon: Icon(
-                    Icons.shopping_cart,
-                    size: 40,
-                    color: backgroundColor,
+        home: new Scaffold(
+      backgroundColor: Colors.white,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(MediaQuery.of(context).size.width / 6),
+        child: CustomAppBar(
+          leftActionBar: Container(
+            child: Icon(
+              Icons.arrow_back_ios,
+              color: subBackgroundColor,
+            ),
+          ),
+          leftAction: () {
+            Navigator.pop(context, true);
+          },
+          rightActionBar: Container(
+            child: Text("......",
+                style: TextStyle(
+                  color: Colors.white,
+                )),
+          ),
+          rightAction: () {
+//                Navigator.push(
+//                  context,
+//                  MaterialPageRoute(
+//                      builder: (context) => SettingsPage() ),
+//                );
+          },
+          primaryText: 'Policy details',
+          secondaryText: 'null',
+        ),
+      ),
+          body: DefaultTabController(
+            length: categories.length,
+            child: Padding(
+              padding: const EdgeInsets.only(left:15.0,right: 15.0),
+              child: new Scaffold(
+                appBar: PreferredSize(
+                  preferredSize: Size.fromHeight(180),
+                  //preferredSize : Size(double.infinity, 100),
+                  child: CustomAppBar(
+                    leftActionBar: Container(
+                      child: Icon(
+                        Icons.arrow_back,
+                        size: 40,
+                        color: Colors.black38,
+                      ),
+                    ),
+                    leftAction: () {
+                      Navigator.pop(context, true);
+                    },
+                    rightActionBar: Container(
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.shopping_cart,
+                          size: 40,
+                          color: backgroundColor,
+                        ),
+                        onPressed: null,
+                      ),
+                    ),
+                    rightAction: () {
+                      print('right action bar is pressed in appbar');
+                    },
+                    secondaryText: 'Store',
+                    tabBarWidget: Center(
+                      child: new TabBar(
+                        labelColor: backgroundColor,
+                        labelStyle: selectedLabel,
+                        unselectedLabelStyle: unselectedLabel,
+                        isScrollable: true,
+                        tabs: categories.map((Category choice) {
+                          return new Tab(
+                            text: choice.name,
+                          );
+                        }).toList(),
+                      ),
+                    ),
                   ),
-                  onPressed: null,
                 ),
-              ),
-              rightAction: () {
-                print('right action bar is pressed in appbar');
-              },
-              primaryText: null,
-              secondaryText: 'Store',
-              tabBarWidget: Center(
-                child: new TabBar(
-                  labelColor: backgroundColor,
-                  labelStyle: selectedLabel,
-                  unselectedLabelStyle: unselectedLabel,
-                  isScrollable: true,
-                  tabs: categories.map((Category choice) {
-                    return new Tab(
-                      text: choice.name,
-                    );
+                body: new TabBarView(
+                  children: categories.map((Category choice) {
+                    if (choice.name == 'Premium break up') {
+                      return new Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Premiumbreakup(),
+                      );
+                    } else {
+                      return new Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Insureddetails(),
+                      );
+                    }
                   }).toList(),
                 ),
               ),
             ),
           ),
-
-          body: new TabBarView(
-            children: categories.map((Category choice) {
-              if (choice.name == 'Premium break up') {
-                return new Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Premiumbreakup(),
-                );
-              } else {
-                return new Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Insureddetails(),
-                );
-              }
-            }).toList(),
-          ),
-        ),
-      ),
-    );
+    ));
   }
+//
+//  Widget _buildContentt(BuildContext context) {
+//    return new MaterialApp(
+//      debugShowCheckedModeBanner: false,
+//      home: new DefaultTabController(
+//        length: categories.length,
+//        child: Padding(
+//          padding: const EdgeInsets.only(left:15.0,right: 15.0),
+//          child: new Scaffold(
+//            appBar: PreferredSize(
+//              preferredSize: Size.fromHeight(180),
+//              //preferredSize : Size(double.infinity, 100),
+//              child: CustomAppBar(
+//                leftActionBar: Container(
+//                  child: Icon(
+//                    Icons.arrow_back,
+//                    size: 40,
+//                    color: Colors.black38,
+//                  ),
+//                ),
+//                leftAction: () {
+//                  Navigator.pop(context, true);
+//                },
+//                rightActionBar: Container(
+//                  child: IconButton(
+//                    icon: Icon(
+//                      Icons.shopping_cart,
+//                      size: 40,
+//                      color: backgroundColor,
+//                    ),
+//                    onPressed: null,
+//                  ),
+//                ),
+//                rightAction: () {
+//                  print('right action bar is pressed in appbar');
+//                },
+//                secondaryText: 'Store',
+//                tabBarWidget: Center(
+//                  child: new TabBar(
+//                    labelColor: backgroundColor,
+//                    labelStyle: selectedLabel,
+//                    unselectedLabelStyle: unselectedLabel,
+//                    isScrollable: true,
+//                    tabs: categories.map((Category choice) {
+//                      return new Tab(
+//                        text: choice.name,
+//                      );
+//                    }).toList(),
+//                  ),
+//                ),
+//              ),
+//            ),
+//            body: new TabBarView(
+//              children: categories.map((Category choice) {
+//                if (choice.name == 'Premium break up') {
+//                  return new Padding(
+//                    padding: const EdgeInsets.all(10.0),
+//                    child: Premiumbreakup(),
+//                  );
+//                } else {
+//                  return new Padding(
+//                    padding: const EdgeInsets.all(10.0),
+//                    child: Insureddetails(),
+//                  );
+//                }
+//              }).toList(),
+//            ),
+//          ),
+//        ),
+//      ),
+//    );
+//  }
 }

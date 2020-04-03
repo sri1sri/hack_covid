@@ -49,7 +49,7 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
 
   Widget _buildContent(BuildContext context) {
     return new MaterialApp(
-        debugShowCheckedModeBanner: false,
+//        debugShowCheckedModeBanner: false,
         home: new Scaffold(
           backgroundColor: Colors.white ,
           appBar: PreferredSize(
