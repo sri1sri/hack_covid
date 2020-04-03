@@ -132,10 +132,10 @@ var highlight = TextStyle(
     fontWeight: FontWeight.w800,
     fontSize: 30.0);
 var highlightDescription = TextStyle(
-    color: Colors.black.withOpacity(.7),
-    fontFamily: 'Quicksand',
-    fontWeight: FontWeight.w800,
-    fontSize: 25.0);
+    color: Colors.black.withOpacity(.8),
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w500,
+    fontSize: 18.0);
 var urlTextStyle = TextStyle(
     color: Colors.green,
     fontFamily: 'Montserrat-Regular',

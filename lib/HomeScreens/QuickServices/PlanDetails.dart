@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackcovid/HomeScreens/QuickServices/SeeallCoverages.dart';
 import 'package:hackcovid/HomeScreens/SettingsPage.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
@@ -62,8 +63,23 @@ class _F_PremiumPlanDetailsPageState extends State<F_PremiumPlanDetailsPage> {
                     SizedBox(height: 15,),
                     Text("March 20, 2020 to April 20, 2020", style: descriptionStyleDarkBlur ,),
                     SizedBox(height: 40,),
-                    Text("Coverages",style: subTitleStyle,),
-                    SizedBox(height: 15,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text("Coverages",style: subTitleStyle,),
+                        GestureDetector(
+                            child: Text("See All",style: descriptionStyleDarkBlur ),
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SeeAllCoveragesPage() ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 25,),
                     Container(
                       child: Column(
                         children: <Widget>[
@@ -89,7 +105,7 @@ class _F_PremiumPlanDetailsPageState extends State<F_PremiumPlanDetailsPage> {
                     ),
                     SizedBox(height: 40,),
                     Text("Add more Coverages",style: subTitleStyle,),
-                    SizedBox(height: 15,),
+                    SizedBox(height: 25,),
                     Container(
                       child: Column(
                         children: <Widget>[
