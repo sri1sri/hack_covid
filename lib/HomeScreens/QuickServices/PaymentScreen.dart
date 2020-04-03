@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hackcovid/HomeScreens/SettingsPage.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
@@ -33,7 +32,7 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
   final TextEditingController _expireController = TextEditingController();
   final FocusNode _expireFocusNode = FocusNode();
   final TextEditingController _cvvController = TextEditingController();
-  final FocusNode _cvvCardFocusNode = FocusNode();
+  final FocusNode _cvvFocusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return offlineWidget(context);
@@ -290,10 +289,10 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
                               height: 10,
                             ),
                             new TextFormField(
-                              controller: _cardNoController,
+                              controller: _cvvController,
                               textInputAction: TextInputAction.next,
                               obscureText: true,
-                              focusNode: _cardNoFocusNode,
+                              focusNode: _cvvFocusNode,
                               autocorrect: false,
                               keyboardType: TextInputType.number,
                               // onEditingComplete: () => _emailEditingComplete(),
