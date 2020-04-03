@@ -71,7 +71,7 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
 //                      builder: (context) => SettingsPage() ),
 //                );
               },
-              primaryText: 'Policy Details',
+              primaryText: 'Premium Plans',
               secondaryText: null,
             ),
           ),
@@ -81,7 +81,7 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
                 padding: const EdgeInsets.only(left:15.0,right: 15.0),
                 child: Scaffold(
                   appBar: AppBar(
-                    title: Text("Premium Plans",style: subTitleStyleLight),
+                    title: Text("Choose your Plans",style: subTitleStyleLight),
                     backgroundColor: Colors.white,
                     elevation: 0,
                     bottom: TabBar(
