@@ -116,12 +116,12 @@ class _F_ViewpolicydetailsState extends State<F_Viewpolicydetails> {
               if (choice.name == 'Premium break up') {
                 return new Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Insureddetails(),
+                  child: Premiumbreakup(),
                 );
               } else {
                 return new Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Premiumbreakup(),
+                  child: Insureddetails(),
                 );
               }
             }).toList(),
