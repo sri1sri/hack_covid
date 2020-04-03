@@ -61,6 +61,8 @@ class _F_InsurancePremiumPageState extends State<F_InsurancePremiumPage> {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
         home: new Scaffold(
+          resizeToAvoidBottomPadding: false,
+
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/6),
             child: CustomAppBar(
