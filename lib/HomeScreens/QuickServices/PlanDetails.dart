@@ -30,6 +30,16 @@ class _F_PremiumPlanDetailsPageState extends State<F_PremiumPlanDetailsPage> {
   int group =1;
   String dropdownValue = '1 Year';
 
+  String textHolder = '+';
+
+  changeText() {
+
+    setState(() {
+      textHolder = '✔';
+    });
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return offlineWidget(context);
@@ -220,7 +230,7 @@ class _F_PremiumPlanDetailsPageState extends State<F_PremiumPlanDetailsPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Icon(Icons.add,color: subBackgroundColor,),
+                  Text('$textHolder',style: subTitleStyleLight,),
                   Text(title,style: contentStyle,),
                   Text(price,style:contentStyle),
                 ],
@@ -229,7 +239,7 @@ class _F_PremiumPlanDetailsPageState extends State<F_PremiumPlanDetailsPage> {
           ),
         ),
       ),
-      onTap: (){},
+      onTap: () => changeText(),
     );
   }
 

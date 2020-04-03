@@ -96,7 +96,7 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
                               height: 50,
 //                        width: MediaQuery.of(context).size.width,
                               decoration: BoxDecoration(
-                                color: Color(0xFF243665),
+                                color: subBackgroundColor,
                                 borderRadius: BorderRadius.all(Radius.circular(5)),
                               ),
                               child: Center(
