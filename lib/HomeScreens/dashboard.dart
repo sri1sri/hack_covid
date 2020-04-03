@@ -95,6 +95,19 @@ class _F_DashboardState extends State<F_Dashboard> {
     "images/hospital.png",
   ];
 
+  var features1 = [
+    "Car Insurance",
+    "Air Insurance",
+    "Bike Insurance",
+    "Life Insurance",
+  ];
+  List<String> F_image1 = [
+    "images/car-insurance.png",
+    "images/travel-insurance.png",
+    "images/motorcycle-2.png",
+    "images/hospital.png",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return offlineWidget(context);
@@ -257,6 +270,97 @@ class _F_DashboardState extends State<F_Dashboard> {
                                 context,
                                 CarInsurancePage(
                                 ));
+                                    }
+                                    break;
+
+                                  case 'Flight Insurance':
+                                    {
+//                            GoToPage(
+//                                context,
+//                                GoodsApprovalsPage(
+//                                  database: widget.database,
+//                                  employee: employee,
+//                                ));
+                                    }
+                                    break;
+                                  case 'Bike Insurance':
+                                    {
+//                            GoToPage(
+//                                context,
+//                                StorePage(
+//                                  database: widget.database,
+//                                  employee: employee,
+//                                ));
+                                    }
+                                    break;
+
+                                  case 'Life insurance':
+                                    {
+//                            GoToPage(
+//                              context,
+//                              InventoryPage(database: widget.database,),
+//                            );
+                                    }
+                                    break;
+                                  default:
+                                    {}
+                                    break;
+                                }
+
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 50,),
+                    Text('Quick Services',
+                        style: subTitleStyleLight
+                    ),
+                    SizedBox(height: 15,),
+                    Container(
+                      height: 250,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: 10.0, bottom: 10.0, left: 5.0, right: 5.0),
+                        child: new GridView.builder(
+                          itemCount: F_image1.length,
+                          gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,mainAxisSpacing: 10,crossAxisSpacing: 0
+                          ),
+                          itemBuilder: (BuildContext context, int index) {
+                            return new GestureDetector(
+                              child:
+                              new Card(
+                                elevation: 0.0,
+                                child: new Container(
+                                  alignment: Alignment.center,
+                                  margin: new EdgeInsets.only(
+                                      top: 0.0, bottom: 0.0, left: 0.0, right: 0.0),
+                                  child: new Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Image.asset(
+                                        F_image1[index],height: 60,
+                                      ),
+                                      SizedBox(height: 5,),
+                                      new Text(
+                                        features1[index],
+                                        style: descriptionStyleDark,
+                                      ),
+
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              onTap: () {
+                                switch (features[index]) {
+                                  case 'Car Insurance':
+                                    {
+                                      GoToPage(
+                                          context,
+                                          CarInsurancePage(
+                                          ));
                                     }
                                     break;
 
