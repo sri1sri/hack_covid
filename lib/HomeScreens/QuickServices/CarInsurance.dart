@@ -32,10 +32,9 @@ class F_CarInsurancePage extends StatefulWidget {
 class _F_CarInsurancePageState extends State<F_CarInsurancePage> {
   final _formKey = GlobalKey<FormState>();
 
-  InputDecoration inputDecoration1 = InputDecoration(
-      hintText: 'Registration No.'
+  final TextEditingController _regNoController = TextEditingController();
+  final FocusNode _regNoFocusNode = FocusNode();
 
-  );
   @override
   Widget build(BuildContext context) {
     return offlineWidget(context);
@@ -94,9 +93,32 @@ class _F_CarInsurancePageState extends State<F_CarInsurancePage> {
                       SizedBox(height: 50,),
                       Text("Enter car registration no.",style: subTextStyleBlue),
                       SizedBox(height: 10,),
-                      TextField(
-                        decoration: inputDecoration1,
-                        cursorColor: subBackgroundColor,
+                      new TextFormField(
+                        controller: _regNoController,
+                        textInputAction: TextInputAction.next,
+                        obscureText: false,
+                        focusNode: _regNoFocusNode,
+                        autocorrect: false,
+                        keyboardType: TextInputType.emailAddress,
+                       // onEditingComplete: () => _emailEditingComplete(),
+                       // onChanged: model.updateEmail,
+                        decoration: new InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.keyboard,
+                            color: subBackgroundColor,
+                          ),
+                          labelText: "Registration No.",
+                          //errorText: model.emailErrorText,
+                          //enabled: model.isLoading == false,
+                          //fillColor: Colors.redAccent,
+                          border: new OutlineInputBorder(
+                            borderRadius: new BorderRadius.circular(5.0),
+                            borderSide: new BorderSide(),
+                          ),
+                        ),
+                        style: new TextStyle(
+                          fontFamily: "Poppins",
+                        ),
                       ),
                       SizedBox(height: 50,),
                       ToDoButton(

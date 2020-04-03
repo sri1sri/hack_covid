@@ -310,7 +310,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                          padding: const EdgeInsets.all(10.0),
                          child: Column(
                            children: <Widget>[
-                             Text("How likely are you to recomended our app to your peer group?",style: subTitleStyleWhite,),
+                             Text("How likely are you to recomended our app to your peer group?",style: subTitleStyleWhiteContent,),
                              FormBuilderSlider(
                                  attribute: "slider",
                                  activeColor: subBackgroundColor,
@@ -325,7 +325,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                              Column(
                                crossAxisAlignment: CrossAxisAlignment.end,
                                children: <Widget>[
-                                 Text("Total Responses: 10,000",style: subTitleStyleWhite,)
+                                 Text("Total Responses: 10,000",style: subTitleStyleWhiteContent,)
                                ],
                              )
                            ],

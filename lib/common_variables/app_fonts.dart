@@ -63,6 +63,11 @@ var subTitleStyleWhite = TextStyle(
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w600,
     fontSize: 15.0);
+var subTitleStyleWhiteContent = TextStyle(
+    color: Colors.white,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w600,
+    fontSize: 15.0);
 var subTitleStyleBlue = TextStyle(
     color: Color(0xFF259ED9),
     fontFamily: 'Montserrat',

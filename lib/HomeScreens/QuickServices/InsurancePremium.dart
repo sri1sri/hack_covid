@@ -32,22 +32,15 @@ class F_InsurancePremiumPage extends StatefulWidget {
 class _F_InsurancePremiumPageState extends State<F_InsurancePremiumPage> {
   final _formKey = GlobalKey<FormState>();
 
-  InputDecoration inputDecoration1 = InputDecoration(
-      hintText: 'Mumbai,Chennai...etc'
+  final TextEditingController _regCityController = TextEditingController();
+  final FocusNode _regCityFocusNode = FocusNode();
+  final TextEditingController _carNameController = TextEditingController();
+  final FocusNode _carNameFocusNode = FocusNode();
+  final TextEditingController _carModelController = TextEditingController();
+  final FocusNode _carModelFocusNode = FocusNode();
+  final TextEditingController _yearController = TextEditingController();
+  final FocusNode _yearFocusNode = FocusNode();
 
-  );
-  InputDecoration inputDecoration2 = InputDecoration(
-      hintText: 'BMW,Audi,....etc'
-
-  );
-  InputDecoration inputDecoration3 = InputDecoration(
-      hintText: 'A7,R8,i20....etc'
-
-  );
-  InputDecoration inputDecoration4 = InputDecoration(
-      hintText: '2019'
-
-  );
   @override
   Widget build(BuildContext context) {
     return offlineWidget(context);
@@ -105,30 +98,122 @@ class _F_InsurancePremiumPageState extends State<F_InsurancePremiumPage> {
                       SizedBox(height: 50,),
                       Text("Enter car registration city",style: subTextStyleBlue),
                       SizedBox(height: 10,),
-                      TextField(
-                        decoration: inputDecoration1,
-                        cursorColor: subBackgroundColor,
+                      new TextFormField(
+                        controller: _regCityController,
+                        textInputAction: TextInputAction.next,
+                        obscureText: false,
+                        focusNode: _regCityFocusNode,
+                        autocorrect: false,
+                        keyboardType: TextInputType.text,
+                        // onEditingComplete: () => _emailEditingComplete(),
+                        // onChanged: model.updateEmail,
+                        decoration: new InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.location_city,
+                            color: subBackgroundColor,
+                          ),
+                          labelText: "Mumbai,Chennai,....etc",
+                          //errorText: model.emailErrorText,
+                          //enabled: model.isLoading == false,
+                          //fillColor: Colors.redAccent,
+                          border: new OutlineInputBorder(
+                            borderRadius: new BorderRadius.circular(5.0),
+                            borderSide: new BorderSide(),
+                          ),
+                        ),
+                        style: new TextStyle(
+                          fontFamily: "Poppins",
+                        ),
                       ),
                       SizedBox(height: 20,),
                       Text("Enter car name",style: subTextStyleBlue),
                       SizedBox(height: 10,),
-                      TextField(
-                        decoration: inputDecoration2,
-                        cursorColor: subBackgroundColor,
+                      new TextFormField(
+                        controller: _carNameController,
+                        textInputAction: TextInputAction.next,
+                        obscureText: false,
+                        focusNode: _carNameFocusNode,
+                        autocorrect: false,
+                        keyboardType: TextInputType.text,
+                        // onEditingComplete: () => _emailEditingComplete(),
+                        // onChanged: model.updateEmail,
+                        decoration: new InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.directions_car,
+                            color: subBackgroundColor,
+                          ),
+                          labelText: "BMW,Audi,....etc",
+                          //errorText: model.emailErrorText,
+                          //enabled: model.isLoading == false,
+                          //fillColor: Colors.redAccent,
+                          border: new OutlineInputBorder(
+                            borderRadius: new BorderRadius.circular(5.0),
+                            borderSide: new BorderSide(),
+                          ),
+                        ),
+                        style: new TextStyle(
+                          fontFamily: "Poppins",
+                        ),
                       ),
                       SizedBox(height: 20,),
                       Text("Enter car model",style: subTextStyleBlue),
                       SizedBox(height: 10,),
-                      TextField(
-                        decoration: inputDecoration3,
-                        cursorColor: subBackgroundColor,
+                      new TextFormField(
+                        controller: _carModelController,
+                        textInputAction: TextInputAction.next,
+                        obscureText: false,
+                        focusNode: _carModelFocusNode,
+                        autocorrect: false,
+                        keyboardType: TextInputType.text,
+                        // onEditingComplete: () => _emailEditingComplete(),
+                        // onChanged: model.updateEmail,
+                        decoration: new InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.local_car_wash,
+                            color: subBackgroundColor,
+                          ),
+                          labelText: "A7,R8,i20......etc",
+                          //errorText: model.emailErrorText,
+                          //enabled: model.isLoading == false,
+                          //fillColor: Colors.redAccent,
+                          border: new OutlineInputBorder(
+                            borderRadius: new BorderRadius.circular(5.0),
+                            borderSide: new BorderSide(),
+                          ),
+                        ),
+                        style: new TextStyle(
+                          fontFamily: "Poppins",
+                        ),
                       ),
                       SizedBox(height: 20,),
                       Text("Enter car purchased year",style: subTextStyleBlue),
                       SizedBox(height: 10,),
-                      TextField(
-                        decoration: inputDecoration4,
-                        cursorColor: subBackgroundColor,
+                      new TextFormField(
+                        controller: _yearController,
+                        textInputAction: TextInputAction.next,
+                        obscureText: false,
+                        focusNode: _yearFocusNode,
+                        autocorrect: false,
+                        keyboardType: TextInputType.number,
+                        // onEditingComplete: () => _emailEditingComplete(),
+                        // onChanged: model.updateEmail,
+                        decoration: new InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.calendar_today,
+                            color: subBackgroundColor,
+                          ),
+                          labelText: "2019,2012....etc",
+                          //errorText: model.emailErrorText,
+                          //enabled: model.isLoading == false,
+                          //fillColor: Colors.redAccent,
+                          border: new OutlineInputBorder(
+                            borderRadius: new BorderRadius.circular(5.0),
+                            borderSide: new BorderSide(),
+                          ),
+                        ),
+                        style: new TextStyle(
+                          fontFamily: "Poppins",
+                        ),
                       ),
                       SizedBox(height: 10,),
                       SizedBox(height: 50,),
