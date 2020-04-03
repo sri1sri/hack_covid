@@ -101,7 +101,7 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
                               ),
                               child: Center(
                                 child: Text(
-                                  'SAVE',
+                                  'PAY',
                                   style:
                                   subTextStylewhite
                                 ),

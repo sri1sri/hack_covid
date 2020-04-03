@@ -5,7 +5,7 @@ import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 class PolicyDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return F_PolicyDetails();
   }
 }
 
@@ -60,58 +60,58 @@ class _F_PolicyDetailsState extends State<F_PolicyDetails> {
               ),
           ),
           body: _buildContent(context),
-          bottomNavigationBar: Container(
-            decoration: BoxDecoration(
-              color: Color(0XFF233666),
-            ),
-            child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15,vertical: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Text('Total Premium',
-                        style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          color: Colors.white,
-                          fontSize: 12,
-                        ),
-                      ),
-                      SizedBox(height: 3,),
-                      Text('\$ 11,000',
-                      style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        color: Colors.white,
-                        fontSize: 8,
-                      ),
-                      )
-                    ],
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(40)),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal:15.0,vertical: 10),
-                      child: Center(
-                        child: Text('Pay now',
-                          style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            color: Colors.black,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
+//          bottomNavigationBar: Container(
+//            decoration: BoxDecoration(
+//              color: Color(0XFF233666),
+//            ),
+//            child: Padding(
+//                padding: EdgeInsets.symmetric(horizontal: 15,vertical: 15),
+//              child: Row(
+//                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                children: <Widget>[
+//                  Column(
+//                    crossAxisAlignment: CrossAxisAlignment.start,
+//                    mainAxisAlignment: MainAxisAlignment.start,
+//                    children: <Widget>[
+//                      Text('Total Premium',
+//                        style: TextStyle(
+//                          fontFamily: 'Montserrat',
+//                          color: Colors.white,
+//                          fontSize: 12,
+//                        ),
+//                      ),
+//                      SizedBox(height: 3,),
+//                      Text('\$ 11,000',
+//                      style: TextStyle(
+//                        fontFamily: 'Montserrat',
+//                        color: Colors.white,
+//                        fontSize: 8,
+//                      ),
+//                      )
+//                    ],
+//                  ),
+//                  Container(
+//                    decoration: BoxDecoration(
+//                      color: Colors.white,
+//                      borderRadius: BorderRadius.all(Radius.circular(40)),
+//                    ),
+//                    child: Padding(
+//                      padding: const EdgeInsets.symmetric(horizontal:15.0,vertical: 10),
+//                      child: Center(
+//                        child: Text('Pay now',
+//                          style: TextStyle(
+//                            fontFamily: 'Montserrat',
+//                            color: Colors.black,
+//                            fontSize: 20,
+//                          ),
+//                        ),
+//                      ),
+//                    ),
+//                  )
+//                ],
+//              ),
+//            ),
+//          ),
         ),
       ),
     );
