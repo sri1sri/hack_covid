@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackcovid/HomeScreens/QuickServices/PlanDetails.dart';
+import 'package:hackcovid/HomeScreens/QuickServices/PolicyDetails.dart';
 import 'package:hackcovid/HomeScreens/SettingsPage.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
@@ -190,6 +191,11 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
                       width: 150,
                       child: GestureDetector(
                         onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PolicyRegistrationPage() ),
+                          );
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -221,3 +227,5 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
   }
 
 }
+
+
