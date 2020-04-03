@@ -55,6 +55,7 @@ class _F_CarInsurancePageState extends State<F_CarInsurancePage> {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
         home: new Scaffold(
+          backgroundColor: Colors.white,
           resizeToAvoidBottomPadding: false,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/6),

@@ -218,12 +218,11 @@ class _F_DashboardState extends State<F_Dashboard> {
                     Container(
                         height: 282.0,
                         child: ListView(scrollDirection: Axis.horizontal, children: [
-                          _buildImage1('images/ad1.jpg', 'Bajaj','Grab your deals'),
-                          _buildImage1('images/ad3.jpg',  'Bajaj','Grab your deals'),
-                          _buildImage1('images/ad4.jpg',  'Bajaj','Grab your deals'),
-                          _buildImage1('images/ad2.jpg',  'Bajaj','Grab your deals'),
+                          _buildImage1('images/ad1.jpg',),
+                          _buildImage1('images/ad3.jpg',),
+                          _buildImage1('images/ad4.jpg',),
+                          _buildImage1('images/ad2.jpg',),
                         ])),
-                    SizedBox(height: 50,),
                     Text('Quick Services',
                         style: subTitleStyleLight
                     ),
@@ -457,7 +456,7 @@ class _F_DashboardState extends State<F_Dashboard> {
     ),
         );
   }
-  _buildImage1(String imgPath,  String price,String name,) {
+  _buildImage1(String imgPath,) {
     return FlatButton(
       onPressed: () {
       },
@@ -466,69 +465,32 @@ class _F_DashboardState extends State<F_Dashboard> {
         top: 25,
       ),
       child: Container(
-          height: 300,
+          height: 230,
           width: 370,
-          margin: const EdgeInsets.only(left: .2),
           child: Column(children: <Widget>[
             Stack(children: [
               Container(
-                height: 257.0,
+                height: 230.0,
               ),
               Positioned(
                   left: 10.0,
                   right: 10.0,
                   top: 5.0,
-                  bottom: 70.0,
-                  child: Container(
-                      height: 120.0,
-                      width: 220.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          image: DecorationImage(
-                              image: AssetImage(imgPath), fit: BoxFit.fill)))),
-              Positioned(
-                  left: 30.0,
-                  right: 30.0,
-                  top: 155.0,
-                  bottom: 20.0,
-                  child: Container(
-                      padding: EdgeInsets.only(
-                          left: 10.0, right: 10.0, top: 10.0, bottom: 10.0),
-                      height: 20.0,
-                      width: 280.0,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            new BoxShadow(
-                              color: Colors.black54,
-                              blurRadius: 10.0,
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.white.withOpacity(0.8)),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              price,
-                              style: TextStyle(
-                                fontFamily: 'varela',
-                                fontSize: 25.0,
-                                fontWeight: FontWeight.w800,
-                                color: Color(0xFF1F4B6E),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 5.0,
-                            ),
-                            Text(
-                              name,
-                              style: TextStyle(
-                                  fontFamily: 'nunito',
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color(0xFF1F4B6E).withOpacity(0.6)),
-                            ),
-                          ]))),
+                  bottom: 30.0,
+                  child: Card(
+                    elevation: 20,
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black54, width: 2),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Container(
+                        height: 120.0,
+                        width: 220.0,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                            image: DecorationImage(
+                                image: AssetImage(imgPath), fit: BoxFit.fill))),
+                  )),
             ]),
           ])),
     );

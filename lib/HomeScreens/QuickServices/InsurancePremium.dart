@@ -61,6 +61,7 @@ class _F_InsurancePremiumPageState extends State<F_InsurancePremiumPage> {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
         home: new Scaffold(
+          backgroundColor: Colors.white,
           resizeToAvoidBottomPadding: false,
 
           appBar: PreferredSize(

@@ -127,7 +127,7 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
     return Card(
       elevation: 15,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: Colors.white70, width: 1),
+        side: BorderSide(color: Colors.black54, width: 2),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Container(

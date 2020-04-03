@@ -61,7 +61,7 @@ class CustomAppBar extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top:65.0),
-                  child: Text(primaryText,style: subTitleStyleBlue,),
+                  child: Text(primaryText,style: titleStyleTheam,),
                 ),
                 Padding(
                   padding: EdgeInsets.only(

@@ -67,7 +67,7 @@ class _F_SettingsPageState extends State<F_SettingsPage> {
           backgroundColor: Colors.white,
 
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/5),
+            preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/4.5),
             child: CustomAppBar(
               leftActionBar: Container(
                 child: Icon(Icons.arrow_back_ios,color: subBackgroundColor,),
@@ -140,7 +140,7 @@ class _F_SettingsPageState extends State<F_SettingsPage> {
                           child: Text(
                             'Sign Out',
                             style: TextStyle(
-                              color: backgroundColor,
+                              color: Colors.white,
                               letterSpacing: 1.5,
                               fontSize: 18.0,
                               fontWeight: FontWeight.w600,
