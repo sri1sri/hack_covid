@@ -162,7 +162,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
         debugShowCheckedModeBanner: false,
         home: new Scaffold(
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/6),
+            preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/4.5),
             child: CustomAppBar(
               leftActionBar: Container(
                 child: Icon(Icons.arrow_back_ios,color: subBackgroundColor,),
@@ -200,14 +200,8 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                 children: <Widget>[
                   statusTrackerWidget(Colors.green, Colors.green,
                       Colors.green, Colors.green,),
-//                  Container(
-//                    height: 10,
-//                    child: Row(
-//
-//                      mainAxisAlignment: MainAxisAlignment.center,
-//                      children: _buildPageIndicator(),
-//                    ),
-//                  ),
+                  SizedBox(height: 20,),
+
                   Container(
                     height: MediaQuery.of(context).size.height - 240,
                     child: PageView(
@@ -282,7 +276,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
               children: <Widget>[
                 Column(
                   children: <Widget>[
-                    SizedBox(height: 10,),
+                    SizedBox(height: 20,),
                     Text("Total Premium",style: subTextStyleBlue,),
                     Text("₹12,000",style: subTitleStyle,),
                   ],
@@ -360,7 +354,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SizedBox(width: 10,),
-          Icon(Icons.person, color: levelOne, size: 30),
+          Icon(Icons.person, color: levelOne, size: 28),
           Padding(
             padding: EdgeInsets.all(0.0),
             child: new LinearPercentIndicator(
@@ -373,7 +367,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
               progressColor: levelTwo,
             ),
           ),
-          Icon(Icons.person,color: levelOne ,size: 30,),
+          Icon(Icons.person,color: levelOne ,size: 28,),
           Padding(
             padding: EdgeInsets.all(0.0),
             child: new LinearPercentIndicator(
@@ -386,7 +380,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
               progressColor: levelThree,
             ),
           ),
-        Icon(Icons.person,color: levelOne ,size: 30,),
+        Icon(Icons.person,color: levelOne ,size: 28,),
           Padding(
             padding: EdgeInsets.all(0.0),
             child: new LinearPercentIndicator(
@@ -399,7 +393,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
               progressColor: levelFour,
             ),
           ),
-          Icon(Icons.person,color: levelOne ,size: 30,),
+          Icon(Icons.person,color: levelOne ,size: 28,),
           SizedBox(width: 10,),
         ],
       ),

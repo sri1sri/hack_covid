@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 
 var bigTitleStyle = TextStyle(
     color: Color(0xFF253949),
-    fontFamily: 'Montserrat-Light',
+    fontFamily: 'Montserrat',
     fontWeight: FontWeight.w900,
     fontSize: 50.0,decoration: TextDecoration.none);
 var topNavigationBarTitleStyle = TextStyle(
     color: Color(0xFF253949),
-    fontFamily: 'Montserrat-Regular',
-    fontWeight: FontWeight.w400,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w800,
     fontSize: 34.0);
 var titleStyle = TextStyle(
     color: Color(0xFF253949),
@@ -86,10 +86,10 @@ var subTextStylewhite = TextStyle(
 
 
 var statusTracker = TextStyle(
-    color: Color(0xFF1F4B6E),
-    fontFamily: 'Quicksand',
+    color: Color(0xFF253949),
+    fontFamily: 'Montserrat',
     fontWeight: FontWeight.w500,
-    fontSize: 12.0);
+    fontSize: 15.0);
 
 var descriptionStyleLite = TextStyle(
     color: Colors.white70,
@@ -121,6 +121,11 @@ var descriptionStyleDarkBlur = TextStyle(
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w800,
     fontSize: 16.0);
+var descriptionStyleDarkBlur1 = TextStyle(
+    color: Color(0xFF253949).withOpacity(0.6),
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w800,
+    fontSize: 14.0);
 var descriptionStyleLiteBlur = TextStyle(
     color: Colors.white,
     fontFamily: 'Montserrat',
@@ -135,6 +140,11 @@ var highlightDescription = TextStyle(
     color: Colors.black.withOpacity(.8),
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w500,
+    fontSize: 18.0);
+var highlighttitle = TextStyle(
+    color: Colors.black.withOpacity(.8),
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w800,
     fontSize: 18.0);
 var urlTextStyle = TextStyle(
     color: Colors.green,

@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         color: Colors.white,
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(10),
           child: Column(
             children: <Widget>[
               Expanded(

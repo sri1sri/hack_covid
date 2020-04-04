@@ -70,8 +70,8 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
                     subtext('Key Product', '22 Jan, 2020'),
                     subtext('Consumable items', '5th of every month'),
                     subtext('Garage cash allowance', '200/- rs'),
-                    subtext('Electrical Accessories Premium', '22 Jan, 2020'),
-                    subtext('Non-electrical Accessories Premium', '\$ 0'),
+                    subtext('Electrical Accessories \nPremium', '22 Jan, 2020'),
+                    subtext('Non-electrical Accessories \nPremium', '\$ 0'),
                     subtext('Road Side Assistance', '200/- rs'),
                     subtext('Zero Depreciation', '22 Jan, 2020'),
                     subtext('Engine protect plus', '5th of every month'),
@@ -93,12 +93,12 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
                 ExpansionTile(
                   title: maintext('Liability'),
                   children: <Widget>[
-                    subtext('Basic premium including TPPD', '\$ 0'),
+                    subtext('Basic premium including\n TPPD', '\$ 0'),
                     subtext('Liability for Bi-fuel kit', '200/- rs'),
                     subtext('Co-passenger', '22 Jan, 2020'),
                     subtext('Personal accident', '5th of every month'),
-                    subtext('Legal liability to paid driver', '200/- rs'),
-                    subtext( 'Legal liability to paid employeee', '22 Jan, 2020'),
+                    subtext('Legal liability to paid\n driver', '200/- rs'),
+                    subtext( 'Legal liability to paid \nemployeee', '22 Jan, 2020'),
                     SizedBox(height: 10,),
                     totalsubtext('Liability premium', '200/- rs'),
                     SizedBox(height: 10,),
@@ -134,7 +134,7 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
                   children: <Widget>[
                     subtext('Anti theft discount', '\$ 0'),
                     subtext('Voluntary discount', '200/- rs'),
-                    subtext('Automobile membership discount', '22 Jan, 2020'),
+                    subtext('Automobile membership\n discount', '22 Jan, 2020'),
                     subtext('Handicapped', '5th of every month'),
                     subtext('Deduct 20% for NCB', '200/- rs'),
                     SizedBox(height: 10,),
@@ -181,7 +181,7 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
           ),
           Text(
             '$_right',
-            style: descriptionStyleDarkBlur
+            style: descriptionStyleDarkBlur1
           ),
         ],
       ),

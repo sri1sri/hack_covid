@@ -48,7 +48,7 @@ class _F_ProfilePageState extends State<F_ProfilePage> {
             debugShowCheckedModeBanner: false,
             home: new Scaffold(
               appBar: PreferredSize(
-                preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/6),
+                preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/4.5),
                 child: CustomAppBar(
                   leftActionBar: Container(
                     child: Icon(Icons.arrow_back_ios,color: subBackgroundColor,),
@@ -72,6 +72,7 @@ class _F_ProfilePageState extends State<F_ProfilePage> {
               ),
               body: SingleChildScrollView(
                 child: Container(
+                  color: Colors.white,
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
@@ -91,8 +92,8 @@ class _F_ProfilePageState extends State<F_ProfilePage> {
                                 children: <Widget>[
                                   SizedBox(height: 20,),
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
-                                      SizedBox(width: 30,),
                                       Center(
                                         child: CircleAvatar(
                                           child: Text(
@@ -104,7 +105,7 @@ class _F_ProfilePageState extends State<F_ProfilePage> {
                                           subBackgroundColor,
                                         ),
                                       ),
-                                      SizedBox(width: 20,),
+                                      SizedBox(width: 10,),
                                       Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: <Widget>[

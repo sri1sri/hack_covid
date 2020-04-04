@@ -228,14 +228,14 @@ class _F_DashboardState extends State<F_Dashboard> {
                     ),
                     SizedBox(height: 15,),
                     Container(
-                      height: 250,
+                      height: 240,
                       child: Padding(
                         padding: const EdgeInsets.only(
-                            top: 10.0, bottom: 10.0, left: 5.0, right: 5.0),
+                            top: 5.0, bottom: 5.0, left: 5.0, right: 5.0),
                         child: new GridView.builder(
                           itemCount: F_image.length,
                           gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,mainAxisSpacing: 10,crossAxisSpacing: 0
+                              crossAxisCount: 3,mainAxisSpacing: 8,crossAxisSpacing: 0
                           ),
                           itemBuilder: (BuildContext context, int index) {
                             return new GestureDetector(
@@ -252,10 +252,10 @@ class _F_DashboardState extends State<F_Dashboard> {
                                     Image.asset(
                                       F_image[index],height: 60,
                                     ),
-                                    SizedBox(height: 5,),
+
                                     new Text(
                                       features[index],
-                                      style: descriptionStyleDark,
+                                      style: descriptionStyleDark,textAlign: TextAlign.center,
                                     ),
 
                                   ],
@@ -327,14 +327,14 @@ class _F_DashboardState extends State<F_Dashboard> {
                     ),
                     SizedBox(height: 15,),
                     Container(
-                      height: 250,
+                      height: 260,
                       child: Padding(
                         padding: const EdgeInsets.only(
                             top: 10.0, bottom: 10.0, left: 5.0, right: 5.0),
                         child: new GridView.builder(
                           itemCount: F_image1.length,
                           gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,mainAxisSpacing: 10,crossAxisSpacing: 0
+                              crossAxisCount: 3,mainAxisSpacing: 8,crossAxisSpacing: 0
                           ),
                           itemBuilder: (BuildContext context, int index) {
                             return new GestureDetector(
@@ -351,10 +351,9 @@ class _F_DashboardState extends State<F_Dashboard> {
                                       Image.asset(
                                         F_image1[index],height: 60,
                                       ),
-                                      SizedBox(height: 5,),
                                       new Text(
                                         features1[index],
-                                        style: descriptionStyleDark,
+                                        style: descriptionStyleDark,textAlign: TextAlign.center,
                                       ),
 
                                     ],

@@ -50,7 +50,7 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
         home: new Scaffold(
           backgroundColor: Colors.white,
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/6),
+            preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/4.5),
             child: CustomAppBar(
               leftActionBar: Container(
                 child: Icon(Icons.arrow_back_ios,color: subBackgroundColor,),

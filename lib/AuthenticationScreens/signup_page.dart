@@ -124,243 +124,249 @@ class _F_SignupPageState extends State<F_SignupPage> {
       loading: widget.model.isLoading,
       child: Scaffold(
           body:Padding(
-            padding: const EdgeInsets.only(top:100.0,bottom: 20,left: 20,right: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  child: Row(
-                    children: <Widget>[
-                      GestureDetector(
-                        child: Icon(Icons.arrow_back,size: 40,),
-                        onTap: (){Navigator.pop(context, true);},
-                      )
-                    ],
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text("Sign Up",style: bigTitleStyle,),
-                    SizedBox(height: 15.0,),
-                    Text("Please enter your Password to continue.",style: descriptionStyleDarkBlur,),
-                  ],
-                ),
-
-                Column(
-                  children: <Widget>[
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Color(0XFFEFF3F6),
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Color.fromRGBO(0, 0, 0, 0.1),
-                                offset: Offset(3, 3),
-                                blurRadius: 2.0,
-                                spreadRadius: 2.0
-                            ),
-                            BoxShadow(
-                                color: Color.fromRGBO(255, 255, 255, 0.9),
-                                offset: Offset(-6, -2),
-                                blurRadius: 2.0,
-                                spreadRadius: 3.0
-                            )
-                          ]
-                      ),
-                      child: new TextFormField(
-                        controller: _emailController,
-                        textInputAction: TextInputAction.next,
-                        obscureText: false,
-                        focusNode: _emailFocusNode,
-                        autocorrect: false,
-                        keyboardType: TextInputType.emailAddress,
-                        onEditingComplete: () => _emailEditingComplete(),
-                        onChanged: model.updateEmail,
-                        decoration: new InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.mail,
-                            color: subBackgroundColor,
-                          ),
-                          labelText: "Email",
-                          errorText: model.emailErrorText,
-                          enabled: model.isLoading == false,
-                          //fillColor: Colors.redAccent,
-                          border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(5.0),
-                            borderSide: new BorderSide(),
-                          ),
-                        ),
-                        style: new TextStyle(
-                          fontFamily: "Poppins",
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 30.0,),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Color(0XFFEFF3F6),
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Color.fromRGBO(0, 0, 0, 0.1),
-                                offset: Offset(3, 3),
-                                blurRadius: 2.0,
-                                spreadRadius: 2.0
-                            ),
-                            BoxShadow(
-                                color: Color.fromRGBO(255, 255, 255, 0.9),
-                                offset: Offset(-6, -2),
-                                blurRadius: 2.0,
-                                spreadRadius: 3.0
-                            )
-                          ]
-                      ),
-                      child: new TextFormField(
-                        controller: _passwordController,
-                        textInputAction: TextInputAction.next,
-                        obscureText: true,
-                        focusNode: _passwordFocusNode,
-                        autocorrect: false,
-                        keyboardType: TextInputType.emailAddress,
-                        onEditingComplete: () => _passwordEditingComplete(),
-                        onChanged: model.updatePassword,
-                        decoration: new InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.lock,
-                            color: subBackgroundColor,
-                          ),
-                          labelText: "Password",
-                          errorText: model.passwordErrorText,
-                          enabled: model.isLoading == false,
-                          //fillColor: Colors.redAccent,
-                          border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(5.0),
-                            borderSide: new BorderSide(),
-                          ),
-                        ),
-                        style: new TextStyle(
-                          fontFamily: "Poppins",
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 30.0,),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Color(0XFFEFF3F6),
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: [
-                            BoxShadow(
-                                color: Color.fromRGBO(0, 0, 0, 0.1),
-                                offset: Offset(3, 3),
-                                blurRadius: 2.0,
-                                spreadRadius: 2.0
-                            ),
-                            BoxShadow(
-                                color: Color.fromRGBO(255, 255, 255, 0.9),
-                                offset: Offset(-6, -2),
-                                blurRadius: 2.0,
-                                spreadRadius: 3.0
-                            )
-                          ]
-                      ),
-                      child: new TextFormField(
-                        controller: _rePasswordController,
-                        focusNode: _rePasswordFocusNode,
-                        obscureText: true,
-                        textInputAction: TextInputAction.done,
-                        onEditingComplete: _submit,
-                        onChanged: model.updateRePassword,
-                        decoration: new InputDecoration(
-                          errorText: model.rePasswordErrorText,
-                          enabled: model.isLoading == false,
-                          prefixIcon: Icon(
-                            Icons.lock_outline,
-                            color: subBackgroundColor,
-                          ),
-                          labelText: "Confirm Password",
-                          border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(5.0),
-                            borderSide: new BorderSide(),
-                          ),
-                        ),
-                        keyboardType: TextInputType.text,
-                        style: new TextStyle(
-                          fontFamily: "Poppins",
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 30.0,),
-                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            padding: const EdgeInsets.only(top:80.0,bottom: 20,left: 15,right: 15),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    child: Row(
                       children: <Widget>[
-                        Container(child: Text(""),),
                         GestureDetector(
-                          child: Container(
-                            width: 200,
-                            padding: EdgeInsets.all(15.0),
-                            child: Center(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
-                                      Container(),
-                                      Text("Continue",style: activeSubTitleStyle),
-                                      Icon(Icons.arrow_forward,color: Colors.white,),
-                                      Container(),
-                                    ])),
-                            decoration: BoxDecoration(
-                                color: backgroundColor,
-                                borderRadius: BorderRadius.circular(100.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: subBackgroundColor,
-                                      offset: Offset(2,1),
-                                      blurRadius: 6.0,
-                                      spreadRadius: 1.0
-                                  ),
-
-                                ]
-                            ),
-                          ),
-                          onTap: (){
-                            _submit();
-                          },
-                        ),
-
+                          child: Icon(Icons.arrow_back,size: 40,),
+                          onTap: (){Navigator.pop(context, true);},
+                        )
                       ],
                     ),
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                        "Already have an account?",
-                        style: descriptionStyle
-                    ),
-                    FlatButton(
-                      child: Text(
-                        'Sign In',
-                        style: subTitleStyleBlue,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                EmailAuthenticationPage(
-                                ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text("Sign Up",style: bigTitleStyle,),
+                      SizedBox(height: 15.0,),
+                      Text("Please enter your Password to continue.",style: descriptionStyleDarkBlur,),
+                    ],
+                  ),
+
+                  Column(
+                    children: <Widget>[
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Color(0XFFEFF3F6),
+                            borderRadius: BorderRadius.circular(10.0),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Color.fromRGBO(0, 0, 0, 0.1),
+                                  offset: Offset(3, 3),
+                                  blurRadius: 2.0,
+                                  spreadRadius: 2.0
+                              ),
+                              BoxShadow(
+                                  color: Color.fromRGBO(255, 255, 255, 0.9),
+                                  offset: Offset(-6, -2),
+                                  blurRadius: 2.0,
+                                  spreadRadius: 3.0
+                              )
+                            ]
+                        ),
+                        child: new TextFormField(
+                          controller: _emailController,
+                          textInputAction: TextInputAction.next,
+                          obscureText: false,
+                          focusNode: _emailFocusNode,
+                          autocorrect: false,
+                          keyboardType: TextInputType.emailAddress,
+                          onEditingComplete: () => _emailEditingComplete(),
+                          onChanged: model.updateEmail,
+                          decoration: new InputDecoration(
+                            prefixIcon: Icon(
+                              Icons.mail,
+                              color: subBackgroundColor,
+                            ),
+                            labelText: "Email",
+                            errorText: model.emailErrorText,
+                            enabled: model.isLoading == false,
+                            //fillColor: Colors.redAccent,
+                            border: new OutlineInputBorder(
+                              borderRadius: new BorderRadius.circular(5.0),
+                              borderSide: new BorderSide(),
+                            ),
                           ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ],
+                          style: new TextStyle(
+                            fontFamily: "Poppins",
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 30.0,),
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Color(0XFFEFF3F6),
+                            borderRadius: BorderRadius.circular(10.0),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Color.fromRGBO(0, 0, 0, 0.1),
+                                  offset: Offset(3, 3),
+                                  blurRadius: 2.0,
+                                  spreadRadius: 2.0
+                              ),
+                              BoxShadow(
+                                  color: Color.fromRGBO(255, 255, 255, 0.9),
+                                  offset: Offset(-6, -2),
+                                  blurRadius: 2.0,
+                                  spreadRadius: 3.0
+                              )
+                            ]
+                        ),
+                        child: new TextFormField(
+                          controller: _passwordController,
+                          textInputAction: TextInputAction.next,
+                          obscureText: true,
+                          focusNode: _passwordFocusNode,
+                          autocorrect: false,
+                          keyboardType: TextInputType.emailAddress,
+                          onEditingComplete: () => _passwordEditingComplete(),
+                          onChanged: model.updatePassword,
+                          decoration: new InputDecoration(
+                            prefixIcon: Icon(
+                              Icons.lock,
+                              color: subBackgroundColor,
+                            ),
+                            labelText: "Password",
+                            errorText: model.passwordErrorText,
+                            enabled: model.isLoading == false,
+                            //fillColor: Colors.redAccent,
+                            border: new OutlineInputBorder(
+                              borderRadius: new BorderRadius.circular(5.0),
+                              borderSide: new BorderSide(),
+                            ),
+                          ),
+                          style: new TextStyle(
+                            fontFamily: "Poppins",
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 30.0,),
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Color(0XFFEFF3F6),
+                            borderRadius: BorderRadius.circular(10.0),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Color.fromRGBO(0, 0, 0, 0.1),
+                                  offset: Offset(3, 3),
+                                  blurRadius: 2.0,
+                                  spreadRadius: 2.0
+                              ),
+                              BoxShadow(
+                                  color: Color.fromRGBO(255, 255, 255, 0.9),
+                                  offset: Offset(-6, -2),
+                                  blurRadius: 2.0,
+                                  spreadRadius: 3.0
+                              )
+                            ]
+                        ),
+                        child: new TextFormField(
+                          controller: _rePasswordController,
+                          focusNode: _rePasswordFocusNode,
+                          obscureText: true,
+                          textInputAction: TextInputAction.done,
+                          onEditingComplete: _submit,
+                          onChanged: model.updateRePassword,
+                          decoration: new InputDecoration(
+                            errorText: model.rePasswordErrorText,
+                            enabled: model.isLoading == false,
+                            prefixIcon: Icon(
+                              Icons.lock_outline,
+                              color: subBackgroundColor,
+                            ),
+                            labelText: "Confirm Password",
+                            border: new OutlineInputBorder(
+                              borderRadius: new BorderRadius.circular(5.0),
+                              borderSide: new BorderSide(),
+                            ),
+                          ),
+                          keyboardType: TextInputType.text,
+                          style: new TextStyle(
+                            fontFamily: "Poppins",
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 30.0,),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Container(child: Text(""),),
+                            GestureDetector(
+                              child: Container(
+                                width: 200,
+                                padding: EdgeInsets.all(15.0),
+                                child: Center(
+                                    child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: <Widget>[
+                                          Container(),
+                                          Text("Continue",style: activeSubTitleStyle),
+                                          Icon(Icons.arrow_forward,color: Colors.white,),
+                                          Container(),
+                                        ])),
+                                decoration: BoxDecoration(
+                                    color: backgroundColor,
+                                    borderRadius: BorderRadius.circular(100.0),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: subBackgroundColor,
+                                          offset: Offset(2,1),
+                                          blurRadius: 6.0,
+                                          spreadRadius: 1.0
+                                      ),
+
+                                    ]
+                                ),
+                              ),
+                              onTap: (){
+                                _submit();
+                              },
+                            ),
+
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                          "Already have an account?",
+                          style: descriptionStyle
+                      ),
+                      FlatButton(
+                        child: Text(
+                          'Sign In',
+                          style: subTitleStyleBlue,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  EmailAuthenticationPage(
+                                  ),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
       ),

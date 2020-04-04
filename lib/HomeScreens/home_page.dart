@@ -1,6 +1,7 @@
 //import 'package:hackcovid/firebase/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hackcovid/HomeScreens/Policies.dart';
 import 'package:hackcovid/HomeScreens/dashboard.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
@@ -55,8 +56,7 @@ class _F_HomePageState extends State<F_HomePage> {
         );
         break;
       case 1:
-//        child = ProfilePage(
-//            database: database);
+        child = PoliciesPage();
         break;
     }
     return Scaffold(

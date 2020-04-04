@@ -58,7 +58,7 @@ class _F_CarInsurancePageState extends State<F_CarInsurancePage> {
           backgroundColor: Colors.white,
           resizeToAvoidBottomPadding: false,
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/6),
+            preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/4.5),
             child: CustomAppBar(
               leftActionBar: Container(
                 child: Icon(Icons.arrow_back_ios,color: subBackgroundColor,),
