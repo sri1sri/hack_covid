@@ -47,6 +47,7 @@ class _F_ProfilePageState extends State<F_ProfilePage> {
     return new MaterialApp(
             debugShowCheckedModeBanner: false,
             home: new Scaffold(
+              backgroundColor:Colors.white,
               appBar: PreferredSize(
                 preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/4.5),
                 child: CustomAppBar(

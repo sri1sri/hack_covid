@@ -57,7 +57,7 @@ class _F_PoliciesPageState extends State<F_PoliciesPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    SizedBox(height: 30,),
+                    SizedBox(height: 50,),
                     Column(
                       children: <Widget>[
                         Text("Policies",style: topNavigationBarTitleStyle,)

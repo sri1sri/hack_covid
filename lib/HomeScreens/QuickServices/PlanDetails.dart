@@ -143,7 +143,7 @@ class _F_PremiumPlanDetailsPageState extends State<F_PremiumPlanDetailsPage> {
                             });
                           },
                         ),
-                        Text("Yes",style: descriptionStyleDark,),
+                        Text("Yes",style: subTitleStyleLight,),
                         Radio(
                           value: 2,
                           groupValue: group,
@@ -154,7 +154,7 @@ class _F_PremiumPlanDetailsPageState extends State<F_PremiumPlanDetailsPage> {
                             });
                           },
                         ),
-                        Text("No",style: descriptionStyleDark,),
+                        Text("No",style: subTitleStyleLight,),
                       ],
                     ),
                     SizedBox(height: 20,),

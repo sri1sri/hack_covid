@@ -52,23 +52,16 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
        debugShowCheckedModeBanner: false,
         home: new Scaffold(
           backgroundColor: Colors.white ,
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/4.5),
-            child: CustomAppBar(
-              leftActionBar: Container(
-                child: Icon(Icons.arrow_back_ios,color: subBackgroundColor,),
-              ),
-              leftAction: () {
+          appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios,color: subBackgroundColor,),
+              onPressed: (){
                 Navigator.pop(context, true);
               },
-              rightActionBar: Container(
-                child: Text("........",style: TextStyle(color: Colors.white),),
-              ),
-              rightAction: () {
-              },
-              primaryText: 'Premium Plans',
-              secondaryText: null,
             ),
+            title: Text("Premium Plans",style: titleStyleTheam,),
           ),
           body: DefaultTabController(
             length: 4,

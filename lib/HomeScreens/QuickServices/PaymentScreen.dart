@@ -219,7 +219,7 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
                         Icons.credit_card,
                         color: subBackgroundColor,
                       ),
-                      labelText: "Enter Card Number",
+                      labelText: "4655 **** **** **** 7879",
                       //errorText: model.emailErrorText,
                       //enabled: model.isLoading == false,
                       //fillColor: Colors.redAccent,
