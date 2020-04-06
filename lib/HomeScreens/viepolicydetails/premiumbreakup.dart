@@ -3,7 +3,7 @@ import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 
-class Premiumbreakup extends StatelessWidget {
+class  Premiumbreakup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return F_Premiumbreakup();
