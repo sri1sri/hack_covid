@@ -161,24 +161,6 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
         home: new Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/4.5),
-            child: CustomAppBar(
-              leftActionBar: Container(
-                child: Icon(Icons.arrow_back_ios,color: subBackgroundColor,),
-              ),
-              leftAction: () {
-                Navigator.pop(context, true);
-              },
-              rightActionBar: Container(
-                child: Text("........",style: TextStyle(color: Colors.white),),
-              ),
-              rightAction: () {
-              },
-              primaryText: 'Policy Details',
-              secondaryText: null,
-            ),
-          ),
           body: ContSize(context,)
         )
     );
@@ -187,6 +169,17 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
 
   Widget ContSize(BuildContext context){
       return Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios,color: subBackgroundColor,),
+            onPressed: (){
+              Navigator.pop(context, true);
+            },
+          ),
+          title: Text("Policy Details",style: titleStyleTheam,),
+        ),
         body: AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle.light,
           child: Container(
@@ -268,7 +261,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
         ),
         bottomSheet: _currentPage == _numPages - 1
             ? Container(
-          height:90,
+          height:100,
           child: Padding(
             padding: const EdgeInsets.only(left:30.0,right:30.0),
             child: Row(
