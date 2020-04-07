@@ -10,8 +10,8 @@ var bigTitleStyle = TextStyle(
 var topNavigationBarTitleStyle = TextStyle(
     color: Color(0xFF253949),
     fontFamily: 'Montserrat',
-    fontWeight: FontWeight.w800,
-    fontSize: 34.0);
+    fontWeight: FontWeight.w600,
+    fontSize: 32.0);
 var titleStyle = TextStyle(
     color: Color(0xFF253949),
     fontFamily: 'Montserrat-Regular',

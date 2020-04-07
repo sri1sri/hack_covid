@@ -83,30 +83,30 @@ class _F_DashboardState extends State<F_Dashboard> {
     });
   }
 
-  var features = [
+  var ourProducts = [
     "Car Insurance",
-    "Air Insurance",
+    "Travel Insurance",
     "Bike Insurance",
-    "Life Insurance",
   ];
-  List<String> F_image = [
+  List<String> ourProductsIcons = [
     "images/car-insurance.png",
     "images/travel-insurance.png",
     "images/motorcycle-2.png",
-    "images/hospital.png",
   ];
 
-  var features1 = [
-    "Car Insurance",
-    "Air Insurance",
-    "Bike Insurance",
-    "Life Insurance",
+  var quickServices = [
+    "Garrage",
+    "Parking",
+    "SOS",
+    "Helpline",
+    "CO2 emission",
   ];
-  List<String> F_image1 = [
-    "images/car-insurance.png",
-    "images/travel-insurance.png",
-    "images/motorcycle-2.png",
-    "images/hospital.png",
+  List<String> quickServicesIcons = [
+    "images/garage.png",
+    "images/parking.png",
+    "images/sos.png",
+    "images/helpline.png",
+    "images/co2.png",
   ];
 
   @override
@@ -158,7 +158,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                                 children: <Widget>[
                                   Text("Hello",style: subTextStyleBlue,),
                                   Text(
-                                    "Srivatsav Konda",
+                                    "Srivatsav",
                                     style: topNavigationBarTitleStyle,
                                   ),
                                 ] ),
@@ -223,17 +223,17 @@ class _F_DashboardState extends State<F_Dashboard> {
                           _buildImage1('images/ad4.jpg',),
                           _buildImage1('images/ad2.jpg',),
                         ])),
-                    Text('Quick Services',
+                    Text('Our products',
                         style: subTitleStyleLight
                     ),
                     SizedBox(height: 15,),
                     Container(
-                      height: 240,
+                      height: 120,
                       child: Padding(
                         padding: const EdgeInsets.only(
                             top: 5.0, bottom: 5.0, left: 5.0, right: 5.0),
                         child: new GridView.builder(
-                          itemCount: F_image.length,
+                          itemCount: ourProductsIcons.length,
                           gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 3,mainAxisSpacing: 8,crossAxisSpacing: 0
                           ),
@@ -250,11 +250,11 @@ class _F_DashboardState extends State<F_Dashboard> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
                                     Image.asset(
-                                      F_image[index],height: 60,
+                                      ourProductsIcons[index],height: 60,
                                     ),
 
                                     new Text(
-                                      features[index],
+                                      ourProducts[index],
                                       style: descriptionStyleDark,textAlign: TextAlign.center,
                                     ),
 
@@ -263,7 +263,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                                 ),
                               ),
                               onTap: () {
-                                switch (features[index]) {
+                                switch (ourProducts[index]) {
                                   case 'Car Insurance':
                                     {
                             GoToPage(
@@ -272,7 +272,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                                 ));
                                     }
                                     break;
-                                  case 'Air Insurance':
+                                  case 'Travel Insurance':
                                     {
                                       GoToPage(
                                           context,
@@ -332,7 +332,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                         padding: const EdgeInsets.only(
                             top: 10.0, bottom: 10.0, left: 5.0, right: 5.0),
                         child: new GridView.builder(
-                          itemCount: F_image1.length,
+                          itemCount: quickServicesIcons.length,
                           gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 3,mainAxisSpacing: 8,crossAxisSpacing: 0
                           ),
@@ -349,10 +349,10 @@ class _F_DashboardState extends State<F_Dashboard> {
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Image.asset(
-                                        F_image1[index],height: 60,
+                                        quickServicesIcons[index],height: 60,
                                       ),
                                       new Text(
-                                        features1[index],
+                                        quickServices[index],
                                         style: descriptionStyleDark,textAlign: TextAlign.center,
                                       ),
 
@@ -361,7 +361,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                                 ),
                               ),
                               onTap: () {
-                                switch (features[index]) {
+                                switch (ourProducts[index]) {
                                   case 'Car Insurance':
                                     {
                                       GoToPage(
