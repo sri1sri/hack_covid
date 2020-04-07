@@ -223,194 +223,336 @@ class _F_DashboardState extends State<F_Dashboard> {
                           _buildImage1('images/ad4.jpg',),
                           _buildImage1('images/ad2.jpg',),
                         ])),
-                    Text('Our products',
-                        style: subTitleStyleLight
-                    ),
-                    SizedBox(height: 15,),
-                    Container(
-                      height: 120,
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            top: 5.0, bottom: 5.0, left: 5.0, right: 5.0),
-                        child: new GridView.builder(
-                          itemCount: ourProductsIcons.length,
-                          gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,mainAxisSpacing: 8,crossAxisSpacing: 0
-                          ),
-                          itemBuilder: (BuildContext context, int index) {
-                            return new GestureDetector(
-                              child:
-                              new Card(
-                                elevation: 0.0,
-                                child: new Container(
-                                  alignment: Alignment.center,
-                                  margin: new EdgeInsets.only(
-                                      top: 0.0, bottom: 0.0, left: 0.0, right: 0.0),
-                                  child: new Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    Image.asset(
-                                      ourProductsIcons[index],height: 60,
-                                    ),
-
-                                    new Text(
-                                      ourProducts[index],
-                                      style: descriptionStyleDark,textAlign: TextAlign.center,
-                                    ),
-
-                                  ],
-                                ),
-                                ),
+//                    Container(
+//                      decoration: BoxDecoration(
+//                        color: Colors.black,
+//                        borderRadius: BorderRadius.circular(10.0),),
+//                      child: Card(
+//
+//                      ),
+//                    ),
+                Card(
+                  elevation: 25,
+                  shape: RoundedRectangleBorder(
+//                    side: BorderSide(color: Colors.black54, width: 3),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Container(
+                    height: 190,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(10.0),),
+                    child:Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(height: 10,),
+                        Text('  Our products',
+                            style: subTitleStyleLight
+                        ),
+                        SizedBox(height: 15,),
+                        Container(
+                          height: 120,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 5.0, bottom: 5.0, left: 5.0, right: 5.0),
+                            child: new GridView.builder(
+                              itemCount: ourProductsIcons.length,
+                              gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,mainAxisSpacing: 8,crossAxisSpacing: 0
                               ),
-                              onTap: () {
-                                switch (ourProducts[index]) {
-                                  case 'Car Insurance':
-                                    {
-                            GoToPage(
-                                context,
-                                CarInsurancePage(
-                                ));
-                                    }
-                                    break;
-                                  case 'Travel Insurance':
-                                    {
-                                      GoToPage(
-                                          context,
-                                          Viewpolicydetails());
-                                    }
-                                    break;
+                              itemBuilder: (BuildContext context, int index) {
+                                return new GestureDetector(
+                                  child:
+                                  new Card(
+                                    elevation: 0.0,
+                                    child: new Container(
+                                      alignment: Alignment.center,
+                                      margin: new EdgeInsets.only(
+                                          top: 0.0, bottom: 0.0, left: 0.0, right: 0.0),
+                                      child: new Column(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                          Image.asset(
+                                            ourProductsIcons[index],height: 60,
+                                          ),
+
+                                          new Text(
+                                            ourProducts[index],
+                                            style: descriptionStyleDark,textAlign: TextAlign.center,
+                                          ),
+
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    switch (ourProducts[index]) {
+                                      case 'Car Insurance':
+                                        {
+                                          GoToPage(
+                                              context,
+                                              CarInsurancePage(
+                                              ));
+                                        }
+                                        break;
+                                      case 'Travel Insurance':
+                                        {
+                                          GoToPage(
+                                              context,
+                                              Viewpolicydetails());
+                                        }
+                                        break;
 
 
-                                  case 'Flight Insurance':
-                                    {
+                                      case 'Flight Insurance':
+                                        {
 //                            GoToPage(
 //                                context,
 //                                GoodsApprovalsPage(
 //                                  database: widget.database,
 //                                  employee: employee,
 //                                ));
-                                    }
-                                    break;
-                                  case 'Bike Insurance':
-                                    {
+                                        }
+                                        break;
+                                      case 'Bike Insurance':
+                                        {
 //                            GoToPage(
 //                                context,
 //                                StorePage(
 //                                  database: widget.database,
 //                                  employee: employee,
 //                                ));
-                                    }
-                                    break;
+                                        }
+                                        break;
 
-                                  case 'Life insurance':
-                                    {
+                                      case 'Life insurance':
+                                        {
 //                            GoToPage(
 //                              context,
 //                              InventoryPage(database: widget.database,),
 //                            );
+                                        }
+                                        break;
+                                      default:
+                                        {}
+                                        break;
                                     }
-                                    break;
-                                  default:
-                                    {}
-                                    break;
-                                }
 
+                                  },
+                                );
                               },
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 50,),
-                    Text('Quick Services',
-                        style: subTitleStyleLight
-                    ),
-                    SizedBox(height: 15,),
-                    Container(
-                      height: 260,
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            top: 10.0, bottom: 10.0, left: 5.0, right: 5.0),
-                        child: new GridView.builder(
-                          itemCount: quickServicesIcons.length,
-                          gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,mainAxisSpacing: 8,crossAxisSpacing: 0
+                            ),
                           ),
-                          itemBuilder: (BuildContext context, int index) {
-                            return new GestureDetector(
-                              child:
-                              new Card(
-                                elevation: 0.0,
-                                child: new Container(
-                                  alignment: Alignment.center,
-                                  margin: new EdgeInsets.only(
-                                      top: 0.0, bottom: 0.0, left: 0.0, right: 0.0),
-                                  child: new Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Image.asset(
-                                        quickServicesIcons[index],height: 60,
-                                      ),
-                                      new Text(
-                                        quickServices[index],
-                                        style: descriptionStyleDark,textAlign: TextAlign.center,
-                                      ),
+                        ),
+                      ]
 
-                                    ],
+                    ) ,
+
+                  ),
+
+
+                ),
+                    SizedBox(height: 30,),
+
+                    Card(
+                      elevation: 25,
+                      shape: RoundedRectangleBorder(
+//                    side: BorderSide(color: Colors.black54, width: 3),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Container(
+                        height: 325,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(10.0),),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              SizedBox(height: 15,),
+                              Text('  Quick Services',
+                                  style: subTitleStyleLight
+                              ),
+                              SizedBox(height: 15,),
+                              Container(
+                                height: 260,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 10.0, bottom: 10.0, left: 5.0, right: 5.0),
+                                  child: new GridView.builder(
+                                    itemCount: quickServicesIcons.length,
+                                    gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3,mainAxisSpacing: 8,crossAxisSpacing: 0
+                                    ),
+                                    itemBuilder: (BuildContext context, int index) {
+                                      return new GestureDetector(
+                                        child:
+                                        new Card(
+                                          elevation: 0.0,
+                                          child: new Container(
+                                            alignment: Alignment.center,
+                                            margin: new EdgeInsets.only(
+                                                top: 0.0, bottom: 0.0, left: 0.0, right: 0.0),
+                                            child: new Column(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                Image.asset(
+                                                  quickServicesIcons[index],height: 60,
+                                                ),
+                                                new Text(
+                                                  quickServices[index],
+                                                  style: descriptionStyleDark,textAlign: TextAlign.center,
+                                                ),
+
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          switch (ourProducts[index]) {
+                                            case 'Car Insurance':
+                                              {
+                                                GoToPage(
+                                                    context,
+                                                    CarInsurancePage(
+                                                    ));
+                                              }
+                                              break;
+
+                                            case 'Flight Insurance':
+                                              {
+//                            GoToPage(
+//                                context,
+//                                GoodsApprovalsPage(
+//                                  database: widget.database,
+//                                  employee: employee,
+//                                ));
+                                              }
+                                              break;
+                                            case 'Bike Insurance':
+                                              {
+//                            GoToPage(
+//                                context,
+//                                StorePage(
+//                                  database: widget.database,
+//                                  employee: employee,
+//                                ));
+                                              }
+                                              break;
+
+                                            case 'Life insurance':
+                                              {
+//                            GoToPage(
+//                              context,
+//                              InventoryPage(database: widget.database,),
+//                            );
+                                              }
+                                              break;
+                                            default:
+                                              {}
+                                              break;
+                                          }
+
+                                        },
+                                      );
+                                    },
                                   ),
                                 ),
                               ),
-                              onTap: () {
-                                switch (ourProducts[index]) {
-                                  case 'Car Insurance':
-                                    {
-                                      GoToPage(
-                                          context,
-                                          CarInsurancePage(
-                                          ));
-                                    }
-                                    break;
-
-                                  case 'Flight Insurance':
-                                    {
-//                            GoToPage(
-//                                context,
-//                                GoodsApprovalsPage(
-//                                  database: widget.database,
-//                                  employee: employee,
-//                                ));
-                                    }
-                                    break;
-                                  case 'Bike Insurance':
-                                    {
-//                            GoToPage(
-//                                context,
-//                                StorePage(
-//                                  database: widget.database,
-//                                  employee: employee,
-//                                ));
-                                    }
-                                    break;
-
-                                  case 'Life insurance':
-                                    {
-//                            GoToPage(
-//                              context,
-//                              InventoryPage(database: widget.database,),
-//                            );
-                                    }
-                                    break;
-                                  default:
-                                    {}
-                                    break;
-                                }
-
-                              },
-                            );
-                          },
+                            ]
                         ),
                       ),
                     ),
+
+
+//                    Text('Quick Services',
+//                        style: subTitleStyleLight
+//                    ),
+//                    SizedBox(height: 15,),
+//                    Container(
+//                      height: 260,
+//                      child: Padding(
+//                        padding: const EdgeInsets.only(
+//                            top: 10.0, bottom: 10.0, left: 5.0, right: 5.0),
+//                        child: new GridView.builder(
+//                          itemCount: quickServicesIcons.length,
+//                          gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+//                              crossAxisCount: 3,mainAxisSpacing: 8,crossAxisSpacing: 0
+//                          ),
+//                          itemBuilder: (BuildContext context, int index) {
+//                            return new GestureDetector(
+//                              child:
+//                              new Card(
+//                                elevation: 0.0,
+//                                child: new Container(
+//                                  alignment: Alignment.center,
+//                                  margin: new EdgeInsets.only(
+//                                      top: 0.0, bottom: 0.0, left: 0.0, right: 0.0),
+//                                  child: new Column(
+//                                    crossAxisAlignment: CrossAxisAlignment.center,
+//                                    children: <Widget>[
+//                                      Image.asset(
+//                                        quickServicesIcons[index],height: 60,
+//                                      ),
+//                                      new Text(
+//                                        quickServices[index],
+//                                        style: descriptionStyleDark,textAlign: TextAlign.center,
+//                                      ),
+//
+//                                    ],
+//                                  ),
+//                                ),
+//                              ),
+//                              onTap: () {
+//                                switch (ourProducts[index]) {
+//                                  case 'Car Insurance':
+//                                    {
+//                                      GoToPage(
+//                                          context,
+//                                          CarInsurancePage(
+//                                          ));
+//                                    }
+//                                    break;
+//
+//                                  case 'Flight Insurance':
+//                                    {
+////                            GoToPage(
+////                                context,
+////                                GoodsApprovalsPage(
+////                                  database: widget.database,
+////                                  employee: employee,
+////                                ));
+//                                    }
+//                                    break;
+//                                  case 'Bike Insurance':
+//                                    {
+////                            GoToPage(
+////                                context,
+////                                StorePage(
+////                                  database: widget.database,
+////                                  employee: employee,
+////                                ));
+//                                    }
+//                                    break;
+//
+//                                  case 'Life insurance':
+//                                    {
+////                            GoToPage(
+////                              context,
+////                              InventoryPage(database: widget.database,),
+////                            );
+//                                    }
+//                                    break;
+//                                  default:
+//                                    {}
+//                                    break;
+//                                }
+//
+//                              },
+//                            );
+//                          },
+//                        ),
+//                      ),
+//                    ),
                     SizedBox(height: 50,),
                     Container(
                         height: 180.0,
