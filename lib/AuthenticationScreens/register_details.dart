@@ -186,22 +186,6 @@ class _F_RegisterDetailsState extends State<F_RegisterDetails> {
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
-//                  Container(
-//                    width: 120,
-//                    height: 120,
-//                    child: Padding(
-//                      padding: const EdgeInsets.only(top: 50, left: 25),
-//                      child: Text(
-//                        'Add Photo',
-//                        style: descriptionStyleDark,
-//                      ),
-//                    ),
-//                    decoration: BoxDecoration(
-//                      color: Colors.grey[300],
-//                      shape: BoxShape.circle,
-//                    ),
-//                  ),
-                    //    SizedBox(height: 20.0,),
                     Column(
                       children: <Widget>[
                         Container(

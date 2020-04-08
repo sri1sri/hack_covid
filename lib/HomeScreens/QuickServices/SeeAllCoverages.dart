@@ -6,8 +6,6 @@ import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dar
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 
 class SeeAllCoveragesPage extends StatelessWidget {
-  //ProfilePage({@required this.database});
-  //Database database;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +16,6 @@ class SeeAllCoveragesPage extends StatelessWidget {
 }
 
 class F_SeeAllCoveragesPage extends StatefulWidget {
-  // F_ProfilePage({@required this.database});
-  // Database database;
 
   @override
   _F_SeeAllCoveragesPageState createState() => _F_SeeAllCoveragesPageState();
@@ -81,25 +77,29 @@ class _F_SeeAllCoveragesPageState extends State<F_SeeAllCoveragesPage> {
           ),
         )
     );
-
   }
+
 
   Widget _policybody(){
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Card(
-              color: Color(0xFFc9ccd1),
+              color: Colors.white,
               elevation: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('Zero Depreciation',
-                    style: titleStyleTheam
+                    style: TextStyle(
+                        color: Color(0xFF253949),
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 23.0)
                   ),
                 ),
               ),
@@ -108,7 +108,7 @@ class _F_SeeAllCoveragesPageState extends State<F_SeeAllCoveragesPage> {
             Card(
               elevation: 1,
               child: Container(
-                color: Colors.grey.shade200,
+                color: Colors.grey[100],
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('Post an accident while replacing the parts of the car '
@@ -127,14 +127,18 @@ class _F_SeeAllCoveragesPageState extends State<F_SeeAllCoveragesPage> {
 
             SizedBox(height: 30,),
             Card(
-              color: Color(0xFFc9ccd1),
+              color: Colors.white,
               elevation: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('Consumable items',
-                    style: titleStyleTheam
+                    style: TextStyle(
+                        color: Color(0xFF253949),
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 23.0)
                   ),
                 ),
               ),
@@ -143,7 +147,7 @@ class _F_SeeAllCoveragesPageState extends State<F_SeeAllCoveragesPage> {
             Card(
               elevation: 1,
               child: Container(
-                color: Colors.grey.shade200,
+                color: Colors.grey[100],
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('Due to accidental damages, the expenses on replacing consumable '
@@ -158,14 +162,18 @@ class _F_SeeAllCoveragesPageState extends State<F_SeeAllCoveragesPage> {
             ),
             SizedBox(height: 30,),
             Card(
-              color: Color(0xFFc9ccd1),
+              color: Colors.white,
               elevation: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('Co Passengers',
-                    style: titleStyleTheam
+                    style: TextStyle(
+                        color: Color(0xFF253949),
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 23.0)
                   ),
                 ),
               ),
@@ -174,7 +182,7 @@ class _F_SeeAllCoveragesPageState extends State<F_SeeAllCoveragesPage> {
             Card(
               elevation: 1,
               child: Container(
-                color: Colors.grey.shade200,
+                color: Colors.grey[100],
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('Compensation is provided to your co-passengers if they suffer '
@@ -186,14 +194,18 @@ class _F_SeeAllCoveragesPageState extends State<F_SeeAllCoveragesPage> {
             ),
             SizedBox(height: 30,),
             Card(
-              color: Color(0xFFc9ccd1),
+              color: Colors.white,
               elevation: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('Car Damages',
-                    style: titleStyleTheam
+                    style: TextStyle(
+                        color: Color(0xFF253949),
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 23.0)
                   ),
                 ),
               ),
@@ -202,7 +214,7 @@ class _F_SeeAllCoveragesPageState extends State<F_SeeAllCoveragesPage> {
             Card(
               elevation: 1,
               child: Container(
-                color: Colors.grey.shade200,
+                color: Colors.grey[100],
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('In case of an accident, we pay the cost of damages to your car.\n\n'
@@ -218,14 +230,18 @@ class _F_SeeAllCoveragesPageState extends State<F_SeeAllCoveragesPage> {
             ),
             SizedBox(height: 30,),
             Card(
-              color: Color(0xFFc9ccd1),
+              color: Colors.white,
               elevation: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('Third Party Liabilities',
-                    style: titleStyleTheam
+                    style: TextStyle(
+                        color: Color(0xFF253949),
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 23.0)
                   ),
                 ),
               ),
@@ -234,7 +250,7 @@ class _F_SeeAllCoveragesPageState extends State<F_SeeAllCoveragesPage> {
             Card(
               elevation: 1,
               child: Container(
-                color: Colors.grey.shade200,
+                color: Colors.grey[100],
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('If you accidentally ram your car into someone or '
@@ -252,14 +268,18 @@ class _F_SeeAllCoveragesPageState extends State<F_SeeAllCoveragesPage> {
             ),
             SizedBox(height: 30,),
             Card(
-              color: Color(0xFFc9ccd1),
+              color: Colors.white,
               elevation: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('Personal Accident',
-                    style: titleStyleTheam
+                    style: TextStyle(
+                        color: Color(0xFF253949),
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 23.0)
                   ),
                 ),
               ),
@@ -268,7 +288,7 @@ class _F_SeeAllCoveragesPageState extends State<F_SeeAllCoveragesPage> {
             Card(
               elevation: 1,
               child: Container(
-                color: Colors.grey.shade200,
+                color: Colors.grey[100],
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('We pay up to ₹ 15 lakhs in case of death or'
@@ -285,14 +305,18 @@ class _F_SeeAllCoveragesPageState extends State<F_SeeAllCoveragesPage> {
             ),
             SizedBox(height: 30,),
             Card(
-              color: Color(0xFFc9ccd1),
+              color: Colors.white,
               elevation: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('Road Side Assistance ',
-                    style: titleStyleTheam
+                    style: TextStyle(
+                        color: Color(0xFF253949),
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 23.0)
                   ),
                 ),
               ),
@@ -301,7 +325,7 @@ class _F_SeeAllCoveragesPageState extends State<F_SeeAllCoveragesPage> {
             Card(
               elevation: 1,
               child: Container(
-                color: Colors.grey.shade200,
+                color: Colors.grey[100],
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Text('Get towing assistance in case of -car '

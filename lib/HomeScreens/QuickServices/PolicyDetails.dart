@@ -3,12 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:hackcovid/HomeScreens/QuickServices/PaymentReviewPage.dart';
 import 'package:hackcovid/HomeScreens/QuickServices/PaymentScreen.dart';
 import 'package:hackcovid/HomeScreens/SettingsPage.dart';
-import 'package:hackcovid/HomeScreens/viepolicydetails/policy_details.dart';
+import 'package:hackcovid/HomeScreens/viewPolicyDetails//policy_details.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_variables/app_functions.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
+import 'package:hackcovid/common_widgets/platform_alert/platform_exception_alert_dialog.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:intl/intl.dart';
 
@@ -37,47 +38,60 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
   final _formKey1 = GlobalKey<FormState>();
   final _formKey2 = GlobalKey<FormState>();
   final _formKey3 = GlobalKey<FormState>();
+
   int group = 1;
   int group1 = 1;
   int group2 = 1;
 
-  final TextEditingController _nameController = TextEditingController();
-  final FocusNode _nameFocusNode = FocusNode();
-  final TextEditingController _emailController = TextEditingController();
+  String _ownerName;
+  String _ownerEmail;
+  String _ownerPhoneNumber;
+  String _ownerPanCard;
+  String _ownerLandmark;
+  String _ownerGSTNumber;
+  String _ownerLandlineNumber;
+
+  String _nomineeName;
+
+  String _address;
+  String _city;
+  String _state;
+  String _pincode;
+
+  String _carRegestrationNumber;
+  String _previousInsurer;
+  String _previousPolicyNumber;
+  String _carEngineNumber;
+  String _carChassisNumber;
+
+
+  final FocusNode _ownerNameFocusNode = FocusNode();
   final FocusNode _emailFocusNode = FocusNode();
-  final TextEditingController _phoneController = TextEditingController();
-  final FocusNode _phoneFocusNode = FocusNode();
-  final TextEditingController _panCardController = TextEditingController();
+  final FocusNode _phoneNumberFocusNode = FocusNode();
   final FocusNode _panCardFocusNode = FocusNode();
-  final TextEditingController _landmarkController = TextEditingController();
   final FocusNode _landmarkFocusNode = FocusNode();
-  final TextEditingController _landLineController = TextEditingController();
   final FocusNode _landLineFocusNode = FocusNode();
-  final TextEditingController _gstController = TextEditingController();
   final FocusNode _gstFocusNode = FocusNode();
-  final TextEditingController _nomNameController = TextEditingController();
+
   final FocusNode _nomNameFocusNode = FocusNode();
-  final TextEditingController _addressController = TextEditingController();
   final FocusNode _addressFocusNode = FocusNode();
-  final TextEditingController _pincodeController = TextEditingController();
   final FocusNode _pincodeFocusNode = FocusNode();
-  final TextEditingController _cityController = TextEditingController();
   final FocusNode _cityFocusNode = FocusNode();
-  final TextEditingController _stateController = TextEditingController();
   final FocusNode _stateFocusNode = FocusNode();
-  final TextEditingController _carRegNoController = TextEditingController();
   final FocusNode _carRegNoFocusNode = FocusNode();
-  final TextEditingController _preInsController = TextEditingController();
   final FocusNode _preInsFocusNode = FocusNode();
-  final TextEditingController _prePolController = TextEditingController();
   final FocusNode _prePolFocusNode = FocusNode();
-  final TextEditingController _carEngController = TextEditingController();
   final FocusNode _carEngFocusNode = FocusNode();
-  final TextEditingController _carChaController = TextEditingController();
   final FocusNode _carChaFocusNode = FocusNode();
+
+  Color levelOne = Colors.grey[300];
+  Color levelTwo = Colors.grey[300];
+  Color levelThree = Colors.grey[300];
+  
   DateTime selectedDate = DateTime.now();
   var customFormat = DateFormat("dd MMMM yyyy 'at' HH:mm:ss 'UTC+5:30'");
   var customFormat2 = DateFormat("dd MMMM yyyy");
+  
   Future<Null> showPicker(BuildContext context) async {
     final DateTime picked = await showDatePicker(
       context: context,
@@ -92,6 +106,32 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
       });
     }
   }
+
+
+  @override
+  void dispose() {
+
+     _ownerNameFocusNode.dispose();
+      _emailFocusNode.dispose();
+      _phoneNumberFocusNode.dispose();
+      _panCardFocusNode.dispose();
+      _landmarkFocusNode.dispose();
+      _landLineFocusNode.dispose();
+      _gstFocusNode.dispose();
+      _nomNameFocusNode.dispose();
+      _addressFocusNode.dispose();
+      _pincodeFocusNode.dispose();
+      _cityFocusNode.dispose();
+      _stateFocusNode.dispose();
+      _carRegNoFocusNode.dispose();
+      _preInsFocusNode.dispose();
+      _prePolFocusNode.dispose();
+      _carEngFocusNode.dispose();
+      _carChaFocusNode.dispose();
+
+    super.dispose();
+  }
+  
   final int _numPages = 4;
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
@@ -151,6 +191,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
       onlineChild: Padding(
         padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         child: Scaffold(
+          resizeToAvoidBottomPadding: false,
           body: _buildContent(context),
         ),
       ),
@@ -161,7 +202,8 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
         home: new Scaffold(
-          body: ContSize(context,)
+            resizeToAvoidBottomPadding: false,
+            body: ContSize(context,)
         )
     );
 
@@ -169,6 +211,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
 
   Widget ContSize(BuildContext context){
       return Scaffold(
+        resizeToAvoidBottomPadding: false,
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
@@ -191,8 +234,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  statusTrackerWidget(Colors.green, Colors.green,
-                      Colors.green, Colors.green,),
+                  statusTrackerWidget(levelOne, levelTwo, levelThree,),
                   SizedBox(height: 20,),
 
                   Container(
@@ -219,17 +261,14 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                     child: Align(
                       alignment: FractionalOffset.bottomRight,
                       child: Padding(
-                        padding: const EdgeInsets.only(bottom:10.0,right: 10),
+                        padding: const EdgeInsets.only(bottom:0.0,right: 10),
                         child: Container(
-                          height: 80.0,
+                          height: 50.0,
                           width: 150,
                           child: GestureDetector(
                             onTap: () {
-                              print('current Page ${_currentPage}');
-                              _pageController.nextPage(
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.ease,
-                              );
+                              print('currentPage == $_currentPage');
+                              _submit(_currentPage);
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -279,11 +318,9 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                   width: 150,
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PaymentReviewPage() ),
-                      );
+
+                      _submit(3);
+
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -312,42 +349,27 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
       );
   }
 
-//  Widget _trackGoodsStatus(String data) {
-//    switch (String data) {
-//      case 0:
-//        return _statusTracker(data, Colors.green, Colors.orangeAccent,
-//            Colors.grey, Colors.grey, Colors.grey);
-//        break;
-//
-//      case 1:
-//        return _statusTracker(data, Colors.green, Colors.green, Colors.orangeAccent,
-//            Colors.grey, Colors.grey);
-//        break;
-//
-//      case 2:
-//        return _statusTracker(data, Colors.green, Colors.green, Colors.green,
-//            Colors.orangeAccent, Colors.grey);
-//        break;
-//
-//      case 3:
-//        return _statusTracker(data, Colors.green, Colors.green, Colors.green,
-//            Colors.green, Colors.orangeAccent);
-//        break;
-//      case 4:
-//        return _statusTracker(data, Colors.green, Colors.green, Colors.green,
-//            Colors.green, Colors.green);
-//        break;
-//    }
-//  }
-
-  Widget statusTrackerWidget(Color levelOne, Color levelTwo, Color levelThree, Color levelFour){
+  Widget statusTrackerWidget(Color levelOne, Color levelTwo, Color levelThree){
     return Container(
       width: MediaQuery.of(context).size.width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SizedBox(width: 10,),
-          Icon(Icons.person, color: levelOne, size: 28),
+          Icon(Icons.person, color: backgroundColor, size: 28),
+          Padding(
+            padding: EdgeInsets.all(0.0),
+            child: new LinearPercentIndicator(
+              width: 80,
+              animation: true,
+              lineHeight: 4.0,
+              animationDuration: 3000,
+              percent: 1,
+              linearStrokeCap: LinearStrokeCap.roundAll,
+              progressColor: levelOne,
+            ),
+          ),
+          Icon(Icons.people,color: backgroundColor ,size: 28,),
           Padding(
             padding: EdgeInsets.all(0.0),
             child: new LinearPercentIndicator(
@@ -360,7 +382,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
               progressColor: levelTwo,
             ),
           ),
-          Icon(Icons.person,color: levelOne ,size: 28,),
+        Icon(Icons.add_location,color: backgroundColor ,size: 28,),
           Padding(
             padding: EdgeInsets.all(0.0),
             child: new LinearPercentIndicator(
@@ -373,25 +395,84 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
               progressColor: levelThree,
             ),
           ),
-        Icon(Icons.person,color: levelOne ,size: 28,),
-          Padding(
-            padding: EdgeInsets.all(0.0),
-            child: new LinearPercentIndicator(
-              width: 80,
-              animation: true,
-              lineHeight: 4.0,
-              animationDuration: 3000,
-              percent: 1,
-              linearStrokeCap: LinearStrokeCap.roundAll,
-              progressColor: levelFour,
-            ),
-          ),
-          Icon(Icons.person,color: levelOne ,size: 28,),
+          Icon(Icons.directions_car,color: backgroundColor ,size: 28,),
           SizedBox(width: 10,),
         ],
       ),
     );
   }
+
+  bool _validateAndSaveForm(int type) {
+    final form = _formKey.currentState;
+    final form1 = _formKey1.currentState;
+    final form2 = _formKey2.currentState;
+    final form3 = _formKey3.currentState;
+
+    switch (type){
+      case 0:
+        if (form.validate()) {
+          setState(() {
+            levelOne = Colors.green;
+          });
+          form.save();
+          return true;
+        }
+        return false;
+        break;
+
+      case 1:
+        if (form1.validate()) {
+          setState(() {
+            levelTwo = Colors.green;
+          });
+          form1.save();
+          return true;
+        }
+        return false;
+        break;
+
+      case 2:
+        if (form2.validate()) {
+          setState(() {
+            levelThree = Colors.green;
+          });
+          form2.save();
+          return true;
+        }
+        return false;
+        break;
+
+      case 3:
+        if (form3.validate()) {
+          form3.save();
+          return true;
+        }
+        return false;
+      break;
+    }
+  }
+
+  Future<void> _submit(int type) async {
+    if (_validateAndSaveForm(type)) {
+      try {
+        type == 3 ? isChecked == true ? GoToPage(context, PaymentReviewPage()) : PlatformExceptionAlertDialog(
+          title: 'Operation failed',
+          exception: Exception('Please check the terms.'),
+        ).show(context) : _pageController.nextPage(
+          duration: Duration(milliseconds: 500),
+          curve: Curves.ease,
+        );
+      } on PlatformException catch (e) {
+        PlatformExceptionAlertDialog(
+          title: 'Operation failed',
+          exception: e,
+        ).show(context);
+      }
+    }
+  }
+
+
+
 
   Widget CarOwnerDetails(BuildContext context)
   {
@@ -413,24 +494,23 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                         SizedBox(height: 40,),
                         Text("Owner Name",style: subTextStyleBlue),
                         SizedBox(height: 10,),
-                        new TextFormField(
-                          controller: _nameController,
+
+                        TextFormField(
+                          onChanged: (value) => _ownerName = value,
                           textInputAction: TextInputAction.next,
-                          obscureText: false,
-                          focusNode: _nameFocusNode,
                           autocorrect: false,
-                          keyboardType: TextInputType.text,
-                          // onEditingComplete: () => _emailEditingComplete(),
-                          // onChanged: model.updateEmail,
+                          obscureText: false,
+                          focusNode: _ownerNameFocusNode,
+                          onFieldSubmitted: (value) => value == ''
+                              ? null
+                              : FocusScope.of(context)
+                              .requestFocus(_emailFocusNode),
                           decoration: new InputDecoration(
                             prefixIcon: Icon(
                               Icons.person,
                               color: subBackgroundColor,
                             ),
-                            labelText: "Enter Owner Name",
-                            //errorText: model.emailErrorText,
-                            //enabled: model.isLoading == false,
-                            //fillColor: Colors.redAccent,
+                            labelText: "Enter username",
                             border: new OutlineInputBorder(
                               borderRadius: new BorderRadius.circular(5.0),
                               borderSide: new BorderSide(),
@@ -439,28 +519,35 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           style: new TextStyle(
                             fontFamily: "Poppins",
                           ),
+                          keyboardType: TextInputType.text,
+                          keyboardAppearance: Brightness.dark,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Please enter owner name';
+                            }
+                            return null;
+                          },
                         ),
+
                         SizedBox(height: 20,),
                         Text("Owner Email",style: subTextStyleBlue),
                         SizedBox(height: 10,),
-                        new TextFormField(
-                          controller: _emailController,
+                        TextFormField(
+                          onChanged: (value) => _ownerEmail = value,
                           textInputAction: TextInputAction.next,
+                          autocorrect: false,
                           obscureText: false,
                           focusNode: _emailFocusNode,
-                          autocorrect: false,
-                          keyboardType: TextInputType.emailAddress,
-                          // onEditingComplete: () => _emailEditingComplete(),
-                          // onChanged: model.updateEmail,
+                          onFieldSubmitted: (value) => value == ''
+                              ? null
+                              : FocusScope.of(context)
+                              .requestFocus(_phoneNumberFocusNode),
                           decoration: new InputDecoration(
                             prefixIcon: Icon(
-                              Icons.mail,
+                              Icons.email,
                               color: subBackgroundColor,
                             ),
-                            labelText: "Enter Owner Email",
-                            //errorText: model.emailErrorText,
-                            //enabled: model.isLoading == false,
-                            //fillColor: Colors.redAccent,
+                            labelText: "Enter email",
                             border: new OutlineInputBorder(
                               borderRadius: new BorderRadius.circular(5.0),
                               borderSide: new BorderSide(),
@@ -469,28 +556,34 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           style: new TextStyle(
                             fontFamily: "Poppins",
                           ),
+                          keyboardType: TextInputType.text,
+                          keyboardAppearance: Brightness.dark,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Please enter owner email';
+                            }
+                            return null;
+                          },
                         ),
                         SizedBox(height: 20,),
                         Text("Owner Phone Number",style: subTextStyleBlue),
                         SizedBox(height: 10,),
-                        new TextFormField(
-                          controller: _phoneController,
+                        TextFormField(
+                          onChanged: (value) => _ownerPhoneNumber = value,
                           textInputAction: TextInputAction.next,
-                          obscureText: false,
-                          focusNode: _phoneFocusNode,
                           autocorrect: false,
-                          keyboardType: TextInputType.phone,
-                          // onEditingComplete: () => _emailEditingComplete(),
-                          // onChanged: model.updateEmail,
+                          obscureText: false,
+                          focusNode: _phoneNumberFocusNode,
+//                          onFieldSubmitted: (value) => value == ''
+//                              ? null
+//                              : FocusScope.of(context)
+//                              .requestFocus(_emailFocusNode),
                           decoration: new InputDecoration(
                             prefixIcon: Icon(
                               Icons.phone_iphone,
                               color: subBackgroundColor,
                             ),
-                            labelText: "Enter Phone Number",
-                            //errorText: model.emailErrorText,
-                            //enabled: model.isLoading == false,
-                            //fillColor: Colors.redAccent,
+                            labelText: "Enter phone number",
                             border: new OutlineInputBorder(
                               borderRadius: new BorderRadius.circular(5.0),
                               borderSide: new BorderSide(),
@@ -499,7 +592,16 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           style: new TextStyle(
                             fontFamily: "Poppins",
                           ),
+                          keyboardType: TextInputType.number,
+                          keyboardAppearance: Brightness.dark,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Please enter owner phone number';
+                            }
+                            return null;
+                          },
                         ),
+
                         SizedBox(height: 20,),
                         Text("Date of Birth",style: subTextStyleBlue),
                         SizedBox(height: 10,),
@@ -530,11 +632,19 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                                               ),
                                               Text(
                                                   '${customFormat2.format(selectedDate)}',
-                                                  style: subTitleStyle),
+                                                  style: TextStyle(
+                                                      color: Color(0xFF253949),
+                                                      fontFamily: 'Montserrat',
+                                                      fontWeight: FontWeight.w600,
+                                                      fontSize: 18.0,decoration: TextDecoration.none)),
                                             ],
                                           ),
                                         ),
-                                        Text('Change', style: subTitleStyle),
+                                        Text('Change', style: TextStyle(
+                                            color: Color(0xFF253949),
+                                            fontFamily: 'Montserrat',
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 18.0,decoration: TextDecoration.none)),
                                       ],
                                     ),
                                     SizedBox(
@@ -587,24 +697,22 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                         SizedBox(height: 20,),
                         Text("Pan Card Number",style: subTextStyleBlue),
                         SizedBox(height: 10,),
-                        new TextFormField(
-                          controller: _panCardController,
+                        TextFormField(
+                          onChanged: (value) => _ownerPanCard = value,
                           textInputAction: TextInputAction.next,
+                          autocorrect: false,
                           obscureText: false,
                           focusNode: _panCardFocusNode,
-                          autocorrect: false,
-                          keyboardType: TextInputType.text,
-                          // onEditingComplete: () => _emailEditingComplete(),
-                          // onChanged: model.updateEmail,
+                          onFieldSubmitted: (value) => value == ''
+                              ? null
+                              : FocusScope.of(context)
+                              .requestFocus(_landmarkFocusNode),
                           decoration: new InputDecoration(
                             prefixIcon: Icon(
                               Icons.featured_play_list,
                               color: subBackgroundColor,
                             ),
-                            labelText: "Enter Pan Number",
-                            //errorText: model.emailErrorText,
-                            //enabled: model.isLoading == false,
-                            //fillColor: Colors.redAccent,
+                            labelText: "Enter PAN card number",
                             border: new OutlineInputBorder(
                               borderRadius: new BorderRadius.circular(5.0),
                               borderSide: new BorderSide(),
@@ -613,28 +721,37 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           style: new TextStyle(
                             fontFamily: "Poppins",
                           ),
+                          keyboardType: TextInputType.number,
+                          keyboardAppearance: Brightness.dark,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Please enter PAN card number';
+                            }
+                            return null;
+                          },
                         ),
+
+
                         SizedBox(height: 20,),
                         Text("Enter Landmark",style: subTextStyleBlue),
                         SizedBox(height: 10,),
-                        new TextFormField(
-                          controller: _landmarkController,
+
+                        TextFormField(
+                          onChanged: (value) => _ownerLandmark = value,
                           textInputAction: TextInputAction.next,
+                          autocorrect: false,
                           obscureText: false,
                           focusNode: _landmarkFocusNode,
-                          autocorrect: false,
-                          keyboardType: TextInputType.text,
-                          // onEditingComplete: () => _emailEditingComplete(),
-                          // onChanged: model.updateEmail,
+                          onFieldSubmitted: (value) => value == ''
+                              ? null
+                              : FocusScope.of(context)
+                              .requestFocus(_gstFocusNode),
                           decoration: new InputDecoration(
                             prefixIcon: Icon(
                               Icons.location_on,
                               color: subBackgroundColor,
                             ),
-                            labelText: "Landmark",
-                            //errorText: model.emailErrorText,
-                            //enabled: model.isLoading == false,
-                            //fillColor: Colors.redAccent,
+                            labelText: "Enter landmark",
                             border: new OutlineInputBorder(
                               borderRadius: new BorderRadius.circular(5.0),
                               borderSide: new BorderSide(),
@@ -643,28 +760,35 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           style: new TextStyle(
                             fontFamily: "Poppins",
                           ),
+                          keyboardType: TextInputType.number,
+                          keyboardAppearance: Brightness.dark,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Please enter landmark';
+                            }
+                            return null;
+                          },
                         ),
                         SizedBox(height: 20,),
                         Text("Enter GST Number",style: subTextStyleBlue),
                         SizedBox(height: 10,),
-                        new TextFormField(
-                          controller: _gstController,
+
+                        TextFormField(
+                          onChanged: (value) => _ownerGSTNumber = value,
                           textInputAction: TextInputAction.next,
+                          autocorrect: false,
                           obscureText: false,
                           focusNode: _gstFocusNode,
-                          autocorrect: false,
-                          keyboardType: TextInputType.text,
-                          // onEditingComplete: () => _emailEditingComplete(),
-                          // onChanged: model.updateEmail,
+                          onFieldSubmitted: (value) => value == ''
+                              ? null
+                              : FocusScope.of(context)
+                              .requestFocus(_landmarkFocusNode),
                           decoration: new InputDecoration(
                             prefixIcon: Icon(
                               Icons.donut_large,
                               color: subBackgroundColor,
                             ),
-                            labelText: "GST",
-                            //errorText: model.emailErrorText,
-                            //enabled: model.isLoading == false,
-                            //fillColor: Colors.redAccent,
+                            labelText: "Enter GST number",
                             border: new OutlineInputBorder(
                               borderRadius: new BorderRadius.circular(5.0),
                               borderSide: new BorderSide(),
@@ -673,28 +797,34 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           style: new TextStyle(
                             fontFamily: "Poppins",
                           ),
+                          keyboardType: TextInputType.text,
+                          keyboardAppearance: Brightness.dark,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Please enter GST number';
+                            }
+                            return null;
+                          },
                         ),
+
+
                         SizedBox(height: 20,),
                         Text("Enter Landline Number",style: subTextStyleBlue),
                         SizedBox(height: 10,),
-                        new TextFormField(
-                          controller: _landLineController,
+
+
+                        TextFormField(
+                          onChanged: (value) => _ownerLandlineNumber = value,
                           textInputAction: TextInputAction.next,
+                          autocorrect: false,
                           obscureText: false,
                           focusNode: _landLineFocusNode,
-                          autocorrect: false,
-                          keyboardType: TextInputType.phone,
-                          // onEditingComplete: () => _emailEditingComplete(),
-                          // onChanged: model.updateEmail,
                           decoration: new InputDecoration(
                             prefixIcon: Icon(
-                              Icons.phone,
+                              Icons.donut_large,
                               color: subBackgroundColor,
                             ),
-                            labelText: "Landline",
-                            //errorText: model.emailErrorText,
-                            //enabled: model.isLoading == false,
-                            //fillColor: Colors.redAccent,
+                            labelText: "Enter landline number",
                             border: new OutlineInputBorder(
                               borderRadius: new BorderRadius.circular(5.0),
                               borderSide: new BorderSide(),
@@ -703,9 +833,17 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           style: new TextStyle(
                             fontFamily: "Poppins",
                           ),
+                          keyboardType: TextInputType.number,
+                          keyboardAppearance: Brightness.dark,
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Please enter landline number';
+                            }
+                            return null;
+                          },
                         ),
-                        SizedBox(height: 80,),
 
+                        SizedBox(height: 280,),
                       ],
                     ),
                   ),
@@ -738,24 +876,19 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           SizedBox(height: 40,),
                           Text("Nominee Name",style: subTextStyleBlue),
                           SizedBox(height: 10,),
-                          new TextFormField(
-                            controller: _nomNameController,
+
+                          TextFormField(
+                            onChanged: (value) => _nomineeName = value,
                             textInputAction: TextInputAction.next,
+                            autocorrect: false,
                             obscureText: false,
                             focusNode: _nomNameFocusNode,
-                            autocorrect: false,
-                            keyboardType: TextInputType.text,
-                            // onEditingComplete: () => _emailEditingComplete(),
-                            // onChanged: model.updateEmail,
                             decoration: new InputDecoration(
                               prefixIcon: Icon(
                                 Icons.person,
                                 color: subBackgroundColor,
                               ),
-                              labelText: "Enter Nominee Name",
-                              //errorText: model.emailErrorText,
-                              //enabled: model.isLoading == false,
-                              //fillColor: Colors.redAccent,
+                              labelText: "Enter nominee name",
                               border: new OutlineInputBorder(
                                 borderRadius: new BorderRadius.circular(5.0),
                                 borderSide: new BorderSide(),
@@ -764,7 +897,16 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                             style: new TextStyle(
                               fontFamily: "Poppins",
                             ),
+                            keyboardType: TextInputType.text,
+                            keyboardAppearance: Brightness.dark,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter nominee name';
+                              }
+                              return null;
+                            },
                           ),
+
                           SizedBox(height: 20,),
                           Text("Date of Birth",style: subTextStyleBlue),
                           SizedBox(height: 10,),
@@ -912,24 +1054,23 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           SizedBox(height: 40,),
                           Text("Address",style: subTextStyleBlue),
                           SizedBox(height: 10,),
-                          new TextFormField(
-                            controller: _addressController,
+
+                          TextFormField(
+                            onChanged: (value) => _address = value,
                             textInputAction: TextInputAction.next,
+                            autocorrect: false,
                             obscureText: false,
                             focusNode: _addressFocusNode,
-                            autocorrect: false,
-                            keyboardType: TextInputType.text,
-                            // onEditingComplete: () => _emailEditingComplete(),
-                            // onChanged: model.updateEmail,
+                            onFieldSubmitted: (value) => value == ''
+                                ? null
+                                : FocusScope.of(context)
+                                .requestFocus(_cityFocusNode),
                             decoration: new InputDecoration(
                               prefixIcon: Icon(
                                 Icons.language,
                                 color: subBackgroundColor,
                               ),
                               labelText: "Enter Address",
-                              //errorText: model.emailErrorText,
-                              //enabled: model.isLoading == false,
-                              //fillColor: Colors.redAccent,
                               border: new OutlineInputBorder(
                                 borderRadius: new BorderRadius.circular(5.0),
                                 borderSide: new BorderSide(),
@@ -938,28 +1079,36 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                             style: new TextStyle(
                               fontFamily: "Poppins",
                             ),
+                            keyboardType: TextInputType.text,
+                            keyboardAppearance: Brightness.dark,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter address';
+                              }
+                              return null;
+                            },
                           ),
+
                           SizedBox(height: 20,),
                           Text("City",style: subTextStyleBlue),
                           SizedBox(height: 10,),
-                          new TextFormField(
-                            controller: _cityController,
+
+                          TextFormField(
+                            onChanged: (value) => _city = value,
                             textInputAction: TextInputAction.next,
+                            autocorrect: false,
                             obscureText: false,
                             focusNode: _cityFocusNode,
-                            autocorrect: false,
-                            keyboardType: TextInputType.text,
-                            // onEditingComplete: () => _emailEditingComplete(),
-                            // onChanged: model.updateEmail,
+                            onFieldSubmitted: (value) => value == ''
+                                ? null
+                                : FocusScope.of(context)
+                                .requestFocus(_stateFocusNode),
                             decoration: new InputDecoration(
                               prefixIcon: Icon(
                                 Icons.location_city,
                                 color: subBackgroundColor,
                               ),
-                              labelText: "Enter City",
-                              //errorText: model.emailErrorText,
-                              //enabled: model.isLoading == false,
-                              //fillColor: Colors.redAccent,
+                              labelText: "Enter city name",
                               border: new OutlineInputBorder(
                                 borderRadius: new BorderRadius.circular(5.0),
                                 borderSide: new BorderSide(),
@@ -968,28 +1117,37 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                             style: new TextStyle(
                               fontFamily: "Poppins",
                             ),
+                            keyboardType: TextInputType.text,
+                            keyboardAppearance: Brightness.dark,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter city name';
+                              }
+                              return null;
+                            },
                           ),
+
+
                           SizedBox(height: 20,),
                           Text("State",style: subTextStyleBlue),
                           SizedBox(height: 10,),
-                          new TextFormField(
-                            controller: _stateController,
+
+                          TextFormField(
+                            onChanged: (value) => _state = value,
                             textInputAction: TextInputAction.next,
+                            autocorrect: false,
                             obscureText: false,
                             focusNode: _stateFocusNode,
-                            autocorrect: false,
-                            keyboardType: TextInputType.text,
-                            // onEditingComplete: () => _emailEditingComplete(),
-                            // onChanged: model.updateEmail,
+                            onFieldSubmitted: (value) => value == ''
+                                ? null
+                                : FocusScope.of(context)
+                                .requestFocus(_pincodeFocusNode),
                             decoration: new InputDecoration(
                               prefixIcon: Icon(
                                 Icons.add_location,
                                 color: subBackgroundColor,
                               ),
-                              labelText: "Enter State",
-                              //errorText: model.emailErrorText,
-                              //enabled: model.isLoading == false,
-                              //fillColor: Colors.redAccent,
+                              labelText: "Enter state",
                               border: new OutlineInputBorder(
                                 borderRadius: new BorderRadius.circular(5.0),
                                 borderSide: new BorderSide(),
@@ -998,28 +1156,32 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                             style: new TextStyle(
                               fontFamily: "Poppins",
                             ),
+                            keyboardType: TextInputType.number,
+                            keyboardAppearance: Brightness.dark,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter state';
+                              }
+                              return null;
+                            },
                           ),
+
                           SizedBox(height: 20,),
                           Text("Pin Code",style: subTextStyleBlue),
                           SizedBox(height: 10,),
-                          new TextFormField(
-                            controller: _pincodeController,
+
+                          TextFormField(
+                            onChanged: (value) => _pincode = value,
                             textInputAction: TextInputAction.next,
+                            autocorrect: false,
                             obscureText: false,
                             focusNode: _pincodeFocusNode,
-                            autocorrect: false,
-                            keyboardType: TextInputType.phone,
-                            // onEditingComplete: () => _emailEditingComplete(),
-                            // onChanged: model.updateEmail,
                             decoration: new InputDecoration(
                               prefixIcon: Icon(
-                                Icons.pin_drop,
+                                Icons.add_location,
                                 color: subBackgroundColor,
                               ),
-                              labelText: "Enter Pin Code",
-                              //errorText: model.emailErrorText,
-                              //enabled: model.isLoading == false,
-                              //fillColor: Colors.redAccent,
+                              labelText: "Enter pincode",
                               border: new OutlineInputBorder(
                                 borderRadius: new BorderRadius.circular(5.0),
                                 borderSide: new BorderSide(),
@@ -1028,6 +1190,14 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                             style: new TextStyle(
                               fontFamily: "Poppins",
                             ),
+                            keyboardType: TextInputType.text,
+                            keyboardAppearance: Brightness.dark,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter pincode';
+                              }
+                              return null;
+                            },
                           ),
                           SizedBox(height: 80,),
 
@@ -1063,24 +1233,22 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           SizedBox(height: 40,),
                           Text("Car Registration No.",style: subTextStyleBlue),
                           SizedBox(height: 10,),
-                          new TextFormField(
-                            controller: _carRegNoController,
+                          TextFormField(
+                            onChanged: (value) => _carRegestrationNumber = value,
                             textInputAction: TextInputAction.next,
+                            autocorrect: false,
                             obscureText: false,
                             focusNode: _carRegNoFocusNode,
-                            autocorrect: false,
-                            keyboardType: TextInputType.text,
-                            // onEditingComplete: () => _emailEditingComplete(),
-                            // onChanged: model.updateEmail,
+                            onFieldSubmitted: (value) => value == ''
+                                ? null
+                                : FocusScope.of(context)
+                                .requestFocus(_preInsFocusNode),
                             decoration: new InputDecoration(
                               prefixIcon: Icon(
                                 Icons.keyboard,
                                 color: subBackgroundColor,
                               ),
-                              labelText: "Enter Registration Number",
-                              //errorText: model.emailErrorText,
-                              //enabled: model.isLoading == false,
-                              //fillColor: Colors.redAccent,
+                              labelText: "Enter Car registration number",
                               border: new OutlineInputBorder(
                                 borderRadius: new BorderRadius.circular(5.0),
                                 borderSide: new BorderSide(),
@@ -1089,28 +1257,36 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                             style: new TextStyle(
                               fontFamily: "Poppins",
                             ),
+                            keyboardType: TextInputType.number,
+                            keyboardAppearance: Brightness.dark,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter Car registration number';
+                              }
+                              return null;
+                            },
                           ),
                           SizedBox(height: 20,),
                           Text("Previous Insurer",style: subTextStyleBlue),
                           SizedBox(height: 10,),
-                          new TextFormField(
-                            controller: _preInsController,
+
+
+                          TextFormField(
+                            onChanged: (value) => _previousInsurer = value,
                             textInputAction: TextInputAction.next,
+                            autocorrect: false,
                             obscureText: false,
                             focusNode: _preInsFocusNode,
-                            autocorrect: false,
-                            keyboardType: TextInputType.text,
-                            // onEditingComplete: () => _emailEditingComplete(),
-                            // onChanged: model.updateEmail,
+                            onFieldSubmitted: (value) => value == ''
+                                ? null
+                                : FocusScope.of(context)
+                                .requestFocus(_prePolFocusNode),
                             decoration: new InputDecoration(
                               prefixIcon: Icon(
                                 Icons.account_box,
                                 color: subBackgroundColor,
                               ),
-                              labelText: "Enter Insurer Name",
-                              //errorText: model.emailErrorText,
-                              //enabled: model.isLoading == false,
-                              //fillColor: Colors.redAccent,
+                              labelText: "Enter previous insurer name",
                               border: new OutlineInputBorder(
                                 borderRadius: new BorderRadius.circular(5.0),
                                 borderSide: new BorderSide(),
@@ -1119,28 +1295,37 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                             style: new TextStyle(
                               fontFamily: "Poppins",
                             ),
+                            keyboardType: TextInputType.text,
+                            keyboardAppearance: Brightness.dark,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter previous insurer name';
+                              }
+                              return null;
+                            },
                           ),
+
                           SizedBox(height: 20,),
                           Text("Previous Policy No.",style: subTextStyleBlue),
                           SizedBox(height: 10,),
-                          new TextFormField(
-                            controller: _prePolController,
+
+
+                          TextFormField(
+                            onChanged: (value) => _previousPolicyNumber = value,
                             textInputAction: TextInputAction.next,
+                            autocorrect: false,
                             obscureText: false,
                             focusNode: _prePolFocusNode,
-                            autocorrect: false,
-                            keyboardType: TextInputType.text,
-                            // onEditingComplete: () => _emailEditingComplete(),
-                            // onChanged: model.updateEmail,
+                            onFieldSubmitted: (value) => value == ''
+                                ? null
+                                : FocusScope.of(context)
+                                .requestFocus(_carEngFocusNode),
                             decoration: new InputDecoration(
                               prefixIcon: Icon(
                                 Icons.poll,
                                 color: subBackgroundColor,
                               ),
-                              labelText: "Policy Number",
-                              //errorText: model.emailErrorText,
-                              //enabled: model.isLoading == false,
-                              //fillColor: Colors.redAccent,
+                              labelText: "Enter previous policy number",
                               border: new OutlineInputBorder(
                                 borderRadius: new BorderRadius.circular(5.0),
                                 borderSide: new BorderSide(),
@@ -1149,28 +1334,36 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                             style: new TextStyle(
                               fontFamily: "Poppins",
                             ),
+                            keyboardType: TextInputType.number,
+                            keyboardAppearance: Brightness.dark,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter previous policy number';
+                              }
+                              return null;
+                            },
                           ),
+
                           SizedBox(height: 20,),
                           Text("Car Engine No.",style: subTextStyleBlue),
                           SizedBox(height: 10,),
-                          new TextFormField(
-                            controller: _carEngController,
+
+                          TextFormField(
+                            onChanged: (value) => _carEngineNumber = value,
                             textInputAction: TextInputAction.next,
+                            autocorrect: false,
                             obscureText: false,
                             focusNode: _carEngFocusNode,
-                            autocorrect: false,
-                            keyboardType: TextInputType.text,
-                            // onEditingComplete: () => _emailEditingComplete(),
-                            // onChanged: model.updateEmail,
+                            onFieldSubmitted: (value) => value == ''
+                                ? null
+                                : FocusScope.of(context)
+                                .requestFocus(_carChaFocusNode),
                             decoration: new InputDecoration(
                               prefixIcon: Icon(
                                 Icons.straighten,
                                 color: subBackgroundColor,
                               ),
-                              labelText: "Enter Engine Number",
-                              //errorText: model.emailErrorText,
-                              //enabled: model.isLoading == false,
-                              //fillColor: Colors.redAccent,
+                              labelText: "Enter car engine number",
                               border: new OutlineInputBorder(
                                 borderRadius: new BorderRadius.circular(5.0),
                                 borderSide: new BorderSide(),
@@ -1179,28 +1372,34 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                             style: new TextStyle(
                               fontFamily: "Poppins",
                             ),
+                            keyboardType: TextInputType.number,
+                            keyboardAppearance: Brightness.dark,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter car engine numberr';
+                              }
+                              return null;
+                            },
                           ),
+
                           SizedBox(height: 20,),
                           Text("Car Chassis No.",style: subTextStyleBlue),
                           SizedBox(height: 10,),
-                          new TextFormField(
-                            controller: _carChaController,
+
+
+                          TextFormField(
+                            onChanged: (value) => _carChassisNumber = value,
                             textInputAction: TextInputAction.next,
+                            autocorrect: false,
                             obscureText: false,
                             focusNode: _carChaFocusNode,
-                            autocorrect: false,
-                            keyboardType: TextInputType.text,
-                            // onEditingComplete: () => _emailEditingComplete(),
-                            // onChanged: model.updateEmail,
+
                             decoration: new InputDecoration(
                               prefixIcon: Icon(
                                 Icons.confirmation_number,
                                 color: subBackgroundColor,
                               ),
-                              labelText: "Enter Pin Code",
-                              //errorText: model.emailErrorText,
-                              //enabled: model.isLoading == false,
-                              //fillColor: Colors.redAccent,
+                              labelText: "Enter car chassis number",
                               border: new OutlineInputBorder(
                                 borderRadius: new BorderRadius.circular(5.0),
                                 borderSide: new BorderSide(),
@@ -1209,7 +1408,16 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                             style: new TextStyle(
                               fontFamily: "Poppins",
                             ),
+                            keyboardType: TextInputType.number,
+                            keyboardAppearance: Brightness.dark,
+                            validator: (value) {
+                              if (value.isEmpty) {
+                                return 'Please enter car chassis number';
+                              }
+                              return null;
+                            },
                           ),
+
                           SizedBox(height: 20,),
                           Text("Hypothecation/Loan",style: subTextStyleBlue),
                           Row(
@@ -1299,7 +1507,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           )
                         ],
                       ),
-                          SizedBox(height: 100,),
+                          SizedBox(height: 330,),
                         ],
                       ),
                     ),

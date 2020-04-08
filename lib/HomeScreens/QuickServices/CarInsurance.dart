@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hackcovid/HomeScreens/QuickServices/InsurancePremium.dart';
 import 'package:hackcovid/HomeScreens/SettingsPage.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
@@ -6,6 +7,9 @@ import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_widgets/button_widget/to_do_button.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
+import 'package:hackcovid/common_widgets/platform_alert/platform_exception_alert_dialog.dart';
+
+import '../dashboard.dart';
 
 
 class CarInsurancePage extends StatelessWidget {
@@ -21,9 +25,6 @@ class CarInsurancePage extends StatelessWidget {
 }
 
 class F_CarInsurancePage extends StatefulWidget {
-  // F_ProfilePage({@required this.database});
-  // Database database;
-
 
   @override
   _F_CarInsurancePageState createState() => _F_CarInsurancePageState();
@@ -34,6 +35,13 @@ class _F_CarInsurancePageState extends State<F_CarInsurancePage> {
 
   final TextEditingController _regNoController = TextEditingController();
   final FocusNode _regNoFocusNode = FocusNode();
+
+  @override
+  void dispose() {
+    _regNoController.dispose();
+    _regNoFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,13 +77,7 @@ class _F_CarInsurancePageState extends State<F_CarInsurancePage> {
               rightActionBar: Container(
                 child: Icon(Icons.list,color: subBackgroundColor,),
               ),
-              rightAction: () {
-//                Navigator.push(
-//                  context,
-//                  MaterialPageRoute(
-//                      builder: (context) => InsurancePremiumPage() ),
-//                );
-              },
+              rightAction: () {},
               primaryText: 'Car Insurance',
               secondaryText: null,
             ),
@@ -94,6 +96,8 @@ class _F_CarInsurancePageState extends State<F_CarInsurancePage> {
                       SizedBox(height: 50,),
                       Text("Enter car registration no.",style: subTextStyleBlue),
                       SizedBox(height: 10,),
+
+
                       new TextFormField(
                         controller: _regNoController,
                         textInputAction: TextInputAction.next,
@@ -101,17 +105,12 @@ class _F_CarInsurancePageState extends State<F_CarInsurancePage> {
                         focusNode: _regNoFocusNode,
                         autocorrect: false,
                         keyboardType: TextInputType.emailAddress,
-                       // onEditingComplete: () => _emailEditingComplete(),
-                       // onChanged: model.updateEmail,
                         decoration: new InputDecoration(
                           prefixIcon: Icon(
                             Icons.keyboard,
                             color: subBackgroundColor,
                           ),
                           labelText: "Registration No.",
-                          //errorText: model.emailErrorText,
-                          //enabled: model.isLoading == false,
-                          //fillColor: Colors.redAccent,
                           border: new OutlineInputBorder(
                             borderRadius: new BorderRadius.circular(5.0),
                             borderSide: new BorderSide(),
@@ -120,7 +119,15 @@ class _F_CarInsurancePageState extends State<F_CarInsurancePage> {
                         style: new TextStyle(
                           fontFamily: "Poppins",
                         ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'Please enter Registration number';
+                          }
+                          return null;
+                        },
                       ),
+
+
                       SizedBox(height: 50,),
                       ToDoButton(
                           assetName: 'images/googl-logo.png',
@@ -128,14 +135,9 @@ class _F_CarInsurancePageState extends State<F_CarInsurancePage> {
                           textColor: Colors.white,
                           backgroundColor: backgroundColor,
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => InsurancePremiumPage() ),
-                            );
+                            _submit();
                           }
                       ),
-
                     ],
                   ),
                 ),
@@ -144,7 +146,28 @@ class _F_CarInsurancePageState extends State<F_CarInsurancePage> {
           ),
         )
     );
+  }
 
+  bool _validateAndSaveForm() {
+    final form = _formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      return true;
+    }
+    return false;
+  }
+
+  Future<void> _submit() async {
+    if (_validateAndSaveForm()) {
+      try {
+        GoToPage(context, InsurancePremiumPage());
+      } on PlatformException catch (e) {
+        PlatformExceptionAlertDialog(
+          title: 'Operation failed',
+          exception: e,
+        ).show(context);
+      }
+    }
   }
 
 }

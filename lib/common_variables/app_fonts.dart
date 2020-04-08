@@ -140,7 +140,7 @@ var highlightDescription = TextStyle(
     color: Colors.black.withOpacity(.8),
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w500,
-    fontSize: 18.0);
+    fontSize: 17.0);
 var highlighttitle = TextStyle(
     color: Colors.black.withOpacity(.8),
     fontFamily: 'Montserrat',

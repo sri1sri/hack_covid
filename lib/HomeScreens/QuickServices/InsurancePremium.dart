@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hackcovid/HomeScreens/QuickServices/PremiumPlans.dart';
 import 'package:hackcovid/HomeScreens/SettingsPage.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
@@ -7,10 +8,12 @@ import 'package:hackcovid/common_widgets/button_widget/to_do_button.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 
+import 'package:dropdown_formfield/dropdown_formfield.dart';
+import 'package:hackcovid/common_widgets/platform_alert/platform_exception_alert_dialog.dart';
+
+import '../dashboard.dart';
 
 class InsurancePremiumPage extends StatelessWidget {
-  //ProfilePage({@required this.database});
-  //Database database;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +24,6 @@ class InsurancePremiumPage extends StatelessWidget {
 }
 
 class F_InsurancePremiumPage extends StatefulWidget {
-  // F_ProfilePage({@required this.database});
-  // Database database;
-
 
   @override
   _F_InsurancePremiumPageState createState() => _F_InsurancePremiumPageState();
@@ -32,14 +32,22 @@ class F_InsurancePremiumPage extends StatefulWidget {
 class _F_InsurancePremiumPageState extends State<F_InsurancePremiumPage> {
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _regCityController = TextEditingController();
-  final FocusNode _regCityFocusNode = FocusNode();
-  final TextEditingController _carNameController = TextEditingController();
-  final FocusNode _carNameFocusNode = FocusNode();
-  final TextEditingController _carModelController = TextEditingController();
-  final FocusNode _carModelFocusNode = FocusNode();
-  final TextEditingController _yearController = TextEditingController();
-  final FocusNode _yearFocusNode = FocusNode();
+  String _cityName;
+  String _carName;
+  String _carModel;
+  String _purchaseYear;
+
+  String _cityNameError = 'null';
+  String _carNameError= 'null';
+  String _carModelError= 'null';
+  String _purchaseYearError= 'null';
+
+  var dropDownValues = [];
+
+  var cities = ['city1','city2','city3'];
+  var carNames = ['carNames1','carName2','carNames3'];
+  var carModels = ['carModels1','carModels2','carModels3'];
+  var purchaseYears = ['purchaseYears1','purchaseYears2','purchaseYears3','purchaseYears4'];
 
   @override
   Widget build(BuildContext context) {
@@ -76,13 +84,7 @@ class _F_InsurancePremiumPageState extends State<F_InsurancePremiumPage> {
               rightActionBar: Container(
                 child: Icon(Icons.list,color: subBackgroundColor,),
               ),
-              rightAction: () {
-//                Navigator.push(
-//                  context,
-//                  MaterialPageRoute(
-//                      builder: (context) => SettingsPage() ),
-//                );
-              },
+              rightAction: () {},
               primaryText: 'Insurance Premium',
               secondaryText: null,
             ),
@@ -101,124 +103,100 @@ class _F_InsurancePremiumPageState extends State<F_InsurancePremiumPage> {
                       SizedBox(height: 50,),
                       Text("Enter car registration city",style: subTextStyleBlue),
                       SizedBox(height: 10,),
-                      new TextFormField(
-                        controller: _regCityController,
-                        textInputAction: TextInputAction.next,
-                        obscureText: false,
-                        focusNode: _regCityFocusNode,
-                        autocorrect: false,
-                        keyboardType: TextInputType.text,
-                        // onEditingComplete: () => _emailEditingComplete(),
-                        // onChanged: model.updateEmail,
-                        decoration: new InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.location_city,
-                            color: subBackgroundColor,
-                          ),
-                          labelText: "Mumbai,Chennai,....etc",
-                          //errorText: model.emailErrorText,
-                          //enabled: model.isLoading == false,
-                          //fillColor: Colors.redAccent,
-                          border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(5.0),
-                            borderSide: new BorderSide(),
-                          ),
-                        ),
-                        style: new TextStyle(
-                          fontFamily: "Poppins",
-                        ),
+
+                      DropDownFormField(
+                        titleText: null,
+                        hintText: 'select city',
+                        value: _cityName,
+                        onSaved: (value) {
+                          setState(() {
+                            _cityName = value;
+                          });
+                        },
+                        onChanged: (value) {
+                          setState(() {
+                            _cityName = value;
+                          });
+                        },
+                        dataSource: displayDropDownValues(cities),
+                        textField: 'display',
+                        valueField: 'value',
+                        validator: (value) =>
+                        value != null ? null : 'Registration city can\'t be empty.',
                       ),
+
                       SizedBox(height: 20,),
                       Text("Enter car name",style: subTextStyleBlue),
                       SizedBox(height: 10,),
-                      new TextFormField(
-                        controller: _carNameController,
-                        textInputAction: TextInputAction.next,
-                        obscureText: false,
-                        focusNode: _carNameFocusNode,
-                        autocorrect: false,
-                        keyboardType: TextInputType.text,
-                        // onEditingComplete: () => _emailEditingComplete(),
-                        // onChanged: model.updateEmail,
-                        decoration: new InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.directions_car,
-                            color: subBackgroundColor,
-                          ),
-                          labelText: "BMW,Audi,....etc",
-                          //errorText: model.emailErrorText,
-                          //enabled: model.isLoading == false,
-                          //fillColor: Colors.redAccent,
-                          border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(5.0),
-                            borderSide: new BorderSide(),
-                          ),
-                        ),
-                        style: new TextStyle(
-                          fontFamily: "Poppins",
-                        ),
+
+                      DropDownFormField(
+                        titleText: null,
+                        hintText: 'select car name',
+                        value: _carName,
+                        onSaved: (value) {
+                          setState(() {
+                            _carName = value;
+                          });
+                        },
+                        onChanged: (value) {
+                          setState(() {
+                            _carName = value;
+                          });
+                        },
+                        dataSource: displayDropDownValues(carNames),
+                        textField: 'display',
+                        valueField: 'value',
+                        validator: (value) =>
+                        value != null ? null : 'Car name can\'t be empty.',
                       ),
+
                       SizedBox(height: 20,),
                       Text("Enter car model",style: subTextStyleBlue),
                       SizedBox(height: 10,),
-                      new TextFormField(
-                        controller: _carModelController,
-                        textInputAction: TextInputAction.next,
-                        obscureText: false,
-                        focusNode: _carModelFocusNode,
-                        autocorrect: false,
-                        keyboardType: TextInputType.text,
-                        // onEditingComplete: () => _emailEditingComplete(),
-                        // onChanged: model.updateEmail,
-                        decoration: new InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.local_car_wash,
-                            color: subBackgroundColor,
-                          ),
-                          labelText: "A7,R8,i20......etc",
-                          //errorText: model.emailErrorText,
-                          //enabled: model.isLoading == false,
-                          //fillColor: Colors.redAccent,
-                          border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(5.0),
-                            borderSide: new BorderSide(),
-                          ),
-                        ),
-                        style: new TextStyle(
-                          fontFamily: "Poppins",
-                        ),
+                      DropDownFormField(
+                        titleText: null,
+                        hintText: 'select car model',
+                        value: _carModel,
+                        onSaved: (value) {
+                          setState(() {
+                            _carModel = value;
+                          });
+                        },
+                        onChanged: (value) {
+                          setState(() {
+                            _carModel = value;
+                          });
+                        },
+                        dataSource: displayDropDownValues(carModels),
+                        textField: 'display',
+                        valueField: 'value',
+                        validator: (value) =>
+                        value != null ? null : 'Car model can\'t be empty.',
                       ),
                       SizedBox(height: 20,),
                       Text("Enter car purchased year",style: subTextStyleBlue),
                       SizedBox(height: 10,),
-                      new TextFormField(
-                        controller: _yearController,
-                        textInputAction: TextInputAction.next,
-                        obscureText: false,
-                        focusNode: _yearFocusNode,
-                        autocorrect: false,
-                        keyboardType: TextInputType.number,
-                        // onEditingComplete: () => _emailEditingComplete(),
-                        // onChanged: model.updateEmail,
-                        decoration: new InputDecoration(
-                          prefixIcon: Icon(
-                            Icons.calendar_today,
-                            color: subBackgroundColor,
-                          ),
-                          labelText: "2019,2012....etc",
-                          //errorText: model.emailErrorText,
-                          //enabled: model.isLoading == false,
-                          //fillColor: Colors.redAccent,
-                          border: new OutlineInputBorder(
-                            borderRadius: new BorderRadius.circular(5.0),
-                            borderSide: new BorderSide(),
-                          ),
-                        ),
-                        style: new TextStyle(
-                          fontFamily: "Poppins",
-                        ),
+                      DropDownFormField(
+                        titleText: null,
+                        hintText: 'select purchase year',
+                        value: _purchaseYear,
+                        onSaved: (value) {
+                          setState(() {
+                            _purchaseYear = value;
+                          });
+                        },
+                        onChanged: (value) {
+                          setState(() {
+                            _purchaseYear = value;
+                          });
+                        },
+                        dataSource: displayDropDownValues(purchaseYears),
+                        textField: 'display',
+                        valueField: 'value',
+                        validator: (value) =>
+                        value != null ? null : 'purchase year can\'t be empty.',
                       ),
-                      SizedBox(height: 10,),
+
                       SizedBox(height: 50,),
                       ToDoButton(
                           assetName: 'images/googl-logo.png',
@@ -226,11 +204,7 @@ class _F_InsurancePremiumPageState extends State<F_InsurancePremiumPage> {
                           textColor: Colors.white,
                           backgroundColor: backgroundColor,
                           onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PremiumPlansPage() ),
-                          );
+                            _submit();
                           }
                       ),
 
@@ -242,7 +216,43 @@ class _F_InsurancePremiumPageState extends State<F_InsurancePremiumPage> {
           ),
         )
     );
+  }
 
+  displayDropDownValues(values){
+    try{
+      values.forEach((element) {
+        var x = {
+          "display": element,
+          "value": element,
+        };
+        dropDownValues.add(x);
+      }) ;
+      return(dropDownValues.take([values][0].length).toList());
+    }finally{
+      dropDownValues.clear();
+    }
+  }
+
+  bool _validateAndSaveForm() {
+    final form = _formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      return true;
+    }
+    return false;
+  }
+
+  Future<void> _submit() async {
+    if (_validateAndSaveForm()) {
+      try {
+        GoToPage(context, PremiumPlansPage());
+      } on PlatformException catch (e) {
+        PlatformExceptionAlertDialog(
+          title: 'Operation failed',
+          exception: e,
+        ).show(context);
+      }
+    }
   }
 
 }

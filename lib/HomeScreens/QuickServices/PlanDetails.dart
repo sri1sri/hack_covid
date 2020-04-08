@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackcovid/HomeScreens/QuickServices/SeeallCoverages.dart';
+import 'package:hackcovid/HomeScreens/QuickServices/SeeAllCoverages.dart';
 import 'package:hackcovid/HomeScreens/SettingsPage.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
+import 'package:hackcovid/common_widgets/platform_alert/platform_exception_alert_dialog.dart';
+
+import '../../landing_page.dart';
+import '../dashboard.dart';
 
 class PaymentPage extends StatelessWidget {
-  //ProfilePage({@required this.database});
-  //Database database;
 
   @override
   Widget build(BuildContext context) {
@@ -17,22 +20,25 @@ class PaymentPage extends StatelessWidget {
 }
 
 class F_PaymentPage extends StatefulWidget {
-  // F_ProfilePage({@required this.database});
-  // Database database;
 
   @override
   _F_PaymentPageState createState() => _F_PaymentPageState();
 }
 
 class _F_PaymentPageState extends State<F_PaymentPage> {
-  final TextEditingController _nameController = TextEditingController();
   final FocusNode _nameFocusNode = FocusNode();
-  final TextEditingController _cardNoController = TextEditingController();
   final FocusNode _cardNoFocusNode = FocusNode();
-  final TextEditingController _expireController = TextEditingController();
   final FocusNode _expireFocusNode = FocusNode();
-  final TextEditingController _cvvController = TextEditingController();
   final FocusNode _cvvFocusNode = FocusNode();
+
+  String _name;
+  String _cardNumber;
+  String _expireDate;
+  String _cvv;
+
+  final _formKey = GlobalKey<FormState>();
+
+
   @override
   Widget build(BuildContext context) {
     return offlineWidget(context);
@@ -53,8 +59,10 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
         home: new Scaffold(
+          resizeToAvoidBottomPadding: false,
+          backgroundColor: Colors.white,
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/4.5),
+            preferredSize: Size.fromHeight(60),
             child: CustomAppBar(
               leftActionBar: Container(
                 child: Icon(Icons.arrow_back_ios,color: subBackgroundColor,),
@@ -75,46 +83,62 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
             child: Container(
               color: Colors.white,
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: Column(
                   children: <Widget>[
-
                     paymentCard(),
-                    SizedBox(height: 20,),
-                    Container(
-                      child: Column(
-                        children: <Widget>[
-                          FlatButton(
-                            onPressed: () {
-//                              Navigator.push(
-//                                context,
-//                                MaterialPageRoute(
-//                                  builder: (context) => PrivacyPolicy(),
-//                                ),
-//                              );
-                            },
-                            child: Container(
-                              height: 50,
-//                        width: MediaQuery.of(context).size.width,
-                              decoration: BoxDecoration(
-                                color: subBackgroundColor,
-                                borderRadius: BorderRadius.all(Radius.circular(5)),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'PAY',
-                                  style:
-                                  subTextStylewhite
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-
                   ],
                 ),
+              ),
+            ),
+          ),
+          bottomSheet: Container(
+            color: Colors.white,
+            height:100,
+            child: Padding(
+              padding: const EdgeInsets.only(left:30.0,right:30.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      SizedBox(height: 25,),
+                      Text("Total Premium",style: subTextStyleBlue,),
+                      Text("₹12,000",style: subTitleStyle,),
+                    ],
+                  ),
+                  Container(
+                    height: 50.0,
+                    width: 150,
+                    child: GestureDetector(
+                      onTap: () {
+                        _submit();
+//                        Navigator.push(
+//                          context,
+//                          MaterialPageRoute(
+//                              builder: (context) => PaymentPage() ),
+//                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: backgroundColor,
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Center(
+                              child: Text(
+                                "Pay Now",
+                                style: subTextStylewhite,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -126,210 +150,226 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
   Widget paymentCard()
   {
     return Card(
-      elevation: 15,
+      elevation: 0,
       shape: RoundedRectangleBorder(
-        side: BorderSide(color: Colors.black54, width: 2),
+        side: BorderSide(color: Colors.white, width: 2),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Container(
-        height: 500,
+        height: 470,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30.0),),
         child:Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             SizedBox(height: 20,),
-            Row(
-              children: <Widget>[
-                SizedBox(width: 20,),
-                Column(
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: Form(
+                key: _formKey,
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text("Total Premium To Pay",style: descriptionStyleDarkBlur ),
-                    SizedBox(height: 10,),
-                    Text("₹12,000",style: titleStyleTheam,),
+                    SizedBox(height: 0,),
+                    Text("Name on the Card",style: TextStyle(
+                        color: backgroundColor,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 15.0,decoration: TextDecoration.none),),
+                    SizedBox(height: 20,),
+
+                    TextFormField(
+                      onChanged: (value) => _name = value,
+                      textInputAction: TextInputAction.next,
+                      autocorrect: true,
+                      obscureText: false,
+                      focusNode: _nameFocusNode,
+                      onFieldSubmitted: (value) => value == ''
+                          ? null
+                          : FocusScope.of(context)
+                          .requestFocus(_cardNoFocusNode),
+                      decoration: new InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.person,
+                          color: subBackgroundColor,
+                        ),
+                        labelText: "Enter name",
+                        border: new OutlineInputBorder(
+                          borderRadius: new BorderRadius.circular(5.0),
+                          borderSide: new BorderSide(),
+                        ),
+                      ),
+                      style: new TextStyle(
+                        fontFamily: "Poppins",
+                      ),
+                      keyboardType: TextInputType.text,
+                      keyboardAppearance: Brightness.dark,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please enter name on the card';
+                        }
+                        return null;
+                      },
+                    ),
+
+                    SizedBox(height: 20,),
+                    Text("Card Number",style: TextStyle(
+                        color: backgroundColor,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 15.0,decoration: TextDecoration.none),),
+                    SizedBox(height: 20,),
+
+                    TextFormField(
+                      onChanged: (value) => _cardNumber = value,
+                      textInputAction: TextInputAction.next,
+                      autocorrect: true,
+                      obscureText: false,
+                      focusNode: _cardNoFocusNode,
+                      onFieldSubmitted: (value) => value == ''
+                          ? null
+                          : FocusScope.of(context)
+                          .requestFocus(_expireFocusNode),
+                      decoration: new InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.credit_card,
+                          color: subBackgroundColor,
+                        ),
+                        labelText: "Enter card number",
+                        border: new OutlineInputBorder(
+                          borderRadius: new BorderRadius.circular(5.0),
+                          borderSide: new BorderSide(),
+                        ),
+                      ),
+                      style: new TextStyle(
+                        fontFamily: "Poppins",
+                      ),
+                      keyboardType: TextInputType.number,
+                      keyboardAppearance: Brightness.dark,
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please enter card number';
+                        }
+                        return null;
+                      },
+                    ),
+
+                    SizedBox(height: 20,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          width: MediaQuery.of(context).size.width / 2 - 45,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text("Exprires",style: TextStyle(
+                                  color: backgroundColor,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15.0,decoration: TextDecoration.none),),
+                              SizedBox(height: 10,),
+
+                              TextFormField(
+                                onChanged: (value) => _expireDate = value,
+                                textInputAction: TextInputAction.next,
+                                autocorrect: true,
+                                obscureText: false,
+                                focusNode: _expireFocusNode,
+                                onFieldSubmitted: (value) => value == ''
+                                    ? null
+                                    : FocusScope.of(context)
+                                    .requestFocus(_cvvFocusNode),
+                                decoration: new InputDecoration(
+                                  prefixIcon: Icon(
+                                    Icons.date_range,
+                                    color: subBackgroundColor,
+                                  ),
+                                  labelText: "mm/yy",
+                                  border: new OutlineInputBorder(
+                                    borderRadius: new BorderRadius.circular(5.0),
+                                    borderSide: new BorderSide(),
+                                  ),
+                                ),
+                                style: new TextStyle(
+                                  fontFamily: "Poppins",
+                                ),
+                                keyboardType: TextInputType.text,
+                                keyboardAppearance: Brightness.dark,
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Please enter expire date';
+                                  }
+                                  return null;
+                                },
+                              ),
+
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 2 - 45,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text("CVV",style: TextStyle(
+                                  color: backgroundColor,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15.0,decoration: TextDecoration.none),),
+                              SizedBox(height: 10),
+
+                              TextFormField(
+                                onChanged: (value) => _cvv = value,
+                                textInputAction: TextInputAction.next,
+                                autocorrect: true,
+                                obscureText: false,
+                                focusNode: _cvvFocusNode,
+                                decoration: new InputDecoration(
+                                  prefixIcon: Icon(
+                                    Icons.featured_play_list,
+                                    color: subBackgroundColor,
+                                  ),
+                                  labelText: "Enter cvv",
+                                  border: new OutlineInputBorder(
+                                    borderRadius: new BorderRadius.circular(5.0),
+                                    borderSide: new BorderSide(),
+                                  ),
+                                ),
+                                style: new TextStyle(
+                                  fontFamily: "Poppins",
+                                ),
+                                keyboardType: TextInputType.number,
+                                keyboardAppearance: Brightness.dark,
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return 'Please enter cvv';
+                                  }
+                                  return null;
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20,),
+
+                    Row(
+                  children: <Widget>[
+                    Image.asset('images/applePay.png',height: 40,width: 40),
+                    SizedBox(width: 20,),
+                    Image.asset('images/americanExpress.png',height: 40,width: 40),
+                    SizedBox(width: 20,),
+                    Image.asset('images/paytm.png',height: 40,width: 40),
+                    SizedBox(width: 20,),
+                    Image.asset('images/mastercard.png',height: 40,width: 40),
+                  ]),
                   ],
                 ),
-              ],
-            ),
-            SizedBox(height: 10,),
-            Divider(
-              color: Colors.black.withOpacity(0.9),
-              thickness: 1,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(height: 15,),
-                  Text("Name on the Card",style: subTitleStyle,),
-                  SizedBox(height: 20,),
-                  new TextFormField(
-                    controller: _nameController,
-                    textInputAction: TextInputAction.next,
-                    obscureText: false,
-                    focusNode: _nameFocusNode,
-                    autocorrect: false,
-                    keyboardType: TextInputType.text,
-                    // onEditingComplete: () => _emailEditingComplete(),
-                    // onChanged: model.updateEmail,
-                    decoration: new InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: subBackgroundColor
-                          )
-                      ),
-                      prefixIcon: Icon(
-                        Icons.person,
-                        color: subBackgroundColor,
-                      ),
-                      labelText: "Enter Name On your Card",
-                      //errorText: model.emailErrorText,
-                      //enabled: model.isLoading == false,
-                      //fillColor: Colors.redAccent,
-                      border: new OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0),
-                        borderSide: new BorderSide(),
-                      ),
-                    ),
-                    style: new TextStyle(
-                      fontFamily: "Poppins",
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-                  Text("Card Number",style: subTitleStyle,),
-                  SizedBox(height: 20,),
-                  new TextFormField(
-                    controller: _cardNoController,
-                    textInputAction: TextInputAction.next,
-                    obscureText: false,
-                    focusNode: _cardNoFocusNode,
-                    autocorrect: false,
-                    keyboardType: TextInputType.number,
-                    // onEditingComplete: () => _emailEditingComplete(),
-                    // onChanged: model.updateEmail,
-                    decoration: new InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: subBackgroundColor
-                          )
-                      ),
-                      prefixIcon: Icon(
-                        Icons.credit_card,
-                        color: subBackgroundColor,
-                      ),
-                      labelText: "4655 **** **** **** 7879",
-                      //errorText: model.emailErrorText,
-                      //enabled: model.isLoading == false,
-                      //fillColor: Colors.redAccent,
-                      border: new OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(5.0),
-                        borderSide: new BorderSide(),
-                      ),
-                    ),
-                    style: new TextStyle(
-                      fontFamily: "Poppins",
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2 - 45,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text("Exprires",style: subTitleStyle,),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            new TextFormField(
-                              controller: _expireController,
-                              textInputAction: TextInputAction.next,
-                              obscureText: false,
-                              focusNode: _expireFocusNode,
-                              autocorrect: false,
-                              keyboardType: TextInputType.number,
-                              // onEditingComplete: () => _emailEditingComplete(),
-                              // onChanged: model.updateEmail,
-                              decoration: new InputDecoration(
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: subBackgroundColor
-                                    )
-                                ),
-                                prefixIcon: Icon(
-                                  Icons.date_range,
-                                  color: subBackgroundColor,
-                                ),
-                                labelText: "29/10/2020",
-                                //errorText: model.emailErrorText,
-                                //enabled: model.isLoading == false,
-                                //fillColor: Colors.redAccent,
-                                border: new OutlineInputBorder(
-                                  borderRadius: new BorderRadius.circular(5.0),
-                                  borderSide: new BorderSide(),
-                                ),
-                              ),
-                              style: new TextStyle(
-                                fontFamily: "Poppins",
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2 - 45,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text("CVV",style: subTitleStyle,),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            new TextFormField(
-                              controller: _cvvController,
-                              textInputAction: TextInputAction.next,
-                              obscureText: true,
-                              focusNode: _cvvFocusNode,
-                              autocorrect: false,
-                              keyboardType: TextInputType.number,
-                              // onEditingComplete: () => _emailEditingComplete(),
-                              // onChanged: model.updateEmail,
-                              decoration: new InputDecoration(
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: subBackgroundColor
-                                    )
-                                ),
-                                prefixIcon: Icon(
-                                  Icons.featured_play_list,
-                                  color: subBackgroundColor,
-                                ),
-                                labelText: "***",
-                                //errorText: model.emailErrorText,
-                                //enabled: model.isLoading == false,
-                                //fillColor: Colors.redAccent,
-                                border: new OutlineInputBorder(
-                                  borderRadius: new BorderRadius.circular(5.0),
-                                  borderSide: new BorderSide(),
-                                ),
-                              ),
-                              style: new TextStyle(
-                                fontFamily: "Poppins",
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-
-                ],
               ),
             ),
+
           ],
         ) ,
 
@@ -337,4 +377,27 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
     );
   }
 
+  bool _validateAndSaveForm() {
+    final form = _formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      return true;
+    }
+    return false;
+  }
+
+  Future<void> _submit() async {
+    if (_validateAndSaveForm()) {
+      try {
+
+        GoToPage(context, LandingPage());
+
+      } on PlatformException catch (e) {
+        PlatformExceptionAlertDialog(
+          title: 'Operation failed',
+          exception: e,
+        ).show(context);
+      }
+    }
+  }
 }

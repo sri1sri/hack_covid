@@ -197,6 +197,13 @@ class _F_SignupPageState extends State<F_SignupPage> {
                             fontFamily: "Poppins",
                           ),
                         ),
+
+
+
+
+
+
+
                       ),
                       SizedBox(height: 30.0,),
                       Container(

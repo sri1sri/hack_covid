@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:hackcovid/HomeScreens/QuickServices/CarInsurance.dart';
 import 'package:hackcovid/HomeScreens/profile.dart';
-import 'package:hackcovid/HomeScreens/viepolicydetails/viewpolicydetailspage.dart';
+import 'package:hackcovid/HomeScreens/viewPolicyDetails//viewpolicydetailspage.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_variables/app_functions.dart';
@@ -299,7 +299,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                                         {
                                           GoToPage(
                                               context,
-                                              Viewpolicydetails());
+                                              ViewPolicyDetails());
                                         }
                                         break;
 
@@ -462,8 +462,6 @@ class _F_DashboardState extends State<F_Dashboard> {
                         ),
                       ),
                     ),
-
-
 //                    Text('Quick Services',
 //                        style: subTitleStyleLight
 //                    ),

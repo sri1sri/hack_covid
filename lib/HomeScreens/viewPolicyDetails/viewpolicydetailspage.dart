@@ -1,4 +1,4 @@
-import 'package:hackcovid/HomeScreens/viepolicydetails/premiumbreakup.dart';
+import 'package:hackcovid/HomeScreens/viewPolicyDetails//premiumbreakup.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_variables/app_functions.dart';
@@ -10,24 +10,24 @@ import 'insureddetails.dart';
 
 //import 'no_access_screen.dart';
 
-class Viewpolicydetails extends StatelessWidget {
+class ViewPolicyDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: F_Viewpolicydetails(),
+      child: F_ViewPolicyDetails(),
     );
   }
 }
 
-class F_Viewpolicydetails extends StatefulWidget {
+class F_ViewPolicyDetails extends StatefulWidget {
 //  F_Viewpolicydetails({@required this.database,});
 //  Database database;
 
   @override
-  _F_ViewpolicydetailsState createState() => _F_ViewpolicydetailsState();
+  _F_ViewPolicyDetailsState createState() => _F_ViewPolicyDetailsState();
 }
 
-class _F_ViewpolicydetailsState extends State<F_Viewpolicydetails> {
+class _F_ViewPolicyDetailsState extends State<F_ViewPolicyDetails> {
 
 
   @override

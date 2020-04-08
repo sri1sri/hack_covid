@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackcovid/HomeScreens/SettingsPage.dart';
-import 'package:hackcovid/HomeScreens/viepolicydetails/viewpolicydetailspage.dart';
+import 'package:hackcovid/HomeScreens/viewPolicyDetails//viewpolicydetailspage.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
@@ -128,7 +128,7 @@ class _F_PoliciesPageState extends State<F_PoliciesPage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => Viewpolicydetails() ),
+              builder: (context) => ViewPolicyDetails() ),
         );
       },
     );
