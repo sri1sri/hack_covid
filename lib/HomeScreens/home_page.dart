@@ -8,6 +8,7 @@ import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 import 'package:hackcovid/common_widgets/navigationBar.dart';
 import 'package:provider/provider.dart';
 
+
 class HomePage extends StatelessWidget {
 
   @override

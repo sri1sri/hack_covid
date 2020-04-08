@@ -1,6 +1,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
+import 'package:flare_flutter/flare_actor.dart';
 
 
 
@@ -26,13 +27,7 @@ class CustomOfflinePage extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: <Widget>[
-            Image(
-              image: AssetImage(
-                'images/no_internet.png',
-              ),
-              height: 300.0,
-              width: 300.0,
-            ),
+            FlareActor("images/no internet.flr", alignment:Alignment.center, fit:BoxFit.contain, animation:'no_netwrok'),
             SizedBox(height: 30.0,),
             Text('No Internet connection.\nPlease check connection!!!', style: titleStyle,)
           ],

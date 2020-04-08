@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hackcovid/HomeScreens/Splash.dart';
+import 'package:hackcovid/HomeScreens/home_page.dart';
 import 'package:provider/provider.dart';
 import 'AuthenticationScreens/login_page.dart';
 import 'HomeScreens/Home_page.dart';
@@ -26,7 +28,7 @@ class LandingPage extends StatelessWidget {
             value: user,
             child: Provider<Database>(
                 create: (_) => FirestoreDatabase(uid: USER_ID = user.uid),
-                child: HomePage()),
+                child: splashScreen()),
           );
 
         } else {

@@ -1020,7 +1020,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 80,),
+                          SizedBox(height: 350,),
 
                         ],
                       ),
@@ -1199,7 +1199,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                               return null;
                             },
                           ),
-                          SizedBox(height: 80,),
+                          SizedBox(height: 350,),
 
                         ],
                       ),
@@ -1507,7 +1507,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           )
                         ],
                       ),
-                          SizedBox(height: 330,),
+                          SizedBox(height: 350,),
                         ],
                       ),
                     ),

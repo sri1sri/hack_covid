@@ -50,6 +50,8 @@ dev_dependencies:
   percent_indicator: ^2.1.1+1
   dropdownfield: ^1.0.3
   dropdown_formfield: ^0.1.1
+  flare_splash_screen: ^3.0.1
+  flare_flutter: ^2.0.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -69,6 +71,13 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - images/splash.flr
+    - assets/card.flr
+    - images/empty.flr
+    - images/no.flr
+    - images/walk.flr
+    - images/no internet.flr
+    - assets/success.flr
     - images/image1.jpg
     - images/image2.jpg
     - images/image3.jpg
