@@ -21,17 +21,33 @@ class CustomOfflinePage extends StatelessWidget {
   final text;
 
   @override
+
+
+
   Widget build(BuildContext context) {
     return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
+      child: Container(
         child: Column(
-          children: <Widget>[
-            FlareActor("images/no internet.flr", alignment:Alignment.center, fit:BoxFit.contain, animation:'no_netwrok'),
-            SizedBox(height: 30.0,),
-            Text('No Internet connection.\nPlease check connection!!!', style: titleStyle,)
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 100,),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text("Hack Covid",style: bigTitleStyle,),
+            ),
+            SizedBox(
+              width: 400.0,
+              height: 500.0,
+              child: FlareActor("images/no internet.flr", alignment:Alignment.center, fit:BoxFit.contain, animation:'no_netwrok'),
+            ),
+            //Splash(),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text('No Internet connection.\nPlease check connection!!!',style: titleStyle,),
+            ),
+
           ],
-        ),
+        ) ,
       ),
     );
   }

@@ -6,6 +6,7 @@ import 'package:hackcovid/HomeScreens/viewPolicyDetails//viewpolicydetailspage.d
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_variables/app_functions.dart';
+import 'package:hackcovid/common_widgets/NoAccessPage.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 import 'package:hackcovid/common_widgets/platform_alert/platform_alert_dialog.dart';
@@ -299,19 +300,16 @@ class _F_DashboardState extends State<F_Dashboard> {
                                         {
                                           GoToPage(
                                               context,
-                                              ViewPolicyDetails());
+                                              NoAccessPage());
                                         }
                                         break;
 
 
-                                      case 'Flight Insurance':
+                                      case 'Bike Insurance':
                                         {
-//                            GoToPage(
-//                                context,
-//                                GoodsApprovalsPage(
-//                                  database: widget.database,
-//                                  employee: employee,
-//                                ));
+                                          GoToPage(
+                                              context,
+                                              NoAccessPage());
                                         }
                                         break;
                                       case 'Bike Insurance':
@@ -413,7 +411,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                                               {
                                                 GoToPage(
                                                     context,
-                                                    CarInsurancePage(
+                                                    NoAccessPage(
                                                     ));
                                               }
                                               break;

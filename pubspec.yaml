@@ -72,7 +72,7 @@ flutter:
   uses-material-design: true
   assets:
     - images/splash.flr
-    - assets/card.flr
+    - images/card-3.flr
     - images/empty.flr
     - images/no.flr
     - images/walk.flr

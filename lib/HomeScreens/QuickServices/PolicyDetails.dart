@@ -192,6 +192,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
         padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         child: Scaffold(
           resizeToAvoidBottomPadding: false,
+
           body: _buildContent(context),
         ),
       ),
@@ -203,6 +204,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
         debugShowCheckedModeBanner: false,
         home: new Scaffold(
             resizeToAvoidBottomPadding: false,
+
             body: ContSize(context,)
         )
     );
@@ -212,6 +214,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
   Widget ContSize(BuildContext context){
       return Scaffold(
         resizeToAvoidBottomPadding: false,
+
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.white,
@@ -238,7 +241,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                   SizedBox(height: 20,),
 
                   Container(
-                    height: MediaQuery.of(context).size.height - 240,
+                    height: MediaQuery.of(context).size.height - 490,
                     child: PageView(
                       physics: ClampingScrollPhysics(),
                       controller: _pageController,
@@ -256,43 +259,43 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                     ),
                   ),
 
-                  _currentPage != _numPages - 1
-                      ? Expanded(
-                    child: Align(
-                      alignment: FractionalOffset.bottomRight,
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom:0.0,right: 10),
-                        child: Container(
-                          height: 50.0,
-                          width: 150,
-                          child: GestureDetector(
-                            onTap: () {
-                              print('currentPage == $_currentPage');
-                              _submit(_currentPage);
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: backgroundColor,
-                                borderRadius: BorderRadius.circular(30.0),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Center(
-                                    child: Text(
-                                      "Next",
-                                      style: subTextStylewhite,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                      : Text(''),
+//                  _currentPage != _numPages - 1
+//                      ? Expanded(
+//                    child: Align(
+//                      alignment: FractionalOffset.bottomRight,
+//                      child: Padding(
+//                        padding: const EdgeInsets.only(bottom:0.0,right: 10),
+//                        child: Container(
+//                          height: 50.0,
+//                          width: 150,
+//                          child: GestureDetector(
+//                            onTap: () {
+//                              print('currentPage == $_currentPage');
+//                              _submit(_currentPage);
+//                            },
+//                            child: Container(
+//                              decoration: BoxDecoration(
+//                                color: backgroundColor,
+//                                borderRadius: BorderRadius.circular(30.0),
+//                              ),
+//                              child: Row(
+//                                mainAxisAlignment: MainAxisAlignment.center,
+//                                children: <Widget>[
+//                                  Center(
+//                                    child: Text(
+//                                      "Next",
+//                                      style: subTextStylewhite,
+//                                    ),
+//                                  )
+//                                ],
+//                              ),
+//                            ),
+//                          ),
+//                        ),
+//                      ),
+//                    ),
+//                  )
+//                      : Text(''),
                 ],
               ),
             ),
@@ -842,12 +845,42 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                             return null;
                           },
                         ),
-
-                        SizedBox(height: 280,),
                       ],
                     ),
                   ),
                 ),
+                Column(
+                  children: [
+                    SizedBox(height: 10,),
+                    GestureDetector(
+                      onTap: () {
+                        print('currentPage == $_currentPage');
+                        _submit(_currentPage);
+                      },
+                      child: Container(
+                        height: 50,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          color: backgroundColor,
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Center(
+                              child: Text(
+                                "Next",
+                                style: subTextStylewhite,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 280,),
+                  ],
+                )
+
 
               ],
             ),
@@ -1020,12 +1053,43 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 350,),
+
 
                         ],
                       ),
                     ),
                   ),
+                  Column(
+                    children: [
+                      SizedBox(height: 10,),
+                      GestureDetector(
+                        onTap: () {
+                          print('currentPage == $_currentPage');
+                          _submit(_currentPage);
+                        },
+                        child: Container(
+                          height: 50,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            color: backgroundColor,
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Center(
+                                child: Text(
+                                  "Next",
+                                  style: subTextStylewhite,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 280,),
+                    ],
+                  )
 
                 ],
               ),
@@ -1199,12 +1263,43 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                               return null;
                             },
                           ),
-                          SizedBox(height: 350,),
+
 
                         ],
                       ),
                     ),
                   ),
+                  Column(
+                    children: [
+                      SizedBox(height: 10,),
+                      GestureDetector(
+                        onTap: () {
+                          print('currentPage == $_currentPage');
+                          _submit(_currentPage);
+                        },
+                        child: Container(
+                          height: 50,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            color: backgroundColor,
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Center(
+                                child: Text(
+                                  "Next",
+                                  style: subTextStylewhite,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 280,),
+                    ],
+                  )
 
                 ],
               ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hackcovid/HomeScreens/QuickServices/PaymentSuccess.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
@@ -113,11 +114,11 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
                     child: GestureDetector(
                       onTap: () {
                         _submit();
-//                        Navigator.push(
-//                          context,
-//                          MaterialPageRoute(
-//                              builder: (context) => PaymentPage() ),
-//                        );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PaymentSuccess() ),
+                        );
                       },
                       child: Container(
                         decoration: BoxDecoration(

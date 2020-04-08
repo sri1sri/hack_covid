@@ -15,26 +15,26 @@ class MyNavigator {
     Navigator.pushNamed(context, "/intro");
   }
 }
-class splashScreen extends StatefulWidget {
+class PaymentSuccess extends StatefulWidget {
   @override
-  _splashScreenState createState() => _splashScreenState();
+  _PaymentSuccessState createState() => _PaymentSuccessState();
 }
 
-class _splashScreenState extends State<splashScreen> {
+class _PaymentSuccessState extends State<PaymentSuccess> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    Timer(Duration(seconds: 3),
+    Timer(Duration(seconds: 6),
 
-            () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => HomePage( ) ),
-              );
-            },);
+          () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => HomePage( ) ),
+        );
+      },);
   }
 
   @override
@@ -47,17 +47,17 @@ class _splashScreenState extends State<splashScreen> {
             SizedBox(height: 100,),
             Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Text("Hack Covid",style: bigTitleStyle,),
+              child: Text("Payment Success",style: bigTitleStyle,),
             ),
             SizedBox(
-              width: 400.0,
-              height: 500.0,
-              child: FlareActor("images/walk.flr", alignment:Alignment.center, fit:BoxFit.contain, animation:'Untitled'),
+              width: 500.0,
+              height: 600.0,
+              child: FlareActor("images/card-3.flr", alignment:Alignment.center, fit:BoxFit.contain, animation:'card'),
             ),
             //Splash(),
             Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Text("We Bought \nour banking at your FingerTips...!",style: topNavigationBarTitleStyle,),
+              child: Text("Your Card details have been saved for future..! ",style: topNavigationBarTitleStyle,),
             ),
 
           ],
