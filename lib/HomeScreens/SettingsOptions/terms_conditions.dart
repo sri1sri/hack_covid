@@ -42,7 +42,7 @@ class _F_TermsAndServices extends State<F_TermsAndServices> {
   Widget _buildContent(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(MediaQuery.of(context).size.width/5),
+        preferredSize: Size.fromHeight(80),
         child: CustomAppBar(
           leftActionBar: Container(
             child: Icon(Icons.arrow_back_ios,color: Colors.white,),
