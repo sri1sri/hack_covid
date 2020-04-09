@@ -44,14 +44,14 @@ class _splashScreenState extends State<splashScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 100,),
+            SizedBox(height: 90,),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Text("Hack Covid",style: bigTitleStyle,),
             ),
             SizedBox(
-              width: 400.0,
-              height: 500.0,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height/2,
               child: FlareActor("images/walk.flr", alignment:Alignment.center, fit:BoxFit.contain, animation:'Untitled'),
             ),
             //Splash(),

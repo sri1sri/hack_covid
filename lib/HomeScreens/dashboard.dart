@@ -259,7 +259,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                             child: new GridView.builder(
                               itemCount: ourProductsIcons.length,
                               gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 3,mainAxisSpacing: 8,crossAxisSpacing: 0
+                                  crossAxisCount: 3,mainAxisSpacing: 6,crossAxisSpacing: 0
                               ),
                               itemBuilder: (BuildContext context, int index) {
                                 return new GestureDetector(
@@ -274,7 +274,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                                         crossAxisAlignment: CrossAxisAlignment.center,
                                         children: <Widget>[
                                           Image.asset(
-                                            ourProductsIcons[index],height: 60,
+                                            ourProductsIcons[index],height: 56,
                                           ),
 
                                           new Text(
@@ -394,7 +394,7 @@ class _F_DashboardState extends State<F_Dashboard> {
                                               crossAxisAlignment: CrossAxisAlignment.center,
                                               children: <Widget>[
                                                 Image.asset(
-                                                  quickServicesIcons[index],height: 60,
+                                                  quickServicesIcons[index],height: 56,
                                                 ),
                                                 new Text(
                                                   quickServices[index],

@@ -226,119 +226,45 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
           ),
           title: Text("Policy Details",style: titleStyleTheam,),
         ),
-        body: AnnotatedRegion<SystemUiOverlayStyle>(
-          value: SystemUiOverlayStyle.light,
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.0), // changed padding from 25 to 0
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  statusTrackerWidget(levelOne, levelTwo, levelThree,),
-                  SizedBox(height: 20,),
-
-                  Container(
-                    height: MediaQuery.of(context).size.height - 490,
-                    child: PageView(
-                      physics: ClampingScrollPhysics(),
-                      controller: _pageController,
-                      onPageChanged: (int page) {
-                        setState(() {
-                          _currentPage = page;
-                        });
-                      },
-                      children: <Widget>[
-                        CarOwnerDetails(context),
-                        NominieeDetails(context),
-                        CommunicationDetails(context),
-                        CarDetails(context)
-                      ],
-                    ),
-                  ),
-
-//                  _currentPage != _numPages - 1
-//                      ? Expanded(
-//                    child: Align(
-//                      alignment: FractionalOffset.bottomRight,
-//                      child: Padding(
-//                        padding: const EdgeInsets.only(bottom:0.0,right: 10),
-//                        child: Container(
-//                          height: 50.0,
-//                          width: 150,
-//                          child: GestureDetector(
-//                            onTap: () {
-//                              print('currentPage == $_currentPage');
-//                              _submit(_currentPage);
-//                            },
-//                            child: Container(
-//                              decoration: BoxDecoration(
-//                                color: backgroundColor,
-//                                borderRadius: BorderRadius.circular(30.0),
-//                              ),
-//                              child: Row(
-//                                mainAxisAlignment: MainAxisAlignment.center,
-//                                children: <Widget>[
-//                                  Center(
-//                                    child: Text(
-//                                      "Next",
-//                                      style: subTextStylewhite,
-//                                    ),
-//                                  )
-//                                ],
-//                              ),
-//                            ),
-//                          ),
-//                        ),
-//                      ),
-//                    ),
-//                  )
-//                      : Text(''),
-                ],
-              ),
-            ),
-          ),
-        ),
-        bottomSheet: _currentPage == _numPages - 1
-            ? Container(
-          height:100,
-          child: Padding(
-            padding: const EdgeInsets.only(left:30.0,right:30.0),
-            child: Row(
+        body: Padding(
+          padding: const EdgeInsets.only(top:0.0,bottom: 0,left: 0,right: 0),
+          child: SingleChildScrollView(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    SizedBox(height: 20,),
-                    Text("Total Premium",style: subTextStyleBlue,),
-                    Text("₹12,000",style: subTitleStyle,),
-                  ],
-                ),
-                Container(
-                  height: 50.0,
-                  width: 150,
-                  child: GestureDetector(
-                    onTap: () {
-
-                      _submit(3);
-
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: backgroundColor,
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                AnnotatedRegion<SystemUiOverlayStyle>(
+                  value: SystemUiOverlayStyle.light,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20.0), // changed padding from 25 to 0
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-                          Center(
-                            child: Text(
-                              "Proceed",
-                              style: subTextStylewhite,
+                          statusTrackerWidget(levelOne, levelTwo, levelThree,),
+                          SizedBox(height: 20,),
+
+                          Container(
+                            height: MediaQuery.of(context).size.height,
+                            child: PageView(
+                              physics: ClampingScrollPhysics(),
+                              controller: _pageController,
+                              onPageChanged: (int page) {
+                                setState(() {
+                                  _currentPage = page;
+                                });
+                              },
+                              children: <Widget>[
+                                CarOwnerDetails(context),
+                                NominieeDetails(context),
+                                CommunicationDetails(context),
+                                CarDetails(context)
+                              ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -347,8 +273,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
               ],
             ),
           ),
-        )
-            : Text(''),
+        ),
       );
   }
 
@@ -877,7 +802,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 280,),
+                    SizedBox(height: 380,),
                   ],
                 )
 
@@ -1087,7 +1012,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 280,),
+                      SizedBox(height: 380,),
                     ],
                   )
 
@@ -1297,7 +1222,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 280,),
+                      SizedBox(height: 380,),
                     ],
                   )
 
@@ -1602,7 +1527,55 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           )
                         ],
                       ),
-                          SizedBox(height: 350,),
+                          SizedBox(height: 50,),
+                          Container(
+                            height:100,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left:5.0,right:5.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Column(
+                                    children: <Widget>[
+                                      SizedBox(height: 20,),
+                                      Text("Total Premium",style: subTextStyleBlue,),
+                                      Text("₹12,000",style: subTitleStyle,),
+                                    ],
+                                  ),
+                                  Container(
+                                    height: 50.0,
+                                    width: 150,
+                                    child: GestureDetector(
+                                      onTap: () {
+
+                                        _submit(3);
+
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: backgroundColor,
+                                          borderRadius: BorderRadius.circular(30.0),
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Center(
+                                              child: Text(
+                                                "Proceed",
+                                                style: subTextStylewhite,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+
+                          SizedBox(height: 380,),
                         ],
                       ),
                     ),

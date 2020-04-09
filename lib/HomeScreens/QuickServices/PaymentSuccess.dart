@@ -5,16 +5,16 @@ import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/widgets/my_navigator.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
-var routes = <String, WidgetBuilder>{
-  "/intro": (BuildContext context) => HomePage(),
-};
-
-class MyNavigator {
-
-  static void goToIntro(BuildContext context) {
-    Navigator.pushNamed(context, "/intro");
-  }
-}
+//var routes = <String, WidgetBuilder>{
+//  "/intro": (BuildContext context) => HomePage(),
+//};
+//
+//class MyNavigator {
+//
+//  static void goToIntro(BuildContext context) {
+//    Navigator.pushNamed(context, "/intro");
+//  }
+//}
 class PaymentSuccess extends StatefulWidget {
   @override
   _PaymentSuccessState createState() => _PaymentSuccessState();
@@ -22,20 +22,20 @@ class PaymentSuccess extends StatefulWidget {
 
 class _PaymentSuccessState extends State<PaymentSuccess> {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    Timer(Duration(seconds: 6),
-
-          () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => HomePage( ) ),
-        );
-      },);
-  }
+//  void initState() {
+//    // TODO: implement initState
+//    super.initState();
+//
+//    Timer(Duration(seconds: 6),
+//
+//          () {
+//        Navigator.push(
+//          context,
+//          MaterialPageRoute(
+//              builder: (context) => HomePage( ) ),
+//        );
+//      },);
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +44,14 @@ class _PaymentSuccessState extends State<PaymentSuccess> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 100,),
+            SizedBox(height: 90,),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Text("Payment Success",style: bigTitleStyle,),
             ),
             SizedBox(
-              width: 500.0,
-              height: 600.0,
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height/2,
               child: FlareActor("images/card-3.flr", alignment:Alignment.center, fit:BoxFit.contain, animation:'card'),
             ),
             //Splash(),

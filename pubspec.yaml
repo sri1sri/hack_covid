@@ -76,6 +76,8 @@ flutter:
     - images/empty.flr
     - images/no.flr
     - images/walk.flr
+    - images/dash.flr
+    - images/dash-2.flr
     - images/no internet.flr
     - assets/success.flr
     - images/image1.jpg
