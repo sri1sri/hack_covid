@@ -4,25 +4,27 @@ import 'package:hackcovid/HomeScreens/QuickServices/PolicyDetails.dart';
 import 'package:hackcovid/HomeScreens/SettingsPage.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
+import 'package:hackcovid/common_variables/app_functions.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
+import 'package:hackcovid/firebase/database.dart';
 
 class PremiumPlansPage extends StatelessWidget {
 
-  //ProfilePage({@required this.database});
-  //Database database;
+  PremiumPlansPage({@required this.database});
+  Database database;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: F_PremiumPlansPage(),
+      child: F_PremiumPlansPage(database: database,),
     );
   }
 }
 
 class F_PremiumPlansPage extends StatefulWidget {
-  // F_ProfilePage({@required this.database});
-  // Database database;
+  F_PremiumPlansPage({@required this.database});
+  Database database;
 
   @override
   _F_PremiumPlansPageState createState() => _F_PremiumPlansPageState();
@@ -30,9 +32,12 @@ class F_PremiumPlansPage extends StatefulWidget {
 
 class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
 
+  String totalPremium = '12,492';
+
 
   @override
   Widget build(BuildContext context) {
+
     return offlineWidget(context);
   }
 
@@ -73,6 +78,33 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
                       backgroundColor: Colors.white,
                       elevation: 0,
                       bottom: TabBar(
+                        onTap: (value)=>{
+
+                          if(value == 0){
+                          setState(() {
+                          totalPremium='12,492';
+                          TOTALPREMIUM = totalPremium;
+                    }),
+                          }else if(value == 1){
+                            setState(() {
+                              totalPremium='11,954';
+                              TOTALPREMIUM = totalPremium;
+
+                            }),
+                          }else if(value == 2){
+                            setState(() {
+                              totalPremium='10,083';
+                              TOTALPREMIUM = totalPremium;
+
+                            }),
+                          }else if(value == 3){
+                            setState(() {
+                              totalPremium='9,839';
+                              TOTALPREMIUM = totalPremium;
+
+                            }),
+                          }
+                          },
                           isScrollable: true,
                           unselectedLabelColor: backgroundColor,
                           unselectedLabelStyle: subTitleStyleWhite,
@@ -92,7 +124,7 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
                                         fontWeight: FontWeight.w600,
                                         fontSize: 15.0),),
                                     SizedBox(height: 3,),
-                                    Text("₹12,000"),
+                                    Text("₹12,492"),
                                   ],
                                    ),
                               ),
@@ -109,7 +141,7 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
                                           fontWeight: FontWeight.w600,
                                           fontSize: 15.0),),
                                       SizedBox(height: 3,),
-                                      Text("₹12,000"),
+                                      Text("₹11,954"),
                                     ],
                                   ),
                                 ),
@@ -126,7 +158,7 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
                                         fontWeight: FontWeight.w600,
                                         fontSize: 15.0),),
                                     SizedBox(height: 3,),
-                                    Text("₹12,000"),
+                                    Text("₹10,083"),
                                   ],
                                 ),
                               ),
@@ -142,7 +174,7 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
                                         fontWeight: FontWeight.w600,
                                         fontSize: 15.0),),
                                     SizedBox(height: 3,),
-                                    Text("₹12,000"),
+                                    Text("₹9,839"),
                                   ],
                                 ),
                               ),
@@ -151,10 +183,10 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
                     ),
                     body: TabBarView(
                         children: [
-                          PremiumPlanDetailsPage(),
-                          PremiumPlanDetailsPage(),
-                          PremiumPlanDetailsPage(),
-                          PremiumPlanDetailsPage(),
+                          PremiumPlanDetailsPage(type: 0, keyProtect: '₹1,341',engineProtect: '₹10,812',garageCash: '₹8,742'),
+                          PremiumPlanDetailsPage(type: 1, keyProtect: '₹1,235',engineProtect: '₹9,653',garageCash: '₹7,543'),
+                          PremiumPlanDetailsPage(type: 2, keyProtect: '₹1,146',engineProtect: '₹8,098',garageCash: '₹6,931'),
+                          PremiumPlanDetailsPage(type: 3, keyProtect: '₹987',engineProtect: '₹6,621',garageCash: '₹6,435'),
                     ]),
                   ),
                 ),
@@ -172,7 +204,7 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
                       children: <Widget>[
                         SizedBox(height: 10,),
                         Text("Total Premium",style: subTextStyleBlue,),
-                        Text("₹12,000",style: subTitleStyle,),
+                        Text('₹$totalPremium',style: subTitleStyle,),
                       ],
                     ),
                     Container(
@@ -183,7 +215,7 @@ class _F_PremiumPlansPageState extends State<F_PremiumPlansPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => PolicyRegistrationPage() ),
+                                builder: (context) => PolicyRegistrationPage(database: widget.database,) ),
                           );
                         },
                         child: Container(

@@ -15,17 +15,17 @@ class Slide {
 final slideList = [
   Slide(
     imageUrl: 'images/image1.jpg',
-    title: 'A Cool Way to Get Start',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus tincidunt bibendum. Maecenas eu viverra orci. Duis diam leo, porta at justo vitae, euismod aliquam nulla.',
+    title: 'Dedicated garage',
+    description: 'You can avail emergency assistance services in any of our network garages. Services include towing on breakdown/accident, flat tyre, etc.',
   ),
   Slide(
     imageUrl: 'images/image2.jpg',
-    title: 'Design Interactive App UI',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus tincidunt bibendum. Maecenas eu viverra orci. Duis diam leo, porta at justo vitae, euismod aliquam nulla.',
+    title: 'Engine Protect',
+    description: 'This add-on cover protects your engine from damages that are caused as a consequence of an accident.',
   ),
   Slide(
     imageUrl: 'images/image3.jpg',
-    title: 'It\'s Just the Beginning',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus tincidunt bibendum. Maecenas eu viverra orci. Duis diam leo, porta at justo vitae, euismod aliquam nulla.',
+    title: 'Garage Cash',
+    description: 'A daily allowance is given to you for the number of days that your car is under repairs in the garage due to vehicle damages.',
   ),
 ];

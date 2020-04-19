@@ -4,26 +4,32 @@ import 'package:hackcovid/HomeScreens/QuickServices/PremiumPlans.dart';
 import 'package:hackcovid/HomeScreens/SettingsPage.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
+import 'package:hackcovid/common_variables/app_functions.dart';
 import 'package:hackcovid/common_widgets/button_widget/to_do_button.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 
 import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:hackcovid/common_widgets/platform_alert/platform_exception_alert_dialog.dart';
+import 'package:hackcovid/firebase/database.dart';
 
 import '../dashboard.dart';
 
 class InsurancePremiumPage extends StatelessWidget {
+  InsurancePremiumPage({@required this.database});
+  Database database;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: F_InsurancePremiumPage(),
+      child: F_InsurancePremiumPage(database: database,),
     );
   }
 }
 
 class F_InsurancePremiumPage extends StatefulWidget {
+  F_InsurancePremiumPage({@required this.database});
+  Database database;
 
   @override
   _F_InsurancePremiumPageState createState() => _F_InsurancePremiumPageState();
@@ -44,10 +50,10 @@ class _F_InsurancePremiumPageState extends State<F_InsurancePremiumPage> {
 
   var dropDownValues = [];
 
-  var cities = ['city1','city2','city3'];
-  var carNames = ['carNames1','carName2','carNames3'];
-  var carModels = ['carModels1','carModels2','carModels3'];
-  var purchaseYears = ['purchaseYears1','purchaseYears2','purchaseYears3','purchaseYears4'];
+  var cities = ['Nellore','Chennai','Pune'];
+  var carNames = ['Seltose','Venue','XUV 500'];
+  var carModels = ['1.6v','1.7v','1.8v'];
+  var purchaseYears = ['2012','2013','2014','2015','2016','2017','2018','2019','2020',];
 
   @override
   Widget build(BuildContext context) {
@@ -245,7 +251,8 @@ class _F_InsurancePremiumPageState extends State<F_InsurancePremiumPage> {
   Future<void> _submit() async {
     if (_validateAndSaveForm()) {
       try {
-        GoToPage(context, PremiumPlansPage());
+
+        GoToPage(context, PremiumPlansPage(database: widget.database,));
       } on PlatformException catch (e) {
         PlatformExceptionAlertDialog(
           title: 'Operation failed',

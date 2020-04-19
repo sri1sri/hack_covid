@@ -4,27 +4,32 @@ import 'package:hackcovid/HomeScreens/QuickServices/InsurancePremium.dart';
 import 'package:hackcovid/HomeScreens/SettingsPage.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
+import 'package:hackcovid/common_variables/app_functions.dart';
 import 'package:hackcovid/common_widgets/button_widget/to_do_button.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 import 'package:hackcovid/common_widgets/platform_alert/platform_exception_alert_dialog.dart';
+import 'package:hackcovid/firebase/database.dart';
+import 'package:hackcovid/model/premium_details.dart';
 
 import '../dashboard.dart';
 
 
 class CarInsurancePage extends StatelessWidget {
-  //ProfilePage({@required this.database});
-  //Database database;
+  CarInsurancePage({@required this.database});
+  Database database;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: F_CarInsurancePage(),
+      child: F_CarInsurancePage(database: database,),
     );
   }
 }
 
 class F_CarInsurancePage extends StatefulWidget {
+  F_CarInsurancePage({@required this.database});
+  Database database;
 
   @override
   _F_CarInsurancePageState createState() => _F_CarInsurancePageState();
@@ -160,7 +165,8 @@ class _F_CarInsurancePageState extends State<F_CarInsurancePage> {
   Future<void> _submit() async {
     if (_validateAndSaveForm()) {
       try {
-        GoToPage(context, InsurancePremiumPage());
+        CARREGNO = _regNoController.text.toString();
+        GoToPage(context, InsurancePremiumPage(database: widget.database,));
       } on PlatformException catch (e) {
         PlatformExceptionAlertDialog(
           title: 'Operation failed',

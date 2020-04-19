@@ -145,7 +145,7 @@ class _F_SignupPageState extends State<F_SignupPage> {
                     children: <Widget>[
                       Text("Sign Up",style: bigTitleStyle,),
                       SizedBox(height: 15.0,),
-                      Text("Please enter your Password to continue.",style: descriptionStyleDarkBlur,),
+//                      Text("Please enter your Password to continue.",style: descriptionStyleDarkBlur,),
                     ],
                   ),
 

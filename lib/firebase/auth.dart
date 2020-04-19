@@ -21,7 +21,10 @@ abstract class AuthBase {
 
   Future<User> verifyOtp(String smsCode);
 
-  Future<void> signOut();
+  Future<void> resetPasswordWithEmail(String email);
+
+
+    Future<void> signOut();
 }
 
 class Auth implements AuthBase {
@@ -64,6 +67,11 @@ class Auth implements AuthBase {
   Future<User> registerWithEmail(String email, String password) async {
     final authResult = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
     return _userFromFirebase(authResult.user);
+  }
+
+  @override
+  Future<void> resetPasswordWithEmail(String email) async {
+    await _firebaseAuth.sendPasswordResetEmail(email: email);
   }
 
   @override

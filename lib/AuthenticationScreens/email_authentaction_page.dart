@@ -2,6 +2,7 @@
 import'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hackcovid/AuthenticationScreens/forgot_password_page.dart';
 import 'package:hackcovid/AuthenticationScreens/signup_page.dart';
 import 'package:hackcovid/HomeScreens/home_page.dart';
 //import 'package:covidapp/AuthenticationScreens/Verify_Otp.dart';
@@ -131,7 +132,7 @@ class _F_EmailAuthenticationPageState extends State<F_EmailAuthenticationPage> {
                   children: <Widget>[
                     Text("Login",style: bigTitleStyle,),
                     SizedBox(height: 15.0,),
-                    Text("Please enter your Email Id and Password to continue.",style: descriptionStyleDarkBlur,),
+//                    Text("Please enter your Email Id and Password to continue.",style: descriptionStyleDarkBlur,),
                   ],
                 ),
 
@@ -230,7 +231,33 @@ class _F_EmailAuthenticationPageState extends State<F_EmailAuthenticationPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 30.0,),
+                    SizedBox(height: 20.0,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                            "Forgot your password?",
+                            style: descriptionStyle
+                        ),
+                        FlatButton(
+                          child: Text(
+                            'click me',
+                            style: subTitleStyleBlue,
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    ForgotPassword(),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20.0,),
+
                     Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Container(child: Text(""),),

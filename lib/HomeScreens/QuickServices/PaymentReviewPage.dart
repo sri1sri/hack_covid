@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:hackcovid/HomeScreens/QuickServices/PaymentScreen.dart';
-import 'package:hackcovid/HomeScreens/viewPolicyDetails//viewpolicydetailspage.dart';
+import 'package:hackcovid/HomeScreens/viewPolicyDetails//view_policy_details_page.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
+import 'package:hackcovid/common_variables/app_functions.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
+import 'package:hackcovid/firebase/database.dart';
 
 class PaymentReviewPage extends StatelessWidget {
-  //ProfilePage({@required this.database});
-  //Database database;
+  PaymentReviewPage({@required this.database});
+  Database database;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: F_PaymentPage(),
+      child: F_PaymentPage(database: database,),
     );
   }
 }
 
 class F_PaymentPage extends StatefulWidget {
-  // F_ProfilePage({@required this.database});
-  // Database database;
+  F_PaymentPage({@required this.database});
+   Database database;
 
   @override
   _F_PaymentPageState createState() => _F_PaymentPageState();
@@ -92,7 +94,7 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
                     children: <Widget>[
                       SizedBox(height: 25,),
                       Text("Total Premium",style: subTextStyleBlue,),
-                      Text("₹12,000",style: subTitleStyle,),
+                      Text("₹$TOTALPREMIUM",style: subTitleStyle,),
                     ],
                   ),
                   Container(
@@ -103,7 +105,7 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => PaymentPage() ),
+                              builder: (context) => PaymentPage(database: widget.database,) ),
                         );
                       },
                       child: Container(
@@ -242,7 +244,7 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
                                     fontWeight: FontWeight.w700,
                                     fontSize: 18.0,decoration: TextDecoration.none),),
                                 SizedBox(height: 10,),
-                                Text("Nanditha",style: TextStyle(
+                                Text(USERNAME,style: TextStyle(
                                     color: Color(0xFF253949).withOpacity(0.6),
                                     fontFamily: 'Montserrat',
                                     fontWeight: FontWeight.w600,
@@ -254,7 +256,7 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
                                     fontWeight: FontWeight.w700,
                                     fontSize: 18.0,decoration: TextDecoration.none),),
                                 SizedBox(height: 10,),
-                                Text("TN66V6571",style: TextStyle(
+                                Text(CARREGNO,style: TextStyle(
                                     color: Color(0xFF253949).withOpacity(0.6),
                                     fontFamily: 'Montserrat',
                                     fontWeight: FontWeight.w600,

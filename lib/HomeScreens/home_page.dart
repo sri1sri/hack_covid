@@ -1,4 +1,3 @@
-//import 'package:hackcovid/firebase/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hackcovid/HomeScreens/Claims.dart';
@@ -7,7 +6,9 @@ import 'package:hackcovid/HomeScreens/dashboard.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 import 'package:hackcovid/common_widgets/navigationBar.dart';
+import 'package:hackcovid/firebase/database.dart';
 import 'package:provider/provider.dart';
+import 'locationData.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -21,9 +22,6 @@ class HomePage extends StatelessWidget {
 }
 
 class F_HomePage extends StatefulWidget {
-  F_HomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
 
   @override
   _F_HomePageState createState() => _F_HomePageState();
@@ -34,6 +32,7 @@ class _F_HomePageState extends State<F_HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    getUserLocation();
     return offlineWidget(context);
   }
 
@@ -50,15 +49,15 @@ class _F_HomePageState extends State<F_HomePage> {
 
   Widget _buildContent(BuildContext context) {
     Widget child;
-    //final database = Provider.of<Database>(context, listen: false);
+    final database = Provider.of<Database>(context, listen: false);
+
 
     switch (currentIndex) {
       case 0:
-        child = Dashboard(
-        );
+        child = Dashboard(database: database);
         break;
       case 1:
-        child = PoliciesPage();
+        child = PoliciesPage(database: database,);
         break;
       case 2:
         child = ClaimsPage();

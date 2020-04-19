@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'HomeScreens/Splash.dart';
 import 'firebase/auth.dart';
 import 'landing_page.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blueGrey,
         ),
         debugShowCheckedModeBanner: false,
-        home: LandingPage(),
+        home: splashScreen(),
         //routes: routes
       ),
     );

@@ -21,7 +21,7 @@ var titleStyleTheam = TextStyle(
     color: Color(0xFF253949),
     fontFamily: 'Montserrat',
     fontWeight: FontWeight.w700,
-    fontSize: 23.0);
+    fontSize: 21.0);
 var subTitleStyle = TextStyle(
     color: Color(0xFF253949),
     fontFamily: 'Montserrat',

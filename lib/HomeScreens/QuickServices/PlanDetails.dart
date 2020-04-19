@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:hackcovid/HomeScreens/QuickServices/SeeAllCoverages.dart';
 import 'package:hackcovid/HomeScreens/SettingsPage.dart';
@@ -7,20 +9,26 @@ import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dar
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 
 class PremiumPlanDetailsPage extends StatelessWidget {
-  //ProfilePage({@required this.database});
-  //Database database;
+    PremiumPlanDetailsPage({@required this.type,@required this.keyProtect,@required this.engineProtect,@required this.garageCash});
+  int type;
+  String keyProtect;
+    String engineProtect;
+    String garageCash;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: F_PremiumPlanDetailsPage(),
+      child: F_PremiumPlanDetailsPage(type: type,keyProtect: keyProtect,garageCash: garageCash,engineProtect: engineProtect,),
     );
   }
 }
 
 class F_PremiumPlanDetailsPage extends StatefulWidget {
-  // F_ProfilePage({@required this.database});
-  // Database database;
+  F_PremiumPlanDetailsPage({@required this.type,@required this.keyProtect,@required this.engineProtect,@required this.garageCash});
+   int type;
+  String keyProtect;
+  String engineProtect;
+  String garageCash;
 
   @override
   _F_PremiumPlanDetailsPageState createState() => _F_PremiumPlanDetailsPageState();
@@ -38,6 +46,90 @@ class _F_PremiumPlanDetailsPageState extends State<F_PremiumPlanDetailsPage> {
       textHolder = '✔';
     });
 
+  }
+
+  Widget coverages(int types){
+    print('types$types');
+    switch (types){
+      case 0:
+        return Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Coverages("Third Party Liblities"),
+                SizedBox(width: 15,),
+                Coverages("Car Damage"),
+              ],
+            ),
+            SizedBox(height: 15,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Coverages("Personal Accident"),
+                SizedBox(width: 15,),
+                Coverages("Other Insurance"),
+              ],
+            )
+          ],
+        );
+        break;
+      case 1:
+        return Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Coverages("Third Party Liblities"),
+              ],
+            ),
+            SizedBox(height: 15,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Coverages("Personal Accident"),
+                SizedBox(width: 15,),
+                Coverages("Other Insurance"),
+              ],
+            )
+          ],
+        );
+        break;
+      case 2:
+        return Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Coverages("Third Party Liblities"),
+              ],
+            ),
+            SizedBox(height: 15,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Coverages("Other Insurance"),
+              ],
+            )
+          ],
+        );
+
+        break;
+      case 3:
+        return Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Coverages("Third Party Liblities"),
+              ],
+            ),
+            SizedBox(height: 15,),
+          ],
+        );
+
+        break;
+    }
   }
 
   @override
@@ -91,27 +183,7 @@ class _F_PremiumPlanDetailsPageState extends State<F_PremiumPlanDetailsPage> {
                     ),
                     SizedBox(height: 25,),
                     Container(
-                      child: Column(
-                        children: <Widget>[
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Coverages("Third Party Liberties"),
-                              SizedBox(width: 15,),
-                              Coverages("Car Damage"),
-                            ],
-                          ),
-                          SizedBox(height: 15,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Coverages("Personal Accident"),
-                              SizedBox(width: 15,),
-                              Coverages("Other Insurance"),
-                            ],
-                          )
-                        ],
-                      ),
+                      child: coverages(widget.type),
                     ),
                     SizedBox(height: 40,),
                     Text("Add more Coverages",style: subTitleStyle,),
@@ -119,11 +191,11 @@ class _F_PremiumPlanDetailsPageState extends State<F_PremiumPlanDetailsPage> {
                     Container(
                       child: Column(
                         children: <Widget>[
-                          AddCoverageCard("Key protect cover","₹12,000"),
+                          AddCoverageCard("Key protect cover",widget.keyProtect),
                           SizedBox(height: 10,),
-                          AddCoverageCard("Engine Protect Plus","₹12,000"),
+                          AddCoverageCard("Engine Protect Plus",widget.engineProtect),
                           SizedBox(height: 10,),
-                          AddCoverageCard("Garage cash","₹12,000"),
+                          AddCoverageCard("Garage cash",widget.garageCash),
                         ],
                       ),
                     ),
@@ -189,8 +261,8 @@ class _F_PremiumPlanDetailsPageState extends State<F_PremiumPlanDetailsPage> {
           ),
         )
     );
-
   }
+
 
   Widget Coverages(String Coverage)
   {

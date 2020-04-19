@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
+import 'package:hackcovid/common_variables/app_functions.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 
 class Insureddetails extends StatelessWidget {
@@ -64,7 +65,7 @@ class _F_InsureddetailsState extends State<F_Insureddetails> {
               ExpansionTile(
                 title: maintext('Car Owner Details'),
                 children: <Widget>[
-                  subtext('Owner Name', 'Nanditha'),
+                  subtext('Owner Name', USERNAME),
                   subtext('Email Address', 'nandy@gmail.com'),
                   subtext('Mobile Number', '9345463476'),
                   subtext('Date of Birth', '22 May, 1998'),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:lottie/lottie.dart';
 
 class  Premiumbreakup extends StatelessWidget {
   @override
@@ -36,7 +38,7 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text("Total Premium",style: subTextStyleBlue,),
-                  Text("₹12,000",style: subTitleStyle,),
+                  Text("₹12,492",style: subTitleStyle,),
                 ],
               ),
             ),
@@ -47,6 +49,38 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
   }
 
   Widget _buildContent(BuildContext context) {
+    var data = [
+      ClicksPerYear('2016', 10000, Colors.green),
+      ClicksPerYear('2017', 11000, Colors.green),
+      ClicksPerYear('2018', 11000, Colors.green),
+      ClicksPerYear('2019', 12000, Colors.green),
+      ClicksPerYear('2020', 12500, Colors.green),
+      ClicksPerYear('2021*',9000, Colors.green),
+
+    ];
+
+    var series = [
+      charts.Series(
+        domainFn: (ClicksPerYear clickData, _) => clickData.year,
+        measureFn: (ClicksPerYear clickData, _) => clickData.clicks,
+        colorFn: (ClicksPerYear clickData, _) => clickData.color,
+        id: 'Clicks',
+        data: data,
+      ),
+    ];
+
+    var chart = charts.BarChart(
+      series,
+      animate: true,
+    );
+
+    var chartWidget = Padding(
+      padding: EdgeInsets.all(32.0),
+      child: SizedBox(
+        height: 200.0,
+        child: chart,
+      ),
+    );
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -143,14 +177,51 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
                   ],
                 ),
                 Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Divider(
+                    thickness: 1,
+                    color: subBackgroundColor,
+                  ),
+                ),
+                ExpansionTile(
+                  title: maintext('Premium for next year'),
+                  children: <Widget>[
+                    subtext('Total Premium upcoming\n year 2021*', '₹ 9000/-'),
+                  ],
+                ),
+
+                Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15.0),
                   child: Divider(
                     thickness: 1,
                     color: subBackgroundColor,
                   ),
                 ),
-                totalsubtext('Total', '200/- rs'),
-                totalsubtext('Tax', '200/- rs'),
+
+                ExpansionTile(
+                  title: maintext('Premium graph'),
+                  children: <Widget>[
+//                    Positioned(
+//                        left: 15.0,
+//                        right: 15.0,
+//                        top: 5.0,
+//                        bottom: 50.0,
+//                        child: Lottie.network('https://assets6.lottiefiles.com/private_files/lf30_d3c6cL.json',height: 150,width: 150)),
+                    chartWidget,
+                  ],
+                ),
+
+
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  child: Divider(
+                    thickness: 1,
+                    color: subBackgroundColor,
+                  ),
+                ),
+//                totalsubtext('Total', '200/- rs'),
+//                totalsubtext('Tax', '200/- rs'),
               ],
             ),
         ),
@@ -206,4 +277,14 @@ class _F_PremiumbreakupState extends State<F_Premiumbreakup> {
       ),
     );
   }
+}
+
+class ClicksPerYear {
+  final String year;
+  final int clicks;
+  final charts.Color color;
+
+  ClicksPerYear(this.year, this.clicks, Color color)
+      : this.color = charts.Color(
+      r: color.red, g: color.green, b: color.blue, a: color.alpha);
 }

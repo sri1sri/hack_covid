@@ -12,9 +12,36 @@ void GoToPage(BuildContext context, Widget page) {
     ),
   );
 }
+
+
 String USER_ID;
-String FIREBASE_STORAGE_URL = 'gs://knowitmaster.appspot.com';
+String USERNAME;
+
+String TOTALPREMIUM='12,492';
+
+
+
+String C_ownerName;
+    String C_ownerEmail;
+String C_ownerPhoneNumber;
+    String C_panCard;
+String C_landmark;
+    String C_nomineeName;
+String C_address;
+    String C_city;
+String C_state;
+    String C_pincode;
+String CARREGNO;
+String C_preInsurerName;
+String C_prePolicyNumber;
+    String C_carEnginNumber;
+String C_carChassisNumber;
+
+//String FIREBASE_STORAGE_URL = 'gs://knowitmaster.appspot.com';
 ImageSource IMAGE_SOURCE = ImageSource.gallery;
+double LATITUDE = 0;
+double LONGITUDE = 0;
+
 
 String getDateTime(int timestamp) {
   var format = new DateFormat('dd MMM yyyy, hh:mm a');

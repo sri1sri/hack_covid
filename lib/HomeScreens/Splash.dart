@@ -2,8 +2,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hackcovid/HomeScreens/home_page.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
+import 'package:hackcovid/common_variables/app_functions.dart';
+import 'package:hackcovid/firebase/database.dart';
+import 'package:hackcovid/landing_page.dart';
 import 'package:hackcovid/widgets/my_navigator.dart';
 import 'package:flare_flutter/flare_actor.dart';
+import 'package:provider/provider.dart';
 
 var routes = <String, WidgetBuilder>{
   "/intro": (BuildContext context) => HomePage(),
@@ -26,13 +30,15 @@ class _splashScreenState extends State<splashScreen> {
     // TODO: implement initState
     super.initState();
 
+    print('USER_ID$USER_ID');
+
     Timer(Duration(seconds: 3),
 
             () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => HomePage( ) ),
+                    builder: (context) => LandingPage() ),
               );
             },);
   }
@@ -47,7 +53,7 @@ class _splashScreenState extends State<splashScreen> {
             SizedBox(height: 90,),
             Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Text("Hack Covid",style: bigTitleStyle,),
+              child: Text("Dove Wheels",style: bigTitleStyle,),
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -57,7 +63,7 @@ class _splashScreenState extends State<splashScreen> {
             //Splash(),
             Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Text("We Bought \nour banking at your FingerTips...!",style: topNavigationBarTitleStyle,),
+              child: Text("We bought insurance at your FingerTips...!",style: topNavigationBarTitleStyle,),
             ),
 
           ],
@@ -66,4 +72,3 @@ class _splashScreenState extends State<splashScreen> {
     );
   }
 }
-

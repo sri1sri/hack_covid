@@ -39,6 +39,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>This app needs access to location when open and in the background to track wheather you are in work location or not.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>This app needs access to location when open and in the background to track wheather you are in work location or not.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app needs access to location when open and in the background to track wheather you are in work location or not.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

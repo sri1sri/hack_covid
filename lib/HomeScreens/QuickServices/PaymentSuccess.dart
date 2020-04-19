@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hackcovid/HomeScreens/home_page.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
+import 'package:hackcovid/common_variables/app_functions.dart';
+import 'package:hackcovid/landing_page.dart';
 import 'package:hackcovid/widgets/my_navigator.dart';
 import 'package:flare_flutter/flare_actor.dart';
 
@@ -22,20 +24,22 @@ class PaymentSuccess extends StatefulWidget {
 
 class _PaymentSuccessState extends State<PaymentSuccess> {
   @override
-//  void initState() {
-//    // TODO: implement initState
-//    super.initState();
-//
-//    Timer(Duration(seconds: 6),
-//
-//          () {
-//        Navigator.push(
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    Timer(Duration(seconds: 6),
+
+          () {
+            GoToPage(context, LandingPage());
+
+//            Navigator.push(
 //          context,
 //          MaterialPageRoute(
-//              builder: (context) => HomePage( ) ),
+//              builder: (context) => LandingPage() ),
 //        );
-//      },);
-//  }
+      },);
+  }
 
   @override
   Widget build(BuildContext context) {

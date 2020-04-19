@@ -3,24 +3,32 @@ import 'package:flutter/services.dart';
 import 'package:hackcovid/HomeScreens/QuickServices/PaymentSuccess.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
+import 'package:hackcovid/common_variables/app_functions.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 import 'package:hackcovid/common_widgets/platform_alert/platform_exception_alert_dialog.dart';
+import 'package:hackcovid/firebase/database.dart';
+import 'package:hackcovid/model/premium_details.dart';
 
 import '../../landing_page.dart';
 import '../dashboard.dart';
+import '../dashboard.dart';
 
 class PaymentPage extends StatelessWidget {
+  PaymentPage({@required this.database});
+  Database database;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: F_PaymentPage(),
+      child: F_PaymentPage(database: database,),
     );
   }
 }
 
 class F_PaymentPage extends StatefulWidget {
+  F_PaymentPage({@required this.database});
+  Database database;
 
   @override
   _F_PaymentPageState createState() => _F_PaymentPageState();
@@ -95,17 +103,17 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
           ),
           bottomSheet: Container(
             color: Colors.white,
-            height:100,
+            height:80,
             child: Padding(
-              padding: const EdgeInsets.only(left:30.0,right:30.0),
+              padding: const EdgeInsets.only(left:10.0,right:10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Column(
                     children: <Widget>[
-                      SizedBox(height: 25,),
+                      SizedBox(height: 10,),
                       Text("Total Premium",style: subTextStyleBlue,),
-                      Text("₹12,000",style: subTitleStyle,),
+                      Text("₹$TOTALPREMIUM",style: subTitleStyle,),
                     ],
                   ),
                   Container(
@@ -114,11 +122,6 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
                     child: GestureDetector(
                       onTap: () {
                         _submit();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PaymentSuccess() ),
-                        );
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -250,6 +253,8 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
                       validator: (value) {
                         if (value.isEmpty) {
                           return 'Please enter card number';
+                        }else if(value.length != 16){
+                          return 'Please enter 16 digit card number';
                         }
                         return null;
                       },
@@ -324,7 +329,7 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
                                 onChanged: (value) => _cvv = value,
                                 textInputAction: TextInputAction.next,
                                 autocorrect: true,
-                                obscureText: false,
+                                obscureText: true,
                                 focusNode: _cvvFocusNode,
                                 decoration: new InputDecoration(
                                   prefixIcon: Icon(
@@ -345,6 +350,10 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
                                 validator: (value) {
                                   if (value.isEmpty) {
                                     return 'Please enter cvv';
+                                  }else if(value.length ==3){
+                                    return null;
+                                  }else{
+                                    return 'Please enter valid 3 digit cvv';
                                   }
                                   return null;
                                 },
@@ -388,17 +397,46 @@ class _F_PaymentPageState extends State<F_PaymentPage> {
   }
 
   Future<void> _submit() async {
-    if (_validateAndSaveForm()) {
-      try {
 
-        GoToPage(context, LandingPage());
+      if (_validateAndSaveForm()) {
+        try {
 
-      } on PlatformException catch (e) {
-        PlatformExceptionAlertDialog(
-          title: 'Operation failed',
-          exception: e,
-        ).show(context);
+
+          final _premiumDetails = PremiumDetails(
+            ownerName: C_ownerName,
+            ownerEmail: C_ownerEmail,
+            ownerPhoneNumber: C_ownerPhoneNumber,
+            panCard: C_panCard,
+            landmark: C_landmark,
+            nomineeName: C_nomineeName,
+            address: C_address,
+            city:C_city,
+            state:C_state,
+            pincode:C_pincode,
+            carRegNumber:CARREGNO,
+            preInsurerName:C_preInsurerName,
+            prePolicyNumber:C_prePolicyNumber,
+            carEnginNumber:C_carEnginNumber,
+            carChassisNumber: C_carChassisNumber,
+            premiumPrice: TOTALPREMIUM,
+            userID: USER_ID,
+          );
+
+          await widget.database.setPremiumDetails(_premiumDetails);
+
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => PaymentSuccess() ),
+          );
+        } on PlatformException catch (e) {
+          PlatformExceptionAlertDialog(
+            title: 'Operation failed',
+            exception: e,
+          ).show(context);
+        }
       }
-    }
+
   }
 }

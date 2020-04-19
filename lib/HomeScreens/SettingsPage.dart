@@ -107,7 +107,7 @@ class _F_SettingsPageState extends State<F_SettingsPage> {
                   children: <Widget>[
                     SizedBox( height: 5.0 ),
                     _reportAnIssue( ),
-                    _howToUse( ),
+                  //  _howToUse( ),
                     _privacyPolicy( ),
                     _termsAndConditions( ),
                   ],

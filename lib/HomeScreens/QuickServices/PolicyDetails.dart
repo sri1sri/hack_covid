@@ -10,24 +10,25 @@ import 'package:hackcovid/common_variables/app_functions.dart';
 import 'package:hackcovid/common_widgets/custom_appbar_widget/custom_app_bar.dart';
 import 'package:hackcovid/common_widgets/offline_widgets/offline_widget.dart';
 import 'package:hackcovid/common_widgets/platform_alert/platform_exception_alert_dialog.dart';
+import 'package:hackcovid/firebase/database.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:intl/intl.dart';
 
 class PolicyRegistrationPage extends StatelessWidget {
-  //ProfilePage({@required this.database});
-  //Database database;
+  PolicyRegistrationPage({@required this.database});
+  Database database;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: F_PolicyRegistrationPage(),
+      child: F_PolicyRegistrationPage(database: database,),
     );
   }
 }
 
 class F_PolicyRegistrationPage extends StatefulWidget {
-  // F_ProfilePage({@required this.database});
-  // Database database;
+  F_PolicyRegistrationPage({@required this.database});
+   Database database;
 
   @override
   _F_PolicyRegistrationPageState createState() => _F_PolicyRegistrationPageState();
@@ -383,7 +384,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
   Future<void> _submit(int type) async {
     if (_validateAndSaveForm(type)) {
       try {
-        type == 3 ? isChecked == true ? GoToPage(context, PaymentReviewPage()) : PlatformExceptionAlertDialog(
+        type == 3 ? isChecked == true ? GoToPage(context, PaymentReviewPage(database: widget.database,)) : PlatformExceptionAlertDialog(
           title: 'Operation failed',
           exception: Exception('Please check the terms.'),
         ).show(context) : _pageController.nextPage(
@@ -489,6 +490,10 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           validator: (value) {
                             if (value.isEmpty) {
                               return 'Please enter owner email';
+                            }else if(RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
+                              return null;
+                            }else{
+                              return 'Please enter valid email';
                             }
                             return null;
                           },
@@ -525,6 +530,8 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           validator: (value) {
                             if (value.isEmpty) {
                               return 'Please enter owner phone number';
+                            }else if (value.length != 10) {
+                              return 'Please enter 10 digit phone number';
                             }
                             return null;
                           },
@@ -649,7 +656,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           style: new TextStyle(
                             fontFamily: "Poppins",
                           ),
-                          keyboardType: TextInputType.number,
+                          keyboardType: TextInputType.text,
                           keyboardAppearance: Brightness.dark,
                           validator: (value) {
                             if (value.isEmpty) {
@@ -688,7 +695,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           style: new TextStyle(
                             fontFamily: "Poppins",
                           ),
-                          keyboardType: TextInputType.number,
+                          keyboardType: TextInputType.text,
                           keyboardAppearance: Brightness.dark,
                           validator: (value) {
                             if (value.isEmpty) {
@@ -698,78 +705,78 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           },
                         ),
                         SizedBox(height: 20,),
-                        Text("Enter GST Number",style: subTextStyleBlue),
-                        SizedBox(height: 10,),
-
-                        TextFormField(
-                          onChanged: (value) => _ownerGSTNumber = value,
-                          textInputAction: TextInputAction.next,
-                          autocorrect: false,
-                          obscureText: false,
-                          focusNode: _gstFocusNode,
-                          onFieldSubmitted: (value) => value == ''
-                              ? null
-                              : FocusScope.of(context)
-                              .requestFocus(_landmarkFocusNode),
-                          decoration: new InputDecoration(
-                            prefixIcon: Icon(
-                              Icons.donut_large,
-                              color: subBackgroundColor,
-                            ),
-                            labelText: "Enter GST number",
-                            border: new OutlineInputBorder(
-                              borderRadius: new BorderRadius.circular(5.0),
-                              borderSide: new BorderSide(),
-                            ),
-                          ),
-                          style: new TextStyle(
-                            fontFamily: "Poppins",
-                          ),
-                          keyboardType: TextInputType.text,
-                          keyboardAppearance: Brightness.dark,
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'Please enter GST number';
-                            }
-                            return null;
-                          },
-                        ),
-
-
-                        SizedBox(height: 20,),
-                        Text("Enter Landline Number",style: subTextStyleBlue),
-                        SizedBox(height: 10,),
-
-
-                        TextFormField(
-                          onChanged: (value) => _ownerLandlineNumber = value,
-                          textInputAction: TextInputAction.next,
-                          autocorrect: false,
-                          obscureText: false,
-                          focusNode: _landLineFocusNode,
-                          decoration: new InputDecoration(
-                            prefixIcon: Icon(
-                              Icons.donut_large,
-                              color: subBackgroundColor,
-                            ),
-                            labelText: "Enter landline number",
-                            border: new OutlineInputBorder(
-                              borderRadius: new BorderRadius.circular(5.0),
-                              borderSide: new BorderSide(),
-                            ),
-                          ),
-                          style: new TextStyle(
-                            fontFamily: "Poppins",
-                          ),
-                          keyboardType: TextInputType.number,
-                          keyboardAppearance: Brightness.dark,
-                          validator: (value) {
-                            if (value.isEmpty) {
-                              return 'Please enter landline number';
-                            }
-                            return null;
-                          },
-                        ),
+//                        Text("Enter GST Number",style: subTextStyleBlue),
+//                        SizedBox(height: 10,),
+//
+//                        TextFormField(
+//                          onChanged: (value) => _ownerGSTNumber = value,
+//                          textInputAction: TextInputAction.next,
+//                          autocorrect: false,
+//                          obscureText: false,
+//                          focusNode: _gstFocusNode,
+//                          onFieldSubmitted: (value) => value == ''
+//                              ? null
+//                              : FocusScope.of(context)
+//                              .requestFocus(_landmarkFocusNode),
+//                          decoration: new InputDecoration(
+//                            prefixIcon: Icon(
+//                              Icons.donut_large,
+//                              color: subBackgroundColor,
+//                            ),
+//                            labelText: "Enter GST number",
+//                            border: new OutlineInputBorder(
+//                              borderRadius: new BorderRadius.circular(5.0),
+//                              borderSide: new BorderSide(),
+//                            ),
+//                          ),
+//                          style: new TextStyle(
+//                            fontFamily: "Poppins",
+//                          ),
+//                          keyboardType: TextInputType.text,
+//                          keyboardAppearance: Brightness.dark,
+//                          validator: (value) {
+//                            if (value.isEmpty) {
+//                              return 'Please enter GST number';
+//                            }
+//                            return null;
+//                          },
+//                        ),
+//
+//
+//                        SizedBox(height: 20,),
+//                        Text("Enter Landline Number",style: subTextStyleBlue),
+//                        SizedBox(height: 10,),
+//
+//
+//                        TextFormField(
+//                          onChanged: (value) => _ownerLandlineNumber = value,
+//                          textInputAction: TextInputAction.next,
+//                          autocorrect: false,
+//                          obscureText: false,
+//                          focusNode: _landLineFocusNode,
+//                          decoration: new InputDecoration(
+//                            prefixIcon: Icon(
+//                              Icons.donut_large,
+//                              color: subBackgroundColor,
+//                            ),
+//                            labelText: "Enter landline number",
+//                            border: new OutlineInputBorder(
+//                              borderRadius: new BorderRadius.circular(5.0),
+//                              borderSide: new BorderSide(),
+//                            ),
+//                          ),
+//                          style: new TextStyle(
+//                            fontFamily: "Poppins",
+//                          ),
+//                          keyboardType: TextInputType.number,
+//                          keyboardAppearance: Brightness.dark,
+//                          validator: (value) {
+//                            if (value.isEmpty) {
+//                              return 'Please enter landline number';
+//                            }
+//                            return null;
+//                          },
+//                        ),
                       ],
                     ),
                   ),
@@ -780,6 +787,12 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                     GestureDetector(
                       onTap: () {
                         print('currentPage == $_currentPage');
+
+C_ownerName = _ownerName;
+C_ownerEmail = _ownerEmail;
+C_ownerPhoneNumber = _ownerPhoneNumber;
+                        C_landmark = _ownerLandmark;
+
                         _submit(_currentPage);
                       },
                       child: Container(
@@ -802,7 +815,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 380,),
+                    SizedBox(height: 480,),
                   ],
                 )
 
@@ -990,6 +1003,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                       GestureDetector(
                         onTap: () {
                           print('currentPage == $_currentPage');
+                          C_nomineeName = _nomineeName;
                           _submit(_currentPage);
                         },
                         child: Container(
@@ -1012,7 +1026,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 380,),
+                      SizedBox(height: 480,),
                     ],
                   )
 
@@ -1145,7 +1159,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                             style: new TextStyle(
                               fontFamily: "Poppins",
                             ),
-                            keyboardType: TextInputType.number,
+                            keyboardType: TextInputType.text,
                             keyboardAppearance: Brightness.dark,
                             validator: (value) {
                               if (value.isEmpty) {
@@ -1179,7 +1193,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                             style: new TextStyle(
                               fontFamily: "Poppins",
                             ),
-                            keyboardType: TextInputType.text,
+                            keyboardType: TextInputType.number,
                             keyboardAppearance: Brightness.dark,
                             validator: (value) {
                               if (value.isEmpty) {
@@ -1200,6 +1214,11 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                       GestureDetector(
                         onTap: () {
                           print('currentPage == $_currentPage');
+                          C_address = _address;
+                          C_city = _city;
+                          C_state = _state;
+                          C_pincode = _pincode;
+
                           _submit(_currentPage);
                         },
                         child: Container(
@@ -1222,7 +1241,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 380,),
+                      SizedBox(height: 480,),
                     ],
                   )
 
@@ -1539,7 +1558,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                                     children: <Widget>[
                                       SizedBox(height: 20,),
                                       Text("Total Premium",style: subTextStyleBlue,),
-                                      Text("₹12,000",style: subTitleStyle,),
+                                      Text("₹$TOTALPREMIUM",style: subTitleStyle,),
                                     ],
                                   ),
                                   Container(
@@ -1547,6 +1566,10 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                                     width: 150,
                                     child: GestureDetector(
                                       onTap: () {
+                                        C_preInsurerName = _previousInsurer;
+                                        C_prePolicyNumber = _previousPolicyNumber;
+                                        C_carChassisNumber = _carChassisNumber;
+                                        C_carEnginNumber = _carEngineNumber;
 
                                         _submit(3);
 
@@ -1575,7 +1598,7 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
                             ),
                           ),
 
-                          SizedBox(height: 380,),
+                          SizedBox(height: 480,),
                         ],
                       ),
                     ),
@@ -1588,6 +1611,4 @@ class _F_PolicyRegistrationPageState extends State<F_PolicyRegistrationPage> {
       },
     );
   }
-
-
 }

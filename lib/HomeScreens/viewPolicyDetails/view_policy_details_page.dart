@@ -1,4 +1,4 @@
-import 'package:hackcovid/HomeScreens/viewPolicyDetails//premiumbreakup.dart';
+import 'package:hackcovid/HomeScreens/viewPolicyDetails//premium_breakup.dart';
 import 'package:hackcovid/common_variables/app_colors.dart';
 import 'package:hackcovid/common_variables/app_fonts.dart';
 import 'package:hackcovid/common_variables/app_functions.dart';
